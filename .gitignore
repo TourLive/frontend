@@ -1,27 +1,3 @@
-.DS_STORE
-node_modules
-*~
-*.pyc
-.grunt
-_SpecRunner.html
-__benchmarks__
-build/
-remote-repo/
-coverage/
-flow-coverage/
-.module-cache
-fixtures/dom/public/react-dom.js
-fixtures/dom/public/react.js
-test/the-files-to-test.generated.js
-*.log*
-chrome-user-data
-*.sublime-project
-*.sublime-workspace
-.idea
-*.iml
-.vscode
-*.swp
-*.swo
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
@@ -43,5 +19,3 @@ chrome-user-data
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-yarn.lock
-yarn.lock
