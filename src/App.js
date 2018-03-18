@@ -3,7 +3,7 @@ import './App.css';
 import * as riderActions from "./actions/riderActions";
 import { connect } from "react-redux";
 import store from "./store";
-import { Button } from "semantic-ui-react";
+import { Button, Container, Table } from "semantic-ui-react";
 
 class App extends Component {
   fetchData() {
@@ -20,12 +20,40 @@ class App extends Component {
       )
     }
 
-    const mappedRiders = riders.map(rider => <li key={rider.id}>{rider.firstName}{rider.lastName}</li>)
+    const mappedRiders = riders.map(rider => {
+          return  (<Table.Row key={rider.id}>
+        <Table.Cell>
+          {rider.firstName}
+        </Table.Cell>
+        <Table.Cell>
+          {rider.lastName}
+        </Table.Cell>
+        <Table.Cell>
+          {rider.teamName}
+        </Table.Cell>
+        <Table.Cell>
+          {rider.age}
+        </Table.Cell>
+      </Table.Row>
+          )
+    })
     return (
         <div className="App">
           <Button onClick={this.fetchData.bind(this)}>Fahrer erneut von der API laden</Button>
-          <h1>Riders</h1>
-          <ul>{mappedRiders}</ul>
+          <Container textAlign='center'>
+            <h1>Riders</h1>
+            <Table basic='very' celled collapsing>
+              <Table.Header><Table.Row>
+                <Table.HeaderCell>ID</Table.HeaderCell>
+                <Table.HeaderCell>Vorname</Table.HeaderCell>
+                <Table.HeaderCell>Nachname</Table.HeaderCell>
+                <Table.HeaderCell>Alter</Table.HeaderCell>
+              </Table.Row></Table.Header>
+              <Table.Body>
+                {mappedRiders}
+              </Table.Body>
+            </Table>
+          </Container>
         </div>
     )
   }
