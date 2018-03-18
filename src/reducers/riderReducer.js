@@ -1,19 +1,19 @@
 import * as types from "../actions/actionTypes";
 
-const initalState = {
-  riders : [],
-  error : false
+const initialState = {
+  riders: [],
+  error: false
 };
 
-const riderReducer = (state = initalState, action) => {
+const riderReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.GET_RIDERS:
-      console.log(action.data);
       return Object.assign({}, state, {
         riders: action.data,
         error : false
       })
     default:
+      return state;
   }
 }
 

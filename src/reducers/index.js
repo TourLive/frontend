@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import riders from "./riderReducer";
+import riderReducer from "./riderReducer";
 
-const reducers = combineReducers(riders);
+const rootReducer = combineReducers({
+    riders: riderReducer
+});
 
-export default reducers;
+export default rootReducer;

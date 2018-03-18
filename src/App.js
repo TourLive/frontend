@@ -4,7 +4,6 @@ import * as riderActions from "./actions/riderActions";
 import { connect } from "react-redux";
 import store from "./store";
 
-@connect(state => ({riders : state.riders.riders}))
 class App extends Component {
   fetchData() {
     store.dispatch(riderActions.getRidersFromAPI())
@@ -31,4 +30,9 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(store) {
+    return {
+      riders: store.riders.riders
+    }
+}
+export default connect(mapStateToProps)(App);
