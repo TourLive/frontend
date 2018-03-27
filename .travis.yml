@@ -15,6 +15,11 @@ cache:
   yarn: true
   directories:
     - '$HOME/.sonar/cache'
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
 branches:
   only:
   - master
