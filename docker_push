@@ -1,0 +1,9 @@
+#!/bin/bash
+docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+prop="version"
+actual_version="$(node -pe "require('./package.json')['$prop']")"
+echo $actual_version
+docker build -t tourlive/frontend:$actual_version .
+docker tag tourlive/frontend:$actual_version tourlive/frontend:latest
+docker push tourlive/frontend:$actual_version
+docker push tourlive/frontend:latest
