@@ -4,6 +4,14 @@ prop="version"
 actual_version="$(node -pe "require('./package.json')['$prop']")"
 echo $actual_version
 docker build -t tourlive/frontend:$actual_version .
-docker tag tourlive/frontend:$actual_version tourlive/frontend:latest
 docker push tourlive/frontend:$actual_version
-docker push tourlive/frontend:latest
+
+if [ "$TRAVIS_BRANCH" = "dev"]; then
+ docker tag tourlive/frontend:$actual_version tourlive/frontend:latest
+ docker push tourlive/frontend:latest
+fi
+
+if [ "$TRAVIS_BRANCH" = "master"]; then
+ docker tag tourlive/frontend:$actual_version tourlive/frontend:stable
+ docker push tourlive/frontend:stable
+fi

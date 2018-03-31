@@ -17,12 +17,18 @@ cache:
     - '$HOME/.sonar/cache'
 deploy:
   provider: script
-  script: bash docker_push
+  script: bash docker_push_prod
   on:
     branch: master
+deploy:
+  provider: script
+  script: bash docker_push_dev
+  on:
+    branch: dev
 branches:
   only:
   - master
+  - dev
 script:
   - yarn test --coverage
   - sonar-scanner

@@ -15,6 +15,7 @@ class App extends Component {
     if (!riders.length) {
       return (
         <div className="App">
+          <h1>TEST BUILBING OF DOCKER</h1>
           <Button onClick={this.fetchData.bind(this)}>Fahrer von der API laden</Button>
         </div>
       )
