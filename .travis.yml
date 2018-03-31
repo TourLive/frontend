@@ -23,6 +23,7 @@ deploy:
 branches:
   only:
   - master
+  - dev
 script:
   - yarn test --coverage
   - sonar-scanner
