@@ -16,15 +16,14 @@ cache:
   directories:
     - '$HOME/.sonar/cache'
 deploy:
-  provider: script
-  script: bash docker_push_prod
-  on:
-    branch: master
-deploy:
-  provider: script
-  script: bash docker_push_dev
-  on:
-    branch: dev
+  - provider: script
+    script: bash docker_push_prod
+    on:
+      branch: master
+  - provider: script
+    script: bash docker_push_dev
+    on:
+      branch: dev
 branches:
   only:
   - master
