@@ -7,3 +7,4 @@ docker build -t tourlive/frontend:$actual_version .
 docker push tourlive/frontend:$actual_version
 docker tag tourlive/frontend:$actual_version tourlive/frontend:latest
 docker push tourlive/frontend:latest
+ssh -p 40001 -o StrictHostKeyChecking=no ufo@sinv-56034.edu.hsr.ch "sh /opt/tourlive/restart-dev.sh"
