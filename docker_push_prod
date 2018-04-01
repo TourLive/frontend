@@ -7,4 +7,4 @@ docker build -t tourlive/frontend:$actual_version .
 docker push tourlive/frontend:$actual_version
 docker tag tourlive/frontend:$actual_version tourlive/frontend:stable
 docker push tourlive/frontend:stable
-ssh -p 40001 ufo@sinv-56034.edu.hsr.ch "sh /opt/tourlive/restart-prod.sh"
+ssh -p 40001 -o UserKnownHostsFile=/dev/null ufo@sinv-56034.edu.hsr.ch "sh /opt/tourlive/restart-prod.sh"
