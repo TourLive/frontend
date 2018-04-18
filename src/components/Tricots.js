@@ -10,7 +10,7 @@ class Trikots extends Component {
                     <title>Trikots</title>
                 </Helmet>
                 <Header as="h1" color='red'>Trikots</Header>
-                <body><h1>Trikots</h1></body>
+                <h1>Trikots</h1>
             </div>
         );
     }

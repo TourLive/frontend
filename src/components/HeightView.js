@@ -10,7 +10,7 @@ class HeightView extends Component {
                     <title>HeightView</title>
                 </Helmet>
                 <Header as="h1" color='red'>HeightView</Header>
-                <body><h1>HeightView</h1></body>
+                <h1>HeightView</h1>
             </div>
         );
     }

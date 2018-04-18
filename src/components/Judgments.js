@@ -10,7 +10,7 @@ class Judgments extends Component {
                     <title>Wertungen</title>
                 </Helmet>
                 <Header as="h1" color='red'>Wertungen</Header>
-                <body><h1>Wertungen</h1></body>
+                <h1>Wertungen</h1>
             </div>
         );
     }

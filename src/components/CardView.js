@@ -10,7 +10,7 @@ class Card extends Component {
                     <title>Card</title>
                 </Helmet>
                 <Header as="h1" color='red'>Card</Header>
-                <body><h1>Card</h1></body>
+                <h1>Card</h1>
             </div>
         );
     }

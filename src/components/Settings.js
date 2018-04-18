@@ -10,7 +10,7 @@ class Settings extends Component {
                     <title>Einstellungen</title>
                 </Helmet>
                 <Header as="h1" color='red'>Einstellungen</Header>
-                <body><h1>Einstellungen</h1></body>
+                <h1>Einstellungen</h1>
             </div>
         );
     }

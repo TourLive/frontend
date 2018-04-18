@@ -10,7 +10,7 @@ class Rankings extends Component {
                     <title>Klassemente</title>
                 </Helmet>
                 <Header as="h1" color='red'>Klassemente</Header>
-                <body><h1>Klassemente</h1></body>
+                <h1>Klassemente</h1>
             </div>
         );
     }
