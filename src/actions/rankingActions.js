@@ -2,10 +2,9 @@ import axios from "axios";
 import * as types from "./actionTypes";
 
 var raceId = 0;
-const HOST = "localhost:9000";
-const LINK_SETTINGS = "http://" + HOST + "/settings";
-const LINK_STAGES = "http://" + HOST + "/stages/";
-const LINK_RACES = "http://" + HOST + "/races/";
+const LINK_SETTINGS = "http://dev-api.tourlive.ch/settings";
+const LINK_STAGES = "http://dev-api.tourlive.ch/stages/";
+const LINK_RACES = "http://dev-api.tourlive.ch/races/";
 
 function receiveStage(data) {
     return {

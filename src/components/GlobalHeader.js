@@ -19,16 +19,10 @@ class GlobalHeader extends Component {
 
         return(
             <header className="App-header">
-
-                    <div className="Inline"><img src="logo.png" alt="TourLive Logo" className="App-logo"/></div>
-                   <div className="App-title Inline">{actualRace.name}</div>
-
-                        <div className="App-title Inline">{actualStage.stageName}</div>
-
-
+                <div className="Inline"><img src="logo.png" alt="TourLive Logo" className="App-logo"/></div>
+                <div className="App-title Inline">{actualRace.name}</div>
+                <div className="App-title Inline">{actualStage.stageName}</div>
             </header>
-
-
         );
     }
 }
