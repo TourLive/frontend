@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import * as riderActions from "../actions/riderActions";
+import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
 import store from "../store";
 import {connect} from "react-redux";
 import TrackView from "./TrackView";
@@ -27,7 +28,7 @@ class Rankings extends Component {
         if(store.getState().actualStage.data.id !== "undefined"){
             this.setState({actualStage: store.getState().actualStage.data.id});
         }
-        store.dispatch(riderActions.getRidersFromAPI(this.state.actualStage));
+        store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(this.state.actualStage));
     }
 
     componentDidMount() {
@@ -62,9 +63,8 @@ class Rankings extends Component {
             </Menu>
         );
 
-
-        const {riders} = this.props;
-        console.log(riders);
+        const {cons} = this.props;
+        console.log(cons);
 
         return(
             <div className="App-Content">
@@ -87,7 +87,7 @@ class Rankings extends Component {
 function mapStateToProps(store) {
     return {
         actualStage : store.actualStage.data,
-        riders : store.riders.riders
+        cons : store.cons.cons
     }
 }
 
