@@ -10,13 +10,24 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 
 class Rankings extends Component {
-    state = {activeItem: 'official'}
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            actualStage: '8',
+            activeItem : 'official'
+        }
+    }
 
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
 
     fetchCurrentSettings() {
-        store.dispatch(riderActions.getRidersFromAPI(store.getState().actualStage.data.id));
+        if(store.getState().actualStage.data.id !== "undefined"){
+            this.setState({actualStage: store.getState().actualStage.data.id});
+        }
+        store.dispatch(riderActions.getRidersFromAPI(this.state.actualStage));
     }
 
     componentDidMount() {
@@ -39,7 +50,7 @@ class Rankings extends Component {
                 <Menu.Item as={Link} key={3} to="/rankings/point" name='pointRanking' active={activeItem === 'pointRanking'} onClick={this.handleMenuItemClick}>
                     Punkte
                 </Menu.Item>,
-                <Menu.Item as={Link} key={3} to="/rankings/mountain" name='mountainRanking' active={activeItem === 'mountainRanking'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={4} to="/rankings/mountain" name='mountainRanking' active={activeItem === 'mountainRanking'} onClick={this.handleMenuItemClick}>
                     Berg
                 </Menu.Item>
             ]
@@ -76,7 +87,7 @@ class Rankings extends Component {
 function mapStateToProps(store) {
     return {
         actualStage : store.actualStage.data,
-        riders : store.riders.data
+        riders : store.riders.riders
     }
 }
 

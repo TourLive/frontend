@@ -3,6 +3,7 @@ import axios from "axios";
 
 const HOST = "localhost:9000";
 const LINK_RIDERS = "http://" + HOST + "/riders/stages/";
+var id = 0;
 
 function receiveRiders(data) {
   return {

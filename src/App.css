@@ -31,3 +31,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.TableRows{
+  text-align: left;
+}
+
+.TableHeaders{
+  text-align: center;
+  padding-right: 1em;
+}
