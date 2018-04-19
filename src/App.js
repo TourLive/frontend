@@ -9,6 +9,7 @@ import Rankings from "./components/Rankings";
 import Tricots from "./components/Tricots";
 import Judgments from "./components/Judgments";
 import Settings from "./components/Settings";
+import GlobalHeader from "./components/GlobalHeader";
 
 class App extends Component {
     state = {activeItem: 'home'}
@@ -48,6 +49,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
+                    <GlobalHeader/>
                     <Switch>
                         <Route path="/rankings" component={Rankings}/>
                         <Route path="/tricots" component={Tricots}/>
