@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {connect} from "react-redux";
 import {Menu} from 'semantic-ui-react';
+import {Icon}  from 'semantic-ui-react';
 import Home from "./components/Home";
 import Rankings from "./components/Rankings";
 import Tricots from "./components/Tricots";
@@ -20,25 +21,25 @@ class App extends Component {
         const footerMenu =  (
             [
                 <Menu.Item as={Link} key={1} to="/trackview" name='home' active={activeItem === 'home'} onClick={this.handleMenuItemClick}>
-                    Home
+                    <Icon name="home"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={2} to="/rankings" name='rankings' active={activeItem === 'rankings'} onClick={this.handleMenuItemClick}>
-                    Klassemente
+                    <Icon name="cubes"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={3} to="/tricots" name='tricots' active={activeItem === 'tricots'} onClick={this.handleMenuItemClick}>
-                    Trikots
+                    <Icon name="flag checkered"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={4} to="/judgments" name='judgments' active={activeItem === 'judgments'} onClick={this.handleMenuItemClick}>
-                    Wertungen
+                    <Icon name="balance"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={5} to="/settings" name='settings' active={activeItem === 'settings'} onClick={this.handleMenuItemClick}>
-                    Einstellungen
+                    <Icon name="settings"/>
                 </Menu.Item>
             ]
         );
 
         const footerNav = (
-            <Menu stackable>
+            <Menu stackable openKeys='1' activeIndex='0'>
                 {footerMenu}
             </Menu>
         );
