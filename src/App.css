@@ -18,9 +18,9 @@
   font-size: 1.5em;
 }
 
-.Div-right{
-  float: right;
-  width: 100%;
+.Inline {
+  display : inline-block;
+  margin: 0.5em;
 }
 
 .App-intro {

@@ -1,18 +1,31 @@
 import React, {Component} from "react";
-import {Header} from "semantic-ui-react";
-import {Helmet} from "react-helmet";
+import * as globalHeaderActions from "../actions/globalHeaderActions";
+import {connect} from "react-redux";
+import store from "../store"
 
 class GlobalHeader extends Component {
+    fetchCurrentSettings() {
+        store.dispatch(globalHeaderActions.getSettingsFromAPI());
+    }
+
+    componentDidMount() {
+        this.fetchCurrentSettings();
+        console.log("Component did mount");
+    }
+
     render() {
+        const {actualStage} = this.props;
+        const {actualRace} = this.props;
+
         return(
             <header className="App-header">
-                <table>
-                    <td><img src="logo.png" alt="TourLive Logo" className="App-logo"/></td>
-                    <td><div className="App-title">TourLive</div></td>
-                    <td>
-                        <div className="App-title Div-right">Etappe 3</div>
-                    </td>
-                </table>
+
+                    <div className="Inline"><img src="logo.png" alt="TourLive Logo" className="App-logo"/></div>
+                   <div className="App-title Inline">{actualRace.name}</div>
+
+                        <div className="App-title Inline">{actualStage.stageName}</div>
+
+
             </header>
 
 
@@ -20,4 +33,12 @@ class GlobalHeader extends Component {
     }
 }
 
-export default GlobalHeader;
+
+function mapStateToProps(store) {
+    return {
+        actualStage : store.actualStage.data,
+        actualRace : store.actualRace.data
+    }
+}
+
+export default connect(mapStateToProps)(GlobalHeader);

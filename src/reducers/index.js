@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import riderReducer from "./riderReducer";
+import activeStageReducer from "./activeStageReducer";
+import activeRaceReducer from "./activeRaceReducer";
 
 const rootReducer = combineReducers({
-    riders: riderReducer
+    actualStage : activeStageReducer,
+    actualRace : activeRaceReducer
 });
 
 export default rootReducer;

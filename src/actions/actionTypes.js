@@ -1,1 +1,4 @@
+export const GET_SETTINGS = "GET_SETTINGS";
+export const GET_ACTIVESTAGE ='GET_ACTIVESTAGE';
+export const GET_ACTIVERACE ='GET_ACTIVERACE';
 export const GET_RIDERS = 'GET_RIDERS';
