@@ -7,6 +7,9 @@ import store from "../store";
 import {connect} from "react-redux";
 import TrackView from "./TrackView";
 import OfficalRanking from "./OfficialRanking";
+import VirtualRanking from "./VirtualRanking";
+import PointRanking from "./PointRanking";
+import MountainRanking from "./MountainRanking";
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 
@@ -75,9 +78,9 @@ class Rankings extends Component {
                 <div>{nav}</div>
                 <Switch>
                     <Route path="/rankings/official" component={OfficalRanking}/>
-                    <Route path="/rankings/virtual" component={TrackView}/>
-                    <Route path="/rankings/point" component={TrackView}/>
-                    <Route path="/rankings/mountain" component={TrackView}/>
+                    <Route path="/rankings/virtual" component={VirtualRanking}/>
+                    <Route path="/rankings/point" component={PointRanking}/>
+                    <Route path="/rankings/mountain" component={MountainRanking}/>
                 </Switch>
             </div>
         );
