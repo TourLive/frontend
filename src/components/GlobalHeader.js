@@ -1,16 +1,16 @@
 import React, {Component} from "react";
-import * as globalHeaderActions from "../actions/globalHeaderActions";
+import * as globalActions from "../actions/globalActions";
 import {connect} from "react-redux";
 import store from "../store"
+import {Link} from "react-router-dom";
 
 class GlobalHeader extends Component {
     fetchCurrentSettings() {
-        store.dispatch(globalHeaderActions.getSettingsFromAPI());
+        store.dispatch(globalActions.getSettingsFromAPI());
     }
 
     componentDidMount() {
         this.fetchCurrentSettings();
-        console.log("Component did mount");
     }
 
     render() {
@@ -19,9 +19,8 @@ class GlobalHeader extends Component {
 
         return(
             <header className="App-header">
-                <div className="Inline"><img src="logo.png" alt="TourLive Logo" className="App-logo"/></div>
-                <div className="App-title Inline">{actualRace.name}</div>
-                <div className="App-title Inline">{actualStage.stageName}</div>
+                <Link to="/"><img src="logo.png" alt="Logo" className="App-Header-Image"/></Link>
+                <div className="App-title Inline">{actualRace.name}Tour de Suisse / {actualStage.stageName}</div>
             </header>
         );
     }

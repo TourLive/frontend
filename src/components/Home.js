@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import {Header} from "semantic-ui-react";
-import {Helmet} from "react-helmet";
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import TrackView from "./TrackView";

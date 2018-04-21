@@ -66,9 +66,6 @@ class Rankings extends Component {
             </Menu>
         );
 
-        const {cons} = this.props;
-        console.log(cons);
-
         return(
             <div className="App-Content">
                 <Helmet>

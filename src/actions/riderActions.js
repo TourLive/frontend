@@ -1,8 +1,7 @@
 import * as types from "./actionTypes";
 import axios from "axios";
+import * as api from "../util/api.js";
 
-const HOST = "localhost:9000";
-const LINK_RIDERS = "http://" + HOST + "/riders/stages/";
 var id = 0;
 
 function receiveRiders(data) {
@@ -15,7 +14,7 @@ function receiveRiders(data) {
 export function getRidersFromAPI (stageId) {
   return function (dispatch) {
       return axios({
-          url : LINK_RIDERS + stageId,
+          url : api.LINK_RIDERS + stageId,
           timeout : 20000,
           method: 'get',
           responseType: 'json'

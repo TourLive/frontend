@@ -1,11 +1,8 @@
 import axios from "axios";
 import * as types from "./actionTypes";
+import * as api from "../util/api.js"
 
 var raceId = 0;
-const HOST = "localhost:9000";
-const LINK_SETTINGS = "http://" + HOST + "/settings";
-const LINK_STAGES = "http://" + HOST + "/stages/";
-const LINK_RACES = "http://" + HOST + "/races/";
 
 function receiveStage(data) {
     return {
@@ -24,7 +21,7 @@ function receiveRace(data) {
 export function getSettingsFromAPI() {
     return function (dispatch) {
         return axios({
-            url : LINK_SETTINGS,
+            url : api.LINK_SETTINGS,
             timeout : 20000,
             method: 'get',
             responseType: 'json'
@@ -40,7 +37,7 @@ export function getSettingsFromAPI() {
 
 function getActiveStageFromAPI(stageId) {
     return function(dispatch){ axios({
-        url : LINK_STAGES + stageId,
+        url : api.LINK_STAGES + stageId,
         timeout : 20000,
         method: 'get',
         responseType: 'json'
@@ -53,7 +50,7 @@ function getActiveStageFromAPI(stageId) {
 function getActiveRaceFromAPI(raceId) {
     console.log(raceId);
     return function(dispatch){ axios({
-        url : LINK_RACES + raceId,
+        url : api.LINK_STAGES + raceId,
         timeout : 20000,
         method: 'get',
         responseType: 'json'
