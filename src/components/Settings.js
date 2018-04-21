@@ -26,13 +26,15 @@ class Settings extends Component {
         store.dispatch(settingsActions.disableNotifications());
     }
 
-    setPeriodTime() {
-        store.dispatch(settingsActions.setPeriodBetweenCalls())
+    setPeriodTime = (event) => {
+        let value = event.target.intervall.value;
+        store.dispatch(settingsActions.setPeriodBetweenCalls(value))
     }
 
     render() {
         const {settings} = this.props;
 
+        console.log()
         const stateNotifications = settings.notifications ? (
             "Aktiviert"
         ) : (
@@ -63,13 +65,13 @@ class Settings extends Component {
                     <option>Etappe 8</option>
                     <option>Etappe 9</option>
                   </Form.Field>
-                  <Button primary fluid >Aktualisierungsintervall setzen</Button>
+                  <Button primary fluid >Etappe wechseln</Button>
                 </Form>
                 <Divider />
                 <Header as="h3">Aktualisierungsintervall</Header>
-                <Form>
-                  <Form.Input label="Aktualisierungsparameter in Sekunden einstellen" defaultValue={settings.refreshPeriod}></Form.Input>
-                  <Button primary fluid >Aktualisierungsintervall setzen</Button>
+                <Form onSubmit={this.setPeriodTime}>
+                  <Form.Input name="intervall" label="Aktualisierungsparameter in Sekunden einstellen" defaultValue={settings.refreshPeriod}></Form.Input>
+                  <Button primary fluid type="submit">Aktualisierungsintervall setzen</Button>
                 </Form>
                 <Divider />
                 <Header as="h3">Copyright</Header>

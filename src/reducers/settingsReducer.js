@@ -6,14 +6,41 @@ const initialState = {
   actualStage: 0
 };
 
+function saveSettingsToLocalStorage(data) {
+    localStorage.setItem("refreshPeriod", data.refreshPeriod);
+    localStorage.setItem("notifications", data.notifications);
+    localStorage.setItem("actualStage", data.actualStage);
+}
+
+function getSettingsFromLocalStorage() {
+    let rp = localStorage.getItem("refreshPeriod");
+    let n = localStorage.getItem("notifications");
+    let aS = localStorage.getItem("actualStage");
+    return {rp,n,aS};
+}
+
 const settingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_NOTIFICATIONS:
-      return {...state, notifications : action.data};
+      console.log(state);
+      const setNot = {...state, notifications : action.data};
+      console.log(setNot);
+      saveSettingsToLocalStorage(setNot);
+      return setNot;
     case types.SET_REFRESH_PERIOD:
-      return {...state, refreshPeriod : action.data};
+      const setRep = {...state, refreshPeriod : action.data};
+      saveSettingsToLocalStorage(setRep);
+      return setRep;
     case types.SET_ACTUAL_STAGE:
-      return {...state, actualStage : action.data};
+      const setStage = {...state, actualStage : action.data};
+      saveSettingsToLocalStorage(setStage);
+      return setStage;
+    case types.GET_SETTINGS_FROM_LOCAL:
+      const local = getSettingsFromLocalStorage();
+      if (local.rp === null || local.aS === null || local.n === null) {
+        return state;
+      }
+      return {...state, actualStage : local.aS, notifications : local.n, refreshPeriod : local.rp};
     default:
       return state;
   }

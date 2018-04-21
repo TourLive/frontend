@@ -10,9 +10,15 @@ import Tricots from "./components/Tricots";
 import Judgments from "./components/Judgments";
 import Settings from "./components/Settings";
 import GlobalHeader from "./components/GlobalHeader";
+import * as settingsActions from './actions/settingsActions'
+import store from './store'
 
 class App extends Component {
     state = {activeItem: 'home'}
+
+    componentDidMount() {
+      store.dispatch(settingsActions.getLocalSettings());
+    }
 
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
@@ -48,7 +54,7 @@ class App extends Component {
 
         return (
             <Router>
-                <div className="App">
+                <div className="App" style={{ display:"flex", minHeight:"100vh", flexDirection:"column" }}>
                     <GlobalHeader/>
                     <Switch>
                         <Route path="/rankings" component={Rankings}/>

@@ -21,6 +21,13 @@ function setRefreshPeriod(data) {
   }
 }
 
+function getSettings() {
+  return {
+    type: types.GET_SETTINGS_FROM_LOCAL,
+    data: false
+  }
+}
+
 export function enableNotifications() {
   return function (dispatch) {
     dispatch(setNotifications(true));
@@ -42,5 +49,11 @@ export function setPeriodBetweenCalls(seconds) {
 export function setActualStageInSettings(stage) {
   return function (dispatch) {
     dispatch(setActualStage(stage));
+  }
+}
+
+export function getLocalSettings() {
+  return function (dispatch) {
+    dispatch(getSettings());
   }
 }

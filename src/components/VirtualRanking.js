@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import {Table} from "semantic-ui-react";
 import {connect} from "react-redux";
@@ -13,17 +13,19 @@ class VirtualRanking extends Component {
                 </Helmet>
                   <Table celled>
                     <Table.Header>
-                      <Table.HeaderCell>Rang</Table.HeaderCell>
-                      <Table.HeaderCell>StartNr</Table.HeaderCell>
-                      <Table.HeaderCell>Zeit</Table.HeaderCell>
-                      <Table.HeaderCell>Name</Table.HeaderCell>
-                      <Table.HeaderCell>Team</Table.HeaderCell>
-                      <Table.HeaderCell>Land</Table.HeaderCell>
+                      <Table.Row>
+                        <Table.HeaderCell>Rang</Table.HeaderCell>
+                        <Table.HeaderCell>StartNr</Table.HeaderCell>
+                        <Table.HeaderCell>Zeit</Table.HeaderCell>
+                        <Table.HeaderCell>Name</Table.HeaderCell>
+                        <Table.HeaderCell>Team</Table.HeaderCell>
+                        <Table.HeaderCell>Land</Table.HeaderCell>
+                      </Table.Row>
                     </Table.Header>
                     <Table.Body>
                       {cons.sort((a, b) => a.virtualGap > b.virtualGap).map((cons, i) => {
                         return (
-                          <Table.Row>
+                          <Table.Row key={i+1}>
                             <Table.Cell>{i+1}</Table.Cell>
                             <Table.Cell>{cons.rider.startNr}</Table.Cell>
                             <Table.Cell>{mapValueToTimeString(cons.virtualGap)}</Table.Cell>
