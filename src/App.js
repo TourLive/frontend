@@ -40,7 +40,7 @@ class App extends Component {
         );
 
         const footerNav = (
-            <Menu stackable openKeys='1' activeIndex='0'>
+            <Menu stackable activeIndex='0'>
                 {footerMenu}
             </Menu>
         );

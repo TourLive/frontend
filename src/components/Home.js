@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, NavLink} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import TrackView from "./TrackView";
 import CardView from "./CardView";
@@ -15,13 +15,13 @@ class Home extends Component {
 
         const homeMenu =  (
             [
-                <Menu.Item as={Link} key={1} to="/trackview" name='trackview' active={activeItem === 'trackview'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={NavLink} key={1} to="/trackview" name='trackview' active={activeItem === 'trackview'} onClick={this.handleMenuItemClick}>
                     Streckenansicht
                 </Menu.Item>,
-                <Menu.Item as={Link} key={2} to="/cardview" name='cardview' active={activeItem === 'cardview'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={NavLink} key={2} to="/cardview" name='cardview' active={activeItem === 'cardview'} onClick={this.handleMenuItemClick}>
                     Kartenansicht
                 </Menu.Item>,
-                <Menu.Item as={Link} key={3} to="/heightview" name='heightview' active={activeItem === 'heightview'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={NavLink} key={3} to="/heightview" name='heightview' active={activeItem === 'heightview'} onClick={this.handleMenuItemClick}>
                     Höhenprofil
                 </Menu.Item>
             ]

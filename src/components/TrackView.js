@@ -4,7 +4,8 @@ import {Helmet} from "react-helmet";
 
 class TrackView extends Component {
     render() {
-        return(
+
+      return(
             <div className="App-Content">
                 <Helmet>
                     <title>TrackView</title>
