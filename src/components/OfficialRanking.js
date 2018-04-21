@@ -7,7 +7,7 @@ class OfficialRanking extends Component {
     render() {
         const {cons} = this.props;
         return(
-            <div className="App-Content">
+            <div className="App-Table">
                 <Helmet>
                     <title>OfficialRanking</title>
                 </Helmet>

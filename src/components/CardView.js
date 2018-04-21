@@ -19,6 +19,11 @@ class Card extends Component {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
                   />
+                  <Marker position={[47.22437, 8.82187]}>
+                    <Popup>
+                      <span><b>Start:</b> Rapperswil SG, 13.15 Uhr</span>
+                    </Popup>
+                  </Marker>
                 </Map>
             </div>
         );

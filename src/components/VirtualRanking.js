@@ -7,7 +7,7 @@ class VirtualRanking extends Component {
     render() {
         const {cons} = this.props;
         return(
-            <div className="App-Content">
+            <div className="App-Table">
                 <Helmet>
                     <title>Virtuelles Ranking</title>
                 </Helmet>

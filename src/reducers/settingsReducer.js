@@ -22,9 +22,7 @@ function getSettingsFromLocalStorage() {
 const settingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_NOTIFICATIONS:
-      console.log(state);
       const setNot = {...state, notifications : action.data};
-      console.log(setNot);
       saveSettingsToLocalStorage(setNot);
       return setNot;
     case types.SET_REFRESH_PERIOD:

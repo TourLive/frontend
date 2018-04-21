@@ -8,7 +8,6 @@ html,body {
   text-align: left;
 }
 
-
 .App-header {
   background-color: #ff0000;
   height: 80px;
@@ -62,4 +61,8 @@ html,body {
 
 .map {
   height: 600px;
+}
+
+.App-Table {
+  margin-top: 1rem;
 }

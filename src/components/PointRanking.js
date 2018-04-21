@@ -7,7 +7,7 @@ class PointRanking extends Component {
     render() {
         const {cons} = this.props;
         return(
-            <div className="App-Content">
+            <div className="App-Table">
                 <Helmet>
                     <title>Punkte Ranking</title>
                 </Helmet>
