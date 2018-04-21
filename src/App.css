@@ -34,3 +34,12 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.App-Trikot-Box {
+  margin-left: 20px;
+  padding: 0.5rem;
+}
+
+.App-Trikot-Content {
+  padding-top: 0.5rem;
+}

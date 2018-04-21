@@ -3,6 +3,7 @@ import * as globalActions from "../actions/globalActions";
 import {connect} from "react-redux";
 import store from "../store"
 import {Link} from "react-router-dom";
+import * as riderActions from '../actions/riderActions'
 
 class GlobalHeader extends Component {
     fetchCurrentSettings() {
