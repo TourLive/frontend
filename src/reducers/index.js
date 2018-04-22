@@ -6,7 +6,8 @@ import riderStageConnectionReducer from "./riderStageConnectionReducer";
 import maillotReducer from "./maillotReducer";
 import settingsReducer from "./settingsReducer";
 import raceGroupReducer from "./raceGroupReducer";
-import judgementReducer from "./judgementReducer";
+import judgmentReducer from "./judgmentReducer";
+import judgmentRiderConnectionReducer from "./judgmentRiderConnectionReducer";
 
 const rootReducer = combineReducers({
     actualStage : activeStageReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     maillots : maillotReducer,
     settings : settingsReducer,
     raceGroups : raceGroupReducer,
-    judgements : judgementReducer
+    judgments : judgmentReducer,
+    judgmentRiderConnections : judgmentRiderConnectionReducer
 });
 
 export default rootReducer;

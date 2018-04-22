@@ -19,7 +19,6 @@ export function getRidersFromAPI(id) {
           responseType: 'json'
       })
         .then(function (response) {
-            console.log(response);
             dispatch(receiveRiders(response.data));
         })
 

@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import store from "../store"
 import {Link} from "react-router-dom";
 import * as riderActions from '../actions/riderActions';
-import * as judgementActions from '../actions/judgementActions';
+import * as judgementActions from '../actions/judgmentActions';
 
 class GlobalHeader extends Component {
       constructor(props){
@@ -19,11 +19,11 @@ class GlobalHeader extends Component {
         store.dispatch(globalActions.getSettingsFromAPI());
     }
 
-  fetchStaticData(id) {
-    store.dispatch(riderActions.getRidersFromAPI(id));
-    store.dispatch(judgementActions.getJudgementsOfStage(id));
-    this.setState({updated: true});
-  }
+    fetchStaticData(id) {
+      store.dispatch(riderActions.getRidersFromAPI(id));
+      store.dispatch(judgementActions.getJudgmentsOfStage(id));
+      this.setState({updated: true});
+    }
 
     componentDidMount() {
         this.fetchCurrentSettings();
