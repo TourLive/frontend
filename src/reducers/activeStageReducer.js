@@ -1,5 +1,6 @@
 import * as types from "../actions/actionTypes";
 
+
 const initialState = {
     data: {},
     error: false,

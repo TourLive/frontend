@@ -1,37 +1,36 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 import * as api from "../util/api.js"
-import store from "../store";
 
-function receiveMaillot(data) {
+function receiveRaceGroups(data) {
   return {
-    type : types.GET_MAILLOTS,
+    type : types.SET_RACEGROUPS,
     data : data
   }
 }
 
-function receiveMaillotError(data) {
+function receiveRaceGroupsError(data) {
   return {
-    type : types.GET_ERROR_MAILLOTS,
+    type : types.SET_RACEGROUPS,
     data : data
   }
 }
 
-export function getCurrentMaillots(id) {
+export function getCurrentRaceGroups(id) {
   return function (dispatch) {
     return axios({
-      url : api.LINK_MAILLOTS + id,
+      url : api.LINK_RACEGROUPS + id,
       timeout : 20000,
       method: 'get',
       responseType: 'json'
     }). then(function (response) {
       if (response.status === 200) {
-        dispatch(receiveMaillot(response.data));
+        dispatch(receiveRaceGroups(response.data));
       } else {
-        dispatch(receiveMaillotError("Error on loading data"));
+        dispatch(receiveRaceGroupsError("Error on loading data"));
       }
     }).catch(function (response) {
-        dispatch(receiveMaillotError(response));
+      dispatch(receiveRaceGroupsError(response));
     });
   }
 }

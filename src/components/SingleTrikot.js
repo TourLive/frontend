@@ -1,14 +1,23 @@
 import React, { Component } from 'react'
 import {List, Image,Container} from "semantic-ui-react";
 import store from '../store'
+import { connect } from 'react-redux'
 
 class SingleTrikot extends Component {
   render() {
     const trikot = this.props.data;
-    const rider = store.getState().riders.riders.find((element) => {
-        element.id = trikot.riderId;
-    })
-    console.log(store.getState().riders.riders);
+    const {riders} = this.props;
+    let rider = riders.find((e) => {
+        return e.id === trikot.riderId;
+    });
+    console.log(rider);
+
+    const attachedRider = rider === undefined ? (
+        <p>Fahrer wird geladen</p>
+    ) : (
+        <p>{rider.startNr}, {rider.country}, {rider.name}, {rider.teamName}, Rang</p>
+    );
+
     return(
       <List.Item>
         <Image avatar src='http://localhost:3000/maillot.svg' />
@@ -16,8 +25,8 @@ class SingleTrikot extends Component {
           <div className="App-Trikot-Box">
             <List.Header>{trikot.name}</List.Header>
             <Container className="App-Trikot-Content">
-              <p><b>Partner:</b> {trikot.partner}<br/>
-                {rider.startNr}, {rider.country}, {rider.name}, {rider.teamName}, Rang</p>
+              <span><b>Partner:</b> {trikot.partner}<br/></span>
+              {attachedRider}
             </Container>
           </div>
         </List.Content>
@@ -26,4 +35,10 @@ class SingleTrikot extends Component {
   }
 }
 
-export default SingleTrikot;
+function mapStateToProps(store) {
+  return {
+    riders : store.riders.riders
+  }
+}
+
+export default connect(mapStateToProps)(SingleTrikot);

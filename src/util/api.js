@@ -1,7 +1,9 @@
-const HOST = "localhost:9000";
-export const LINK_SETTINGS = "http://" + HOST + "/settings";
-export const LINK_STAGES = "http://" + HOST + "/stages/";
-export const LINK_RACES = "http://" + HOST + "/races/";
-export const LINK_RIDERS = "http://" + HOST + "/riders/stages/";
-export const LINK_RIDERSTAGECONNECTIONS = "http://" + HOST + "/riderstageconnections/stages/";
-export const LINK_MAILLOTS = "http://" + HOST + "/maillots/stages/";
+const HOST = "http://localhost:9000";
+export const LINK_SETTINGS = HOST + "/settings";
+export const LINK_STAGES = HOST + "/stages/";
+export const LINK_RACES = HOST + "/races/";
+export const LINK_RIDERS = HOST + "/riders/stages/";
+export const LINK_RIDERSTAGECONNECTIONS = HOST + "/riderstageconnections/stages/";
+export const LINK_MAILLOTS = HOST + "/maillots/stages/";
+export const LINK_RACEGROUPS = HOST + "/racegroups/stages/";
+export const LINK_JUDGEMENTS = HOST + "/judgements/stages/";

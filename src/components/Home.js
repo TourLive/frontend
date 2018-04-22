@@ -1,17 +1,38 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch, NavLink} from 'react-router-dom';
+import {Route, Switch, NavLink} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import TrackView from "./TrackView";
 import CardView from "./CardView";
 import HeightView from "./HeightView";
+import { connect } from 'react-redux';
+import store from "../store";
+import * as raceGroupActions from "../actions/raceGroupsActions";
+
 
 class Home extends Component {
-    state = {activeItem: 'trackview'}
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        updated: false,
+        activeItem : 'trackview'
+      }
+    }
 
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
+    fetchCurrentRaceGroups(id) {
+      store.dispatch(raceGroupActions.getCurrentRaceGroups(id));
+      this.setState({updated: true});
+    }
+
     render() {
         const {activeItem} = this.state;
+        const {actualStage} = this.props;
+
+        if (actualStage.id !== undefined && !this.state.updated) {
+          this.fetchCurrentRaceGroups(actualStage.id);
+        }
 
         const homeMenu =  (
             [
@@ -49,4 +70,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+function mapStateToProps(store) {
+  return {
+    actualStage : store.actualStage.data
+  }
+}
+
+export default connect(mapStateToProps)(Home);

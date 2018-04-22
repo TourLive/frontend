@@ -1,16 +1,14 @@
 import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
-import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
 import store from "../store";
 import {connect} from "react-redux";
-import TrackView from "./TrackView";
 import OfficalRanking from "./OfficialRanking";
 import VirtualRanking from "./VirtualRanking";
 import PointRanking from "./PointRanking";
 import MountainRanking from "./MountainRanking";
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 
 class Rankings extends Component {
@@ -19,7 +17,7 @@ class Rankings extends Component {
         super(props);
 
         this.state = {
-            actualStage: '8',
+            updated: false,
             activeItem : 'official'
         }
     }
@@ -27,21 +25,18 @@ class Rankings extends Component {
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
 
-    fetchCurrentSettings() {
-        if(store.getState().actualStage.data.id !== "undefined"){
-            this.setState({actualStage: store.getState().actualStage.data.id});
-        }
-        store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(this.state.actualStage));
+    fetchCurrentRiderStageConnections(id) {
+        store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
+        this.setState({updated: true});
     }
-
-    componentDidMount() {
-        this.fetchCurrentSettings();
-        console.log("Component did mount");
-    }
-
 
     render() {
         const {activeItem} = this.state;
+        const {actualStage} = this.props;
+
+        if (actualStage.id !== undefined && !this.state.updated) {
+            this.fetchCurrentRiderStageConnections(actualStage.id);
+        }
 
         const navMenu =  (
             [
@@ -86,8 +81,8 @@ class Rankings extends Component {
 
 function mapStateToProps(store) {
     return {
-        actualStage : store.actualStage.data,
-        cons : store.cons.cons
+        cons : store.cons.cons,
+        actualStage : store.actualStage.data
     }
 }
 

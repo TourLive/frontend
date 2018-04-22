@@ -1,8 +1,7 @@
 import * as types from "./actionTypes";
 import axios from "axios";
 import * as api from "../util/api.js";
-
-var id = 0;
+import store from "../store";
 
 function receiveRiders(data) {
   return {
@@ -11,15 +10,16 @@ function receiveRiders(data) {
   }
 }
 
-export function getRidersFromAPI (stageId) {
+export function getRidersFromAPI(id) {
   return function (dispatch) {
       return axios({
-          url : api.LINK_RIDERS + stageId,
+          url : api.LINK_RIDERS + id,
           timeout : 20000,
           method: 'get',
           responseType: 'json'
       })
         .then(function (response) {
+            console.log(response);
             dispatch(receiveRiders(response.data));
         })
 

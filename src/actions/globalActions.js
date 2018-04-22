@@ -1,8 +1,6 @@
 import axios from "axios";
 import * as types from "./actionTypes";
-import * as api from "../util/api.js"
-
-var raceId = 0;
+import * as api from "../util/api.js";
 
 function receiveStage(data) {
     return {
@@ -26,12 +24,11 @@ export function getSettingsFromAPI() {
             method: 'get',
             responseType: 'json'
         }). then(function (response) {
-            raceId = response.data.raceID;
+            dispatch(getActiveRaceFromAPI(response.data.raceID));
             dispatch(getActiveStageFromAPI(response.data.stageID));
-        }).then(function (response) {
-                dispatch(getActiveRaceFromAPI(raceId));
-            }
-        )
+        }).catch(function (response) {
+            // TODO
+        })
     }
 }
 
@@ -41,21 +38,24 @@ function getActiveStageFromAPI(stageId) {
         timeout : 20000,
         method: 'get',
         responseType: 'json'
-        }). then(function (response) {
+        }).then(function (response) {
             dispatch(receiveStage(response.data));
+        }).catch(function (response) {
+            // TODO
         })
     }
 }
 
 function getActiveRaceFromAPI(raceId) {
-    console.log(raceId);
     return function(dispatch){ axios({
-        url : api.LINK_STAGES + raceId,
+        url : api.LINK_RACES + raceId,
         timeout : 20000,
         method: 'get',
         responseType: 'json'
-    }). then(function (response) {
+    }).then(function (response) {
         dispatch(receiveRace(response.data));
+    }).catch(function (response) {
+
     })
     }
 }

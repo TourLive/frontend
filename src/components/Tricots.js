@@ -3,23 +3,31 @@ import {Header, List, Image} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import SingleTrikot from "./SingleTrikot";
 import * as maillotActions from '../actions/maillotActions'
-import * as riderActions from '../actions/riderActions'
 import store from '../store'
 import {connect} from "react-redux";
 
 class Trikots extends Component {
+  constructor(props){
+    super(props);
 
-  fetchCurrentMaillots() {
-    store.dispatch(maillotActions.getCurrentMaillots());
+    this.state = {
+      updated: false
+    }
   }
 
-  componentDidMount() {
-    this.fetchCurrentMaillots();
+  fetchCurrentMaillots(id) {
+    store.dispatch(maillotActions.getCurrentMaillots(id));
+    this.setState({updated: true});
   }
 
   render() {
         const {maillots} = this.props;
-        console.log(store.getState().riders);
+        const {actualStage} = this.props;
+
+        if (actualStage.id !== undefined && !this.state.updated) {
+          this.fetchCurrentMaillots(actualStage.id);
+        }
+
         return(
             <div className="App-Content">
                 <Helmet>
@@ -37,7 +45,8 @@ class Trikots extends Component {
 
 function mapStateToProps(store) {
   return {
-    maillots: store.maillots.data
+    maillots: store.maillots.data,
+    actualStage : store.actualStage.data
   }
 }
 
