@@ -57,10 +57,10 @@ class Judgments extends Component {
                 </Helmet>
                 <Header as="h1" color='red'>Wertungen</Header>
                 <Timeline className="App-Timeline">
-                    {judgments.sort((a, b) => a.distance < b.distance).map((judgment, i) => {
+                    {judgments.sort((a, b) => a.distance < b.distance).map(judgment => {
                         const marker = "KM: " + judgment.distance + " | " + judgment.name;
                         return (
-                            <TimelineEvent key={i+1} contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
+                            <TimelineEvent key={judgment.id} contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
                                 <Button onClick={this.onJudgmentClicked}>Infos zur Wertung</Button>
                             </TimelineEvent>
                         )
