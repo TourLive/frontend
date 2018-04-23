@@ -23,15 +23,15 @@ class MountainRanking extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {cons.sort((a, b) => a.mountainBonusPoints - b.mountainBonusPoints).map((cons, i) => {
+                  {cons.sort((a, b) => a.mountainBonusPoints - b.mountainBonusPoints).map((connection, i) => {
                     return (
-                      <Table.Row key={i+1}>
+                      <Table.Row key={connection.id}>
                         <Table.Cell>{i+1}</Table.Cell>
-                        <Table.Cell>{cons.rider.startNr}</Table.Cell>
-                        <Table.Cell>{cons.mountainBonusPoints}</Table.Cell>
-                        <Table.Cell>{cons.rider.name}</Table.Cell>
-                        <Table.Cell>{cons.rider.teamShortName}</Table.Cell>
-                        <Table.Cell>{cons.rider.country}</Table.Cell>
+                        <Table.Cell>{connection.rider.startNr}</Table.Cell>
+                        <Table.Cell>{connection.mountainBonusPoints}</Table.Cell>
+                        <Table.Cell>{connection.rider.name}</Table.Cell>
+                        <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
+                        <Table.Cell>{connection.rider.country}</Table.Cell>
                       </Table.Row>
                     );
                   })}

@@ -23,15 +23,15 @@ class PointRanking extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  {cons.sort((a, b) => a.bonusPoints - b.bonusPoints).map((cons, i) => {
+                  {cons.sort((a, b) => a.bonusPoints - b.bonusPoints).map((connection, i) => {
                     return (
-                      <Table.Row key={i+1}>
+                      <Table.Row key={connection.id}>
                         <Table.Cell>{i+1}</Table.Cell>
-                        <Table.Cell>{cons.rider.startNr}</Table.Cell>
-                        <Table.Cell>{cons.bonusPoints}</Table.Cell>
-                        <Table.Cell>{cons.rider.name}</Table.Cell>
-                        <Table.Cell>{cons.rider.teamShortName}</Table.Cell>
-                        <Table.Cell>{cons.rider.country}</Table.Cell>
+                        <Table.Cell>{connection.rider.startNr}</Table.Cell>
+                        <Table.Cell>{connection.bonusPoints}</Table.Cell>
+                        <Table.Cell>{connection.rider.name}</Table.Cell>
+                        <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
+                        <Table.Cell>{connection.rider.country}</Table.Cell>
                       </Table.Row>
                     );
                   })}
