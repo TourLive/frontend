@@ -24,7 +24,7 @@ class TrackView extends Component {
                 </Helmet>
                 <Header as="h1" color='red'>TrackView</Header>
                 <Timeline className="App-Timeline">
-                    {judgments.sort((a,b) => a.distance < b.distance).map(element => {
+                    {judgments.sort((a,b) => b.distance - a.distance).map(element => {
                         const marker = "KM: " + element.distance + " | " + element.name;
                         return (
                             <TimelineEvent key={element.id} style={divStyle} bubbleStyle={iconStyle} createdAt={marker} />

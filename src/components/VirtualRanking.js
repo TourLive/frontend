@@ -23,7 +23,7 @@ class VirtualRanking extends Component {
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                      {cons.sort((a, b) => a.virtualGap > b.virtualGap).map((cons, i) => {
+                      {cons.sort((a, b) => a.virtualGap - b.virtualGap).map((cons, i) => {
                         return (
                           <Table.Row key={i+1}>
                             <Table.Cell>{i+1}</Table.Cell>
