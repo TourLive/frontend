@@ -22,6 +22,7 @@ class Judgments extends Component {
 
     fetchJudgmentRiderConnections(id) {
         store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
+        this.setState({updated : true});
     }
 
     onJudgmentClicked(element) {
