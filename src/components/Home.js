@@ -71,9 +71,9 @@ class Home extends Component {
 }
 
 function mapStateToProps(store) {
-  return {
-    actualStage : store.actualStage.data
-  }
+    return {
+        actualStage : store.actualStage.data
+    }
 }
 
 export default connect(mapStateToProps)(Home);
