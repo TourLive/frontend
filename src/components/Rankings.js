@@ -10,6 +10,7 @@ import PointRanking from "./PointRanking";
 import MountainRanking from "./MountainRanking";
 import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
+import * as dateUtil from "../util/date.js";
 
 class Rankings extends Component {
 
@@ -66,7 +67,10 @@ class Rankings extends Component {
                 <Helmet>
                     <title>Klassemente</title>
                 </Helmet>
-                <Header as="h1" color='red'>Klassemente</Header>
+                <div>
+                    <Header as="h1" color='red'>Klassemente</Header>
+                    <p className="App-Timestamp"><strong>Letzte Aktualisierung:</strong> {new Date().today()} {new Date().timeNow()}</p>
+                </div>
                 <div>{nav}</div>
                 <Switch>
                     <Route path="/rankings/official" component={OfficalRanking}/>

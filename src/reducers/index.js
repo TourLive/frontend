@@ -8,6 +8,7 @@ import settingsReducer from "./settingsReducer";
 import raceGroupReducer from "./raceGroupReducer";
 import judgmentReducer from "./judgmentReducer";
 import judgmentRiderConnectionReducer from "./judgmentRiderConnectionReducer";
+import gpxReducer from "./gpxReducer";
 
 const rootReducer = combineReducers({
     actualStage : activeStageReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     settings : settingsReducer,
     raceGroups : raceGroupReducer,
     judgments : judgmentReducer,
-    judgmentRiderConnections : judgmentRiderConnectionReducer
+    judgmentRiderConnections : judgmentRiderConnectionReducer,
+    gpsData : gpxReducer
 });
 
 export default rootReducer;

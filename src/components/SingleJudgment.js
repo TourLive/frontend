@@ -17,7 +17,7 @@ class SingleJudgment extends Component {
         {judgment.reward.points.map((reward,i) => {
           if (reward !== 0) {
             return (
-              <h5>Platz {i+1}</h5>
+              <h5 key={i+1}>Platz {i+1}</h5>
             )
           }
         })}

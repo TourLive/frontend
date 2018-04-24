@@ -5,6 +5,8 @@ import store from "../store"
 import {Link} from "react-router-dom";
 import * as riderActions from '../actions/riderActions';
 import * as judgementActions from '../actions/judgmentActions';
+import * as gpxActions from '../actions/gpxActions';
+
 
 class GlobalHeader extends Component {
       constructor(props){
@@ -22,6 +24,7 @@ class GlobalHeader extends Component {
     fetchStaticData(id) {
       store.dispatch(riderActions.getRidersFromAPI(id));
       store.dispatch(judgementActions.getJudgmentsOfStage(id));
+      store.dispatch(gpxActions.getGPXTracks(id));
       this.setState({updated: true});
     }
 

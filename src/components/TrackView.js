@@ -14,7 +14,7 @@ class TrackView extends Component {
         };
 
         const iconStyle = {
-            'background-color': '#6fba1c'
+            backgroundColor: '#6fba1c'
         };
 
       return(
@@ -27,7 +27,7 @@ class TrackView extends Component {
                     {judgments.sort((a,b) => b.distance - a.distance).map(element => {
                         const marker = "KM: " + element.distance + " | " + element.name;
                         return (
-                            <TimelineEvent key={element.id} style={divStyle} bubbleStyle={iconStyle} createdAt={marker} />
+                            <TimelineEvent title='' key={element.id} style={divStyle} bubbleStyle={iconStyle} createdAt={marker} />
                         )
                     })}
                 </Timeline>

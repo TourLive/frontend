@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import {Table} from "semantic-ui-react";
 import {connect} from "react-redux";
+import * as dateUtil from "../util/date.js";
 
 class VirtualRanking extends Component {
     render() {
@@ -28,7 +29,7 @@ class VirtualRanking extends Component {
                           <Table.Row key={connection.id}>
                             <Table.Cell>{i+1}</Table.Cell>
                             <Table.Cell>{connection.rider.startNr}</Table.Cell>
-                            <Table.Cell>{mapValueToTimeString(connection.virtualGap)}</Table.Cell>
+                            <Table.Cell>{dateUtil.mapValueToTimeString(connection.virtualGap)}</Table.Cell>
                             <Table.Cell>{connection.rider.name}</Table.Cell>
                             <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
                             <Table.Cell>{connection.rider.country}</Table.Cell>
@@ -46,17 +47,6 @@ function mapStateToProps(store) {
     return {
         actualStage : store.actualStage.data,
         cons : store.cons.cons
-    }
-}
-
-function mapValueToTimeString(value){
-    var date = new Date(null);
-    date.setSeconds(value); // specify value for SECONDS here
-    var days = (value/(3600*24)).toFixed(0);
-    if(days > 0){
-        return days + ":" + date.toISOString().substr(11, 8);
-    } else{
-        return date.toISOString().substr(11, 8);
     }
 }
 

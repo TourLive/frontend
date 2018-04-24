@@ -31,12 +31,12 @@ class Trikots extends Component {
         return(
             <div className="App-Content">
                 <Helmet>
-                    <title>Trikots</title>
+                    <title>Trikotträger</title>
                 </Helmet>
-                <Header as="h1" color='red'>Trikots</Header>
-                <h1>Offizielle Triktors</h1>
+                <Header as="h1" color='red'>Trikotträger</Header>
+                <h1>Stand beim Start</h1>
               <List divided verticalAlign='middle' size="massive">
-                {maillots.map(x => <SingleTrikot data={x}/>)}
+                {maillots.map(x => <SingleTrikot key={x.id} data={x}/>)}
               </List>
             </div>
         );
