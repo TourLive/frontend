@@ -10,7 +10,6 @@ class SingleJudgment extends Component {
       return e.id === trikot.riderId;
     });
     console.log(rider);*/
-    console.dir(judgment);
 
     return(
       <div>
