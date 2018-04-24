@@ -1,28 +1,98 @@
-.App {
-  text-align: center;
+html,body {
+  margin:0;
+  padding:0;
+  height:100%;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App {
+  text-align: left;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #ff0000;
+  height: 80px;
+  padding: 10px;
   color: white;
+  position: relative;
 }
 
 .App-title {
   font-size: 1.5em;
+  font-weight: bold;
 }
 
-.App-intro {
-  font-size: large;
+.App-footer {
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:5rem;
+  background-color: #ff0000;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App-Content {
+  padding: 20px;
+  margin-bottom:5rem;
+}
+
+.App-Logo {
+  height: 80px;
+}
+
+.App-Header-Image {
+  height: 60px;
+}
+
+.Inline {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.App-Trikot-Box {
+  margin-left: 20px;
+  padding: 0.5rem;
+}
+
+.App-Trikot-Content {
+  padding-top: 0.5rem;
+}
+
+.map {
+  height: 600px;
+}
+
+.App-Table {
+  margin-top: 1rem;
+}
+
+footer > .ui.menu {
+  background-color: #ff0000;
+  height: 5rem;
+}
+
+.App-Icon-White {
+  color: white;
+}
+
+i.icon {
+  font-size: 2.5rem;
+}
+
+.App-Timeline > div:first-child {
+  left: 13.5px !important;
+  width: 6px !important;
+}
+
+.half {
+
+}
+. full {
+
+}
+
+.App-Timestamp {
+  margin-bottom: 1rem !important;
 }
