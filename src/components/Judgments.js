@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Header, Button, Container, Divider} from "semantic-ui-react";
+import {Header, Button, Divider} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import { connect } from 'react-redux'
 import store from "../store"
 import * as judgmentRiderConnectionActions from '../actions/judgmentRiderConnectionActions';
+import SingleJudgment from "./SingleJudgment";
 import {Timeline, TimelineEvent} from 'react-event-timeline';
 
 class Judgments extends Component {
@@ -13,7 +14,8 @@ class Judgments extends Component {
       this.state = {
         updated: false,
         selected : false,
-        judgmentSelected: false
+        judgmentSelected: false,
+        judgment : {}
       };
 
       this.onJudgmentClicked = this.onJudgmentClicked.bind(this);
@@ -29,6 +31,7 @@ class Judgments extends Component {
         console.log("IM HERE");
         console.log(element);
         this.setState({judgmentSelected : true});
+        this.setState({judgment : element});
     }
 
     onJudgmentClose() {
@@ -51,18 +54,24 @@ class Judgments extends Component {
           this.fetchJudgmentRiderConnections(actualStage.id);
         }
 
+        const halfHeight = this.state.judgmentSelected === true ? (
+            "App-Timeline half"
+        ) : (
+            "App-Timeline full"
+        );
+
         return(
             <div className="App-Content">
                 <Helmet>
                     <title>Wertungen</title>
                 </Helmet>
                 <Header as="h1" color='red'>Wertungen</Header>
-                <Timeline className="App-Timeline">
-                    {judgments.sort((a, b) => a.distance < b.distance).map(judgment => {
+                <Timeline className={halfHeight}>
+                    {judgments.sort((a, b) => b.distance - a.distance).map(judgment => {
                         const marker = "KM: " + judgment.distance + " | " + judgment.name;
                         return (
-                            <TimelineEvent key={judgment.id} title="" contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
-                                <Button onClick={this.onJudgmentClicked}>Infos zur Wertung</Button>
+                            <TimelineEvent key={judgment.id} title='' contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
+                                <Button value={judgment.id} onClick={()=>this.onJudgmentClicked(judgment)}>Infos zur Wertung</Button>
                             </TimelineEvent>
                         )
                     })}
@@ -70,9 +79,7 @@ class Judgments extends Component {
                 {this.state.judgmentSelected === true &&
                     <div>
                         <Divider />
-                        <Container>
-                            <h1>ON JUDGMENT CLICKED</h1>
-                        </Container>
+                        <SingleJudgment data={this.state.judgment}/>
                     </div>
                 }
             </div>
