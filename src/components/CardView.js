@@ -15,8 +15,6 @@ class Card extends Component {
         gpsData.map(element => {
             array.push([element.latitude, element.longitude]);
         });
-        console.log(array);
-        console.log(start);
         return(
             <div className="App-Content">
                 <Helmet>
