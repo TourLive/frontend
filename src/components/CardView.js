@@ -8,7 +8,6 @@ const zoomLevel = 13;
 
 class Card extends Component {
     render() {
-        const center = [51.505, -0.09]
         const {gpsData} = this.props;
         const start = gpsData[0];
         const end = gpsData[gpsData.length - 1];
@@ -18,7 +17,6 @@ class Card extends Component {
         });
         console.log(array);
         console.log(start);
-        const data = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
         return(
             <div className="App-Content">
                 <Helmet>
