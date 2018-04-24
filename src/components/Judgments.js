@@ -40,11 +40,11 @@ class Judgments extends Component {
         const {judgments} = this.props;
 
         const divStyle = {
-            'box-shadow': 'none'
+            boxShadow: 'none'
         };
 
         const iconStyle = {
-            'background-color': '#6fba1c'
+            backgroundColor: '#6fba1c'
         };
 
         if (actualStage.id !== undefined && !this.state.updated) {
@@ -61,7 +61,7 @@ class Judgments extends Component {
                     {judgments.sort((a, b) => a.distance < b.distance).map(judgment => {
                         const marker = "KM: " + judgment.distance + " | " + judgment.name;
                         return (
-                            <TimelineEvent key={judgment.id} contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
+                            <TimelineEvent key={judgment.id} title="" contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
                                 <Button onClick={this.onJudgmentClicked}>Infos zur Wertung</Button>
                             </TimelineEvent>
                         )
