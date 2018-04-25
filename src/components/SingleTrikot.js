@@ -10,7 +10,6 @@ class SingleTrikot extends Component {
     let rider = riders.find((e) => {
         return e.id === trikot.riderId;
     });
-    console.log(rider);
 
     const attachedRider = rider === undefined ? (
         <p>Fahrer wird geladen</p>
@@ -37,7 +36,7 @@ class SingleTrikot extends Component {
 
 function mapStateToProps(store) {
   return {
-    riders : store.riders.riders
+      riders : store.riders.riders
   }
 }
 
