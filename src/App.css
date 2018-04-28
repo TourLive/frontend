@@ -86,6 +86,11 @@ i.icon {
   width: 6px !important;
 }
 
+.Search {
+  padding: 20px;
+  width: 10rem;
+}
+
 .half {
 
 }
