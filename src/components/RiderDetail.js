@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from "react-redux";
 import RiderInfo from "./RiderInfo";
 import RiderJudgment from "./RiderJudgment";
+import RiderTrikot from "./RiderTrikots";
 import store from "../store";
 
 class RiderDetail extends Component {
@@ -11,7 +12,7 @@ class RiderDetail extends Component {
         return <div>
             <RiderInfo selectedRider={rider}/>
             <div className="Horizontal-Line"/>
-            <div className="App-title">Trikots</div>
+            <div className="App-title">Trikots<RiderTrikot selectedRider={rider}/></div>
             <div className="Horizontal-Line"/>
             <div className="App-title">Wertungen<RiderJudgment selectedRider={rider}/></div>
             <div className="Horizontal-Line"/>

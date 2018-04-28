@@ -6,11 +6,10 @@ import store from "../store";
 class RiderJudgment extends Component {
     render() {
         const {judgmentRiderConnections} = this.props;
-        console.log({judgmentRiderConnections});
         const rider = this.props.selectedRider;
 
         const judgments = judgmentRiderConnections.filter(jRC => jRC.rider.id === rider.id).map((jRC) =>
-            <div className="App-Judgment-Rider">
+            <div key={jRC.id} className="App-Judgment-Rider">
                 {jRC.judgment.name}, Platz: {jRC.rank}
             </div>
         );

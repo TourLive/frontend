@@ -110,6 +110,13 @@ i.icon {
 }
 
 .App-Judgment-Rider {
+   size: 3rem;
+   margin: 0.3rem;
+   font-size: 1rem;
+   font-weight: normal;
+}
+
+.App-Trikot-Rider {
   size: 3rem;
   margin: 0.3rem;
   font-size: 1rem;

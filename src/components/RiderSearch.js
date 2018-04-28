@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
 import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
+import * as maillotActions from "../actions/maillotActions";
 import store from "../store";
 import Popup from "reactjs-popup";
 import RiderDetail from "./RiderDetail";
@@ -40,6 +41,7 @@ class RiderSearch extends Component {
         store.dispatch(riderActions.getRidersFromAPI(id));
         store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
         store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
+        store.dispatch(maillotActions.getCurrentMaillots(id));
         this.setState({updated: true});
     }
 
