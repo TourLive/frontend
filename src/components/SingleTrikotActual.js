@@ -30,31 +30,6 @@ class SingleTrikotActual extends Component {
     }
 
     let con = cons.find((e) => {
-      let connection;
-      console.log(trikot.size);
-        Object.keys(trikot).forEach(key => {
-          console.log(trikot.type)
-            /*switch(trikot.type){
-              case "leader":
-              return cons.sort((a,b) => b.virtualGap - a.virtualGap)[0];
-              break;
-            case "mountain":
-              return cons.sort((a,b) => b.mountainBonusPoints - a.mountainBonusPoints)[0];
-              break;
-            case "points":
-              return cons.sort((a,b) => b.bonusPoints - a.bonusPoints)[0];
-              break;
-            case "bestSwiss":
-              let filtered = cons.filter(a => a.rider.teamShortName = 'SUI');
-              console.log("filtered ");
-              console.log("rider " + filtered.sort((a,b) => b.virtualGap - a.virtualGap)[0].rider.name);
-              return filtered.sort((a,b) => b.virtualGap - a.virtualGap)[0];
-            break;
-            default:
-            break;
-        }*/
-        });
-        /*
         switch(trikot.type){
             case "leader":
                 return cons.sort((a,b) => b.virtualGap - a.virtualGap)[0];
@@ -73,7 +48,7 @@ class SingleTrikotActual extends Component {
                 break;
             default:
               break;
-        }*/
+        }
     });
 
     const attachedRider = con === undefined ? (
