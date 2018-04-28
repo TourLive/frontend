@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
 import RiderInfo from "./RiderInfo";
+import RiderJudgment from "./RiderJudgment";
 import store from "../store";
 
 class RiderDetail extends Component {
 
     render() {
+        const rider = this.props.selectedRider;
         return <div>
-            <RiderInfo selectedRider={this.props.selectedRider}/>
+            <RiderInfo selectedRider={rider}/>
             <div className="Horizontal-Line"/>
-            <div><h3>Trikots</h3></div>
+            <div className="App-title">Trikots</div>
             <div className="Horizontal-Line"/>
-            <div><h3>Wertungen</h3></div>
+            <div className="App-title">Wertungen<RiderJudgment selectedRider={rider}/></div>
             <div className="Horizontal-Line"/>
-            <div><h3>Gruppenhistorie</h3></div>
+            <div className="App-title">Gruppenhistorie</div>
         </div>
 
     }
@@ -21,7 +23,7 @@ class RiderDetail extends Component {
 
 function mapStateToProps(store) {
     return {
-        cons : store.cons.cons
+
     }
 }
 

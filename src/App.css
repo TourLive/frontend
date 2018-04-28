@@ -108,3 +108,10 @@ i.icon {
 .App-Timestamp {
   margin-bottom: 1rem !important;
 }
+
+.App-Judgment-Rider {
+  size: 3rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+  font-weight: normal;
+}

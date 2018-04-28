@@ -4,6 +4,7 @@ import { Search, Grid, Header } from 'semantic-ui-react'
 import {connect} from "react-redux";
 import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
+import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
 import store from "../store";
 import Popup from "reactjs-popup";
 import RiderDetail from "./RiderDetail";
@@ -19,7 +20,6 @@ class RiderSearch extends Component {
 
 
     handleSearchChange = (e, { value }) => {
-        console.log(value);
         this.setState({ isLoading: true, value });
 
         setTimeout(() => {
@@ -39,6 +39,7 @@ class RiderSearch extends Component {
     fetchCurrentRiders(id) {
         store.dispatch(riderActions.getRidersFromAPI(id));
         store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
+        store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
         this.setState({updated: true});
     }
 
@@ -80,8 +81,7 @@ class RiderSearch extends Component {
 function mapStateToProps(store) {
     return {
         riders : store.riders.riders,
-        actualStage : store.actualStage.data,
-        cons : store.cons.cons
+        actualStage : store.actualStage.data
     }
 }
 
