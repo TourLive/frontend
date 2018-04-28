@@ -98,6 +98,13 @@ i.icon {
 
 }
 
+.Horizontal-Line{
+  height:0.1rem;
+  width:99%;
+  background:#A3B0B9;
+  margin:0.3rem;
+}
+
 .App-Timestamp {
   margin-bottom: 1rem !important;
 }
