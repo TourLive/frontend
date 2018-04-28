@@ -4,19 +4,22 @@ import { Search, Grid, Header } from 'semantic-ui-react'
 import {connect} from "react-redux";
 import * as riderActions from "../actions/riderActions";
 import store from "../store";
+import Popup from "reactjs-popup";
+import RiderDetail from "./RiderDetail";
 
 class RiderSearch extends Component {
     componentWillMount() {
         this.resetComponent()
     }
 
-    resetComponent = () => this.setState({ updated:false, isLoading: false, results: [], value: '' })
+    resetComponent = () => this.setState({ selectedRider: undefined, selectionActive:false, updated:false, isLoading: false, results: [], value: '' });
 
-    handleResultSelect = (e, { result }) => this.setState({ value: result.name })
+    handleResultSelect = (e, { result }) => this.setState({selectedRider:result, value: result.name, selectionActive:true, selectedRider : result});
+
 
     handleSearchChange = (e, { value }) => {
         console.log(value);
-        this.setState({ isLoading: true, value })
+        this.setState({ isLoading: true, value });
 
         setTimeout(() => {
             if (this.state.value.length < 1) return this.resetComponent();
@@ -53,18 +56,21 @@ class RiderSearch extends Component {
         };
 
         return (
-            <Grid>
-                <Grid.Column width={8}>
-                    <Search
-                        loading={isLoading}
-                        onResultSelect={this.handleResultSelect}
-                        onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
-                        results={results}
-                        value={value}
-                        resultRenderer={RiderRenderer}
-                    />
-                </Grid.Column>
-            </Grid>
+                <Grid>
+                    <Grid.Column width={8}>
+                        <Search
+                            loading={isLoading}
+                            onResultSelect={this.handleResultSelect}
+                            onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
+                            results={results}
+                            value={value}
+                            resultRenderer={RiderRenderer}
+                        />
+                    </Grid.Column>
+                    <Popup open={this.state.selectionActive} onClose={this.resetComponent} modal closeOnDocumentClick>
+                        <span><RiderDetail selectedRider={this.state.selectedRider}/></span>
+                    </Popup>
+                </Grid>
         )
     }
 }
