@@ -12,7 +12,6 @@ class RiderTrikots extends Component {
         const mountain = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
         const point = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
         const bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        console.log("bester schweizer" + bestSwiss.name, bestSwiss.id, rider.id);
 
         const leaderMaillot = maillots.map(m =>
             leader.id === rider.id && m.type === 'leader' ?
