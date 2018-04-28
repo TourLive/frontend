@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Search, Grid, Header } from 'semantic-ui-react'
 import {connect} from "react-redux";
 import * as riderActions from "../actions/riderActions";
+import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
 import store from "../store";
 import Popup from "reactjs-popup";
 import RiderDetail from "./RiderDetail";
@@ -37,6 +38,7 @@ class RiderSearch extends Component {
 
     fetchCurrentRiders(id) {
         store.dispatch(riderActions.getRidersFromAPI(id));
+        store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
     }
 
@@ -78,7 +80,8 @@ class RiderSearch extends Component {
 function mapStateToProps(store) {
     return {
         riders : store.riders.riders,
-        actualStage : store.actualStage.data
+        actualStage : store.actualStage.data,
+        cons : store.cons.cons
     }
 }
 
