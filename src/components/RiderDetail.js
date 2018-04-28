@@ -11,8 +11,11 @@ class RiderDetail extends Component {
         const {cons} = this.props;
         const rider = this.props.selectedRider;
         function getRankOfRider(riderId){
-            cons.sort((a,b) => a.virtualGap - b.virtualGap);
-            return cons.findIndex(con => con.riders[0].id === riderId) + 1;
+            let sortedConnections = cons.sort((a,b) => a.virtualGap - b.virtualGap);
+            var localRiders = [];
+            console.log(sortedConnections);
+            let value = sortedConnections.forEach(con => localRiders.push(con.riders[0]));
+            return cons.findIndex(con => con.riders.id === riderId) + 1;
         }
 
         return <Table>
