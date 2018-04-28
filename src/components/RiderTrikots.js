@@ -7,26 +7,42 @@ class RiderTrikots extends Component {
     render() {
         const {maillots} = this.props;
         const {cons} = this.props;
+        const {bestSwissCons} = this.props;
+        console.log({bestSwissCons});
         const rider = this.props.selectedRider;
         const leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
         const mountain = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
         const point = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        const bestSwiss = cons.filter(con => con.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+        //const bestSwiss = bestSwissCons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
 
-        const riderMaillots = maillots.map(m => {
-            console.log("calc leader");
-            let leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-            console.log({leader});
-            console.log({mountain});
-            console.log({point});
-            console.log({bestSwiss});
-            leader.id === rider.id ?
-                <div key={m.id}>Partner: {m.partner}, Trikot: {m.name}</div> :
-                <div>hallo</div>;
-        });
+        const leaderMaillot = maillots.map(m =>
+            leader.id === rider.id && m.type === 'leader' ?
+                <div key={m.id} className="App-Trikot-Rider">Partner: {m.partner}, Trikot: {m.name}</div> :
+                <div></div>
+        );
+
+        const mountainMaillot = maillots.map(m =>
+            mountain.id === rider.id && m.type === 'mountain' ?
+                <div key={m.id} className="App-Trikot-Rider">Partner: {m.partner}, Trikot: {m.name}</div> :
+                <div></div>
+        );
+
+        const pointMaillot = maillots.map(m =>
+            point.id === rider.id && m.type === 'points' ?
+                <div key={m.id} className="App-Trikot-Rider">Partner: {m.partner}, Trikot: {m.name}</div> :
+                <div></div>
+        );
+
+        /*const bestSwissMaillot = maillots.map(m =>
+            bestSwiss.id === rider.id && m.type === 'bestSwiss' ?
+                <div key={m.id} className="App-Trikot-Rider">Partner: {m.partner}, Trikot: {m.name}</div> :
+                <div></div>
+        );*/
 
         return <div>
-            {riderMaillots}
+            {leaderMaillot}
+            {mountainMaillot}
+            {pointMaillot}
             </div>
     }
 }
@@ -34,7 +50,8 @@ class RiderTrikots extends Component {
 function mapStateToProps(store) {
     return {
         maillots: store.maillots.data,
-        cons : store.cons.cons
+        cons : store.cons.cons,
+        //bestSwissCons : store.cons.cons.filter(con => con.rider.teamShortName !== 'SUI')
     }
 }
 
