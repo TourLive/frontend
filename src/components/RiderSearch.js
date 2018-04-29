@@ -6,9 +6,10 @@ import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
 import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
 import * as maillotActions from "../actions/maillotActions";
+import * as raceGroupsActions from "../actions/raceGroupsActions";
 import store from "../store";
 import Popup from "reactjs-popup";
-import RiderDetail from "./RiderDetail";
+import RiderDetail from "./RiderDetail/RiderDetail";
 
 class RiderSearch extends Component {
     componentWillMount() {
@@ -42,6 +43,7 @@ class RiderSearch extends Component {
         store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
         store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
         store.dispatch(maillotActions.getCurrentMaillots(id));
+        store.dispatch(raceGroupsActions.getCurrentRaceGroups(id));
         this.setState({updated: true});
     }
 

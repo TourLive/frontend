@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import RiderInfo from "./RiderInfo";
 import RiderJudgment from "./RiderJudgment";
 import RiderTrikot from "./RiderTrikots";
-import store from "../store";
+import RiderRaceGroup from "./RiderRaceGroup";
 
 class RiderDetail extends Component {
 
@@ -16,7 +16,7 @@ class RiderDetail extends Component {
             <div className="Horizontal-Line"/>
             <div className="App-title">Wertungen<RiderJudgment selectedRider={rider}/></div>
             <div className="Horizontal-Line"/>
-            <div className="App-title">Gruppenhistorie</div>
+            <div className="App-title">Gruppenhistorie<RiderRaceGroup selectedRider={rider}/></div>
         </div>
 
     }

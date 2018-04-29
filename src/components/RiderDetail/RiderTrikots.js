@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
-import {List, Image,Container} from "semantic-ui-react";
-import store from "../store";
 
 class RiderTrikots extends Component {
     render() {

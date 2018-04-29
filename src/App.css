@@ -122,3 +122,10 @@ i.icon {
   font-size: 1rem;
   font-weight: normal;
 }
+
+.App-RaceGroup-Rider {
+  size: 3rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+  font-weight: normal;
+}
