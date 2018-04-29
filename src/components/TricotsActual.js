@@ -20,12 +20,14 @@ class TricotsActual extends Component {
 
     fetchCurrentMaillots(id) {
         store.dispatch(maillotActions.getCurrentMaillots(id));
+        store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
     }
 
 
     render() {
         const {maillots} = this.props;
+        const {cons}  = this.props;
         const {actualStage} = this.props;
 
         if (actualStage.id !== undefined && !this.state.updated) {
@@ -36,7 +38,7 @@ class TricotsActual extends Component {
         return(
             <div className="App-Content">
                 <Helmet>
-                    <title>Trikotträger Start</title>
+                    <title>Trikotträger Aktuell</title>
                 </Helmet>
                 <List divided verticalAlign='middle' size="massive">
                     {maillots.map(x => <SingleTrikotActual key={x.id} data={x}/>)}
@@ -49,7 +51,8 @@ class TricotsActual extends Component {
 function mapStateToProps(store) {
     return {
         maillots: store.maillots.data,
-        actualStage : store.actualStage.data
+        actualStage : store.actualStage.data,
+        cons : store.cons.cons
     }
 }
 

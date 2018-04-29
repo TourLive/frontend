@@ -3,6 +3,7 @@ import {Header, List, Image} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import SingleTrikot from "./SingleTrikot";
 import * as maillotActions from '../actions/maillotActions'
+import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
 import store from '../store'
 import {connect} from "react-redux";
 import {Route, Switch, Link} from 'react-router-dom';
@@ -23,6 +24,7 @@ class Trikots extends Component {
 
   fetchCurrentMaillots(id) {
     store.dispatch(maillotActions.getCurrentMaillots(id));
+    store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
     this.setState({updated: true});
   }
 
