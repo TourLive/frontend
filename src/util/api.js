@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 const HOST = "http://localhost:9000";
-=======
-const HOST = "http://dev-api.tourlive.ch";
->>>>>>> dev
+
 export const LINK_SETTINGS = HOST + "/settings";
 export const LINK_STAGES = HOST + "/stages/";
 export const LINK_RACES = HOST + "/races/";
