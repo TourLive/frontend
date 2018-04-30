@@ -7,11 +7,11 @@ class RiderRaceGroup extends Component {
         const rider = this.props.selectedRider;
         const actualRaceGroup = raceGroups.find(rG => rG.riders.find(r => r.id === rider.id));
 
-        const raceGroup = (
+        const raceGroup = actualRaceGroup !== undefined ? (
                 <div key={actualRaceGroup.id} className="App-RaceGroup-Rider">
                     Aktuelle Renngruppe: {actualRaceGroup.raceGroupType}
                 </div>
-        );
+        ): <div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden</div>;
 
         return <div>
             {raceGroup}
