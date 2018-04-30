@@ -11,14 +11,13 @@ class SingleTrikot extends Component {
     const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
     let rank;
 
-      let rider = riders.find((e) => {
-          return e.id === trikot.riderId;
-      });
-      
+    let rider = riders.find((e) => {
+        return e.id === trikot.riderId;
+    });
+
     if(sortedConnections.length > 0){
         rank = sortedConnections.findIndex(con => con.rider.id === rider.id) + 1;
     }
-
 
     const attachedRider = rider === undefined ? (
         <p>Fahrerdaten werden geladen</p>
