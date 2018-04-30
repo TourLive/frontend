@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import * as maillotActions from "../actions/maillotActions";
 import store from "../store";
 import SingleTrikotActual from "./SingleTrikotActual";
-import {Header, List, Image} from "semantic-ui-react";
+import {List} from "semantic-ui-react";
 import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
 
 
@@ -27,7 +27,6 @@ class TricotsActual extends Component {
 
     render() {
         const {maillots} = this.props;
-        const {cons}  = this.props;
         const {actualStage} = this.props;
 
         if (actualStage.id !== undefined && !this.state.updated) {
@@ -51,8 +50,7 @@ class TricotsActual extends Component {
 function mapStateToProps(store) {
     return {
         maillots: store.maillots.data,
-        actualStage : store.actualStage.data,
-        cons : store.cons.cons
+        actualStage : store.actualStage.data
     }
 }
 

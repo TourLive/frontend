@@ -1,10 +1,6 @@
 import React, {Component} from "react";
 import {Header, List, Image} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
-import SingleTrikot from "./SingleTrikot";
-import * as maillotActions from '../actions/maillotActions'
-import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
-import store from '../store'
 import {connect} from "react-redux";
 import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
@@ -24,7 +20,6 @@ class Trikots extends Component {
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
   render() {
-        const {maillots} = this.props;
         const {activeItem} = this.state;
 
       const navMenu =  (

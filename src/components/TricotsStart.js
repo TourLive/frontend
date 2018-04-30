@@ -2,10 +2,9 @@ import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import {connect} from "react-redux";
 import * as maillotActions from "../actions/maillotActions";
-import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
 import store from "../store";
 import SingleTrikot from "./SingleTrikot";
-import {Header, List, Image} from "semantic-ui-react";
+import {List} from "semantic-ui-react";
 
 
 class TricotsStart extends Component {

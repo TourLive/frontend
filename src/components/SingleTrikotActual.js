@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 import {List, Image,Container} from "semantic-ui-react";
 import { connect } from 'react-redux'
-import store from "../store";
-import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions";
 
 class SingleTrikotActual extends Component {
 
     render() {
         const trikot = this.props.data;
-        const {actualStage} = this.props;
-
         const {cons} = this.props;
+
         let leader;
         let mountain;
         let point;
@@ -70,9 +67,7 @@ class SingleTrikotActual extends Component {
 
 function mapStateToProps(store) {
   return {
-      actualStage : store.actualStage.data,
-      cons : store.cons.cons,
-      maillots : store.maillots.data
+      cons : store.cons.cons
   }
 }
 
