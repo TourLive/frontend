@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Header, List, Image} from "semantic-ui-react";
+import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {connect} from "react-redux";
 import {Route, Switch, Link} from 'react-router-dom';
