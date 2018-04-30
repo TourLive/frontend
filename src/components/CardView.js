@@ -8,17 +8,18 @@ const zoomLevel = 13;
 
 class Card extends Component {
     render() {
-        const center = [51.505, -0.09]
+        const defaultLatitude = 47.71780751;
+        const defaultLongitude = 8.666430535;
         const {gpsData} = this.props;
-        const start = gpsData[0];
-        const end = gpsData[gpsData.length - 1];
+        let start = gpsData[0];
+        let end = gpsData[gpsData.length - 1];
         const array = [];
         gpsData.map(element => {
             array.push([element.latitude, element.longitude]);
         });
-        console.log(array);
-        console.log(start);
         const data = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
+        start === undefined ? (start = [], start.longitude=defaultLongitude, start.latitude=defaultLatitude) : (start = gpsData[0]);
+        end === undefined ? (end = [], end.longitude=defaultLongitude, end.latitude=defaultLatitude) : (end = gpsData[gpsData.length -1]);
         return(
             <div className="App-Content">
                 <Helmet>
