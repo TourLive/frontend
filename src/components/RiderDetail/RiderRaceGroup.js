@@ -11,7 +11,7 @@ class RiderRaceGroup extends Component {
                 <div key={actualRaceGroup.id} className="App-RaceGroup-Rider">
                     Aktuelle Renngruppe: {actualRaceGroup.raceGroupType}
                 </div>
-        ): <div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden</div>;
+        ): <div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden, Fahrer nimmt aktuell nicht am Rennen teil</div>;
 
         return <div>
             {raceGroup}
