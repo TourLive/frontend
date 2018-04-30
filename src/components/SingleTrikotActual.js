@@ -6,45 +6,34 @@ import * as riderStageConnectionActions from "../actions/riderStageConnectionsAc
 
 class SingleTrikotActual extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-            updated: false
-        }
-    }
-
-    fetchRiderStageConnections(id) {
-        store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
-        this.setState({updated: true});
-    }
-
     render() {
         const trikot = this.props.data;
         const {actualStage} = this.props;
 
-        if (actualStage.id !== undefined && !this.state.updated) {
-            this.fetchRiderStageConnections(actualStage.id);
+        const {cons} = this.props;
+        let leader;
+        let mountain;
+        let point;
+        let bestSwiss;
+
+        if(cons.length > 0){
+            leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            mountain = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            point = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
         }
 
-        const {cons} = this.props;
 
-        const leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        const mountain = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        const point = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        const bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        
-
-      const attachedRider = trikot.type === 'leader' ? (
+      const attachedRider = trikot.type === 'leader' && leader !== undefined? (
           <p>{leader.startNr}, {leader.country}, {leader.name}, {leader.teamName}, Rang</p>
       ) : (
-          trikot.type === 'mountain' ? (
+          trikot.type === 'mountain' && mountain !== undefined ? (
               <p>{mountain.startNr}, {mountain.country}, {mountain.name}, {mountain.teamName}, Rang</p>
           ) : (
-              trikot.type === 'points' ? (
+              trikot.type === 'points' && point !== undefined ? (
                   <p>{point.startNr}, {point.country}, {point.name}, {point.teamName}, Rang</p>
               ):
-                  trikot.type === 'bestSwiss' ? (
+                  trikot.type === 'bestSwiss' && bestSwiss !== undefined ? (
                           <p>{bestSwiss.startNr}, {bestSwiss.country}, {bestSwiss.name}, {bestSwiss.teamName}, Rang</p>
                   ) : (
                         <p>Fahrerdaten werden geladen</p>

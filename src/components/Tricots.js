@@ -16,28 +16,16 @@ class Trikots extends Component {
     super(props);
 
     this.state = {
-        updated: false,
         activeItem : 'trikotsStart'
 
     }
-  }
-
-  fetchCurrentMaillots(id) {
-    store.dispatch(maillotActions.getCurrentMaillots(id));
-    store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
-    this.setState({updated: true});
   }
 
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
   render() {
         const {maillots} = this.props;
-        const {actualStage} = this.props;
         const {activeItem} = this.state;
-
-        if (actualStage.id !== undefined && !this.state.updated) {
-          this.fetchCurrentMaillots(actualStage.id);
-        }
 
       const navMenu =  (
           [
@@ -74,8 +62,6 @@ class Trikots extends Component {
 
 function mapStateToProps(store) {
   return {
-    maillots: store.maillots.data,
-    actualStage : store.actualStage.data
   }
 }
 
