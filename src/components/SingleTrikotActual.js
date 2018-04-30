@@ -15,26 +15,35 @@ class SingleTrikotActual extends Component {
         let mountain;
         let point;
         let bestSwiss;
+        let sortedConnections = cons.sort((a, b) => a.virtualGap - b.virtualGap);
+        let rankOfLeader;
+        let rankOfMountain;
+        let rankOfPoint;
+        let rankOfBestSwiss;
 
         if(cons.length > 0){
             leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            rankOfLeader= sortedConnections.findIndex(con => con.rider.id === leader.id) + 1;
             mountain = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            rankOfMountain= sortedConnections.findIndex(con => con.rider.id === mountain.id) + 1;
             point = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            rankOfPoint= sortedConnections.findIndex(con => con.rider.id === point.id) + 1;
             bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            rankOfBestSwiss = sortedConnections.findIndex(con => con.rider.id === bestSwiss.id) + 1;
         }
 
 
       const attachedRider = trikot.type === 'leader' && leader !== undefined? (
-          <p>{leader.startNr}, {leader.country}, {leader.name}, {leader.teamName}, Rang</p>
+          <p>{leader.startNr}, {leader.country}, {leader.name}, {leader.teamName}, Rang: {rankOfLeader}</p>
       ) : (
           trikot.type === 'mountain' && mountain !== undefined ? (
-              <p>{mountain.startNr}, {mountain.country}, {mountain.name}, {mountain.teamName}, Rang</p>
+              <p>{mountain.startNr}, {mountain.country}, {mountain.name}, {mountain.teamName}, Rang: {rankOfMountain}</p>
           ) : (
               trikot.type === 'points' && point !== undefined ? (
-                  <p>{point.startNr}, {point.country}, {point.name}, {point.teamName}, Rang</p>
+                  <p>{point.startNr}, {point.country}, {point.name}, {point.teamName}, Rang: {rankOfPoint}</p>
               ):
                   trikot.type === 'bestSwiss' && bestSwiss !== undefined ? (
-                          <p>{bestSwiss.startNr}, {bestSwiss.country}, {bestSwiss.name}, {bestSwiss.teamName}, Rang</p>
+                          <p>{bestSwiss.startNr}, {bestSwiss.country}, {bestSwiss.name}, {bestSwiss.teamName}, Rang: {rankOfBestSwiss}</p>
                   ) : (
                         <p>Fahrerdaten werden geladen</p>
                       )

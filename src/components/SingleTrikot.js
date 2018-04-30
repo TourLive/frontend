@@ -7,14 +7,23 @@ class SingleTrikot extends Component {
   render() {
     const trikot = this.props.data;
     const {riders} = this.props;
-    let rider = riders.find((e) => {
-        return e.id === trikot.riderId;
-    });
+    const {cons} = this.props;
+    const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
+    let rank;
+
+      let rider = riders.find((e) => {
+          return e.id === trikot.riderId;
+      });
+      
+    if(sortedConnections.length > 0){
+        rank = sortedConnections.findIndex(con => con.rider.id === rider.id) + 1;
+    }
+
 
     const attachedRider = rider === undefined ? (
-        <p>Fahrer wird geladen</p>
+        <p>Fahrerdaten werden geladen</p>
     ) : (
-        <p>{rider.startNr}, {rider.country}, {rider.name}, {rider.teamName}, Rang</p>
+        <p>{rider.startNr}, {rider.country}, {rider.name}, {rider.teamName}, Rang: {rank}</p>
     );
 
     return(
@@ -36,7 +45,8 @@ class SingleTrikot extends Component {
 
 function mapStateToProps(store) {
   return {
-      riders : store.riders.riders
+      riders : store.riders.riders,
+      cons: store.cons.cons
   }
 }
 
