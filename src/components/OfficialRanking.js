@@ -59,7 +59,7 @@ class OfficialRanking extends Component {
                 <Helmet>
                     <title>OfficialRanking</title>
                 </Helmet>
-                {this.state.data !== undefined ? (
+                {this.state.data ? (
                 <Table celled color="red" sortable>
                   <Table.Header>
                     <Table.Row>
@@ -84,7 +84,6 @@ class OfficialRanking extends Component {
                         </Table.Row>
                       );
                     })}
-                      {!this.state.data}<Table.Row><Table.Cell>Klassemente werden geladen</Table.Cell></Table.Row>
                   </Table.Body>
                 </Table>) : (
                     <div>Klassemente werden geladen</div>)}

@@ -58,7 +58,7 @@ class VirtualRanking extends Component {
                 <Helmet>
                     <title>Virtuelles Ranking</title>
                 </Helmet>
-                {this.state.data !== undefined ? (
+                {this.state.data ? (
                   <Table celled color="red" sortable>
                     <Table.Header>
                       <Table.Row>
