@@ -12,7 +12,8 @@ class OfficialRanking extends Component {
         this.state = {
             sortOrder : 'ascending',
             uiOrder : undefined,
-            data : []
+            data : [],
+            ranking : []
         };
     }
 
@@ -48,20 +49,10 @@ class OfficialRanking extends Component {
     componentWillReceiveProps(nextProps){
         const {cons} = nextProps;
         this.setState({data : cons.sort((a, b) => a.officialGap - b.officialGap), sortOrder: 'ascending'});
+        var hashtable = {};
+        cons.sort((a,b) => a.officialGap - b.officialGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
+        this.setState({ranking: hashtable});
     }
-
-    getRank(connection){
-        const {cons} = this.props;
-        console.log("Index:" + cons.sort((a,b) => a.officialGap - b.officialGap).findIndex(con => con.id === connection.id));
-        return cons.sort((a,b) => a.officialGap - b.officialGap).findIndex(con => con.id === connection.id) + 1;
-        /*if(this.state.sortOrder === 'ascending'){
-            console.log({connection});
-            return cons.sort((a,b) => a.officalGap - b.officialGap).findIndex(con => con.id === connection.id);
-        } else {
-            console.log({connection});
-            return cons.sort((a,b) => b.officalGap - a.officialGap).findIndex(con => con.id === connection.id);
-        }*/
-    };
 
     render() {
         const {cons} = this.props;
@@ -86,7 +77,7 @@ class OfficialRanking extends Component {
                     {this.state.data && this.state.data.map((connection, i) => {
                       return (
                         <Table.Row key={connection.id}>
-                          <Table.Cell>{this.getRank(connection)}</Table.Cell>
+                          <Table.Cell>{this.state.ranking[connection.id]}</Table.Cell>
                           <Table.Cell>{connection.rider.startNr}</Table.Cell>
                           <Table.Cell>{dateUtil.mapValueToTimeString(connection.officialTime)}</Table.Cell>
                           <Table.Cell>{connection.rider.name}</Table.Cell>
