@@ -83,7 +83,7 @@ class OfficialRanking extends Component {
                         </Table.Row>
                       );
                     })}
-                      {!this.state.data}<div>Klassemente werden geladen</div>
+                      {!this.state.data}<Table.Row><Table.Cell>Klassemente werden geladen</Table.Cell></Table.Row>
                   </Table.Body>
                 </Table>
             </div>
