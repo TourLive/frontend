@@ -20,28 +20,25 @@ class OfficialRanking extends Component {
     handleSort(type) {
         const {cons} = this.props;
         switch(type){
-            case 'rang':
-                if(this.state.sortOrder === 'ascending'){
-                    this.setState({data : cons.sort((a, b) => a.officialGap - b.officialGap), sortOrder: 'descending', uiOrder :'ascending'});
-                } else {
-                    this.setState({data : cons.sort((a, b) => b.officialGap - a.officialGap), sortOrder: 'ascending', uiOrder:'descending'});
-                }
-                break;
             case 'startNr':
-                if(this.state.sortOrder === 'ascending'){
-                    this.setState({data : cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'});
-                } else {
+                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rider.startNr - a.rider.startNr), sortOrder: 'ascending', uiOrder:'descending'});
-                }
                 break;
             case 'name':
-                if(this.state.sortOrder === 'ascending'){
-                    this.setState({data : cons.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'});
-                } else {
+                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rider.name.replace(/ /g,'').toLowerCase().localeCompare(a.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'ascending', uiOrder:'descending'});
-                }
                 break;
-            default:
+            case 'team':
+                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.teamShortName.localeCompare(b.rider.teamShortName)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : cons.sort((a, b) => b.rider.teamShortName.localeCompare(a.rider.teamShortName)), sortOrder: 'ascending', uiOrder:'descending'});
+                break;
+            case 'country':
+                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.country.localeCompare(b.rider.country)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : cons.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
+                break;
+            default: // Default sorted by rank
+                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.officialTime - b.officialTime), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : cons.sort((a, b) => b.officialTime - a.officialTime), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
         }
     };
@@ -50,7 +47,7 @@ class OfficialRanking extends Component {
         const {cons} = nextProps;
         this.setState({data : cons.sort((a, b) => a.officialGap - b.officialGap), sortOrder: 'ascending'});
         var hashtable = {};
-        cons.sort((a,b) => a.officialGap - b.officialGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
+        cons.sort((a,b) => a.officialTime - b.officialTime).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
         this.setState({ranking: hashtable});
     }
 
@@ -65,12 +62,12 @@ class OfficialRanking extends Component {
                 <Table celled color="red" sortable>
                   <Table.Header>
                     <Table.Row>
-                      <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('rang')}>Rang</Table.HeaderCell>
+                      <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>Rang</Table.HeaderCell>
                       <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('startNr')}>StartNr</Table.HeaderCell>
-                      <Table.HeaderCell>Zeit</Table.HeaderCell>
+                      <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>Zeit</Table.HeaderCell>
                       <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('name')}>Name</Table.HeaderCell>
-                      <Table.HeaderCell>Team</Table.HeaderCell>
-                      <Table.HeaderCell>Land</Table.HeaderCell>
+                      <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('team')}>Team</Table.HeaderCell>
+                      <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('country')}>Land</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
@@ -86,6 +83,7 @@ class OfficialRanking extends Component {
                         </Table.Row>
                       );
                     })}
+                      {!this.state.data}<div>Klassemente werden geladen</div>
                   </Table.Body>
                 </Table>
             </div>
