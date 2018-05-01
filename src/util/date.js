@@ -9,17 +9,11 @@ Date.prototype.timeNow = function () {
 };
 
 export function mapValueToTimeString(value){
-    console.log("value: "+ value);
     let days = Math.floor(value/(3600*24));
-    console.log(days);
     let hours = Math.floor((value - (days * 86400)) / 3600);
-    console.log(hours);
     let minutes = Math.floor((value - (days * 86400) - (hours * 3600)) / 60);
-    console.log(minutes);
     let seconds = Math.floor(value - (days * 86400) - (hours * 3600) - (minutes * 60));
-    console.log(seconds);
     hours += (24 * days);
-    console.log(hours);
     const displayMinutes = minutes < 10 ? "0" + minutes : minutes;
     const displaySeconds = seconds < 10 ? "0" + seconds : seconds;
     return hours + ":" + displayMinutes + ":" + displaySeconds + " h";

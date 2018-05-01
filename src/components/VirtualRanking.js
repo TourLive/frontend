@@ -12,7 +12,7 @@ class VirtualRanking extends Component {
                 <Helmet>
                     <title>Virtuelles Ranking</title>
                 </Helmet>
-                  <Table celled>
+                  <Table celled color="red">
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell>Rang</Table.HeaderCell>

@@ -11,7 +11,7 @@ class MountainRanking extends Component {
                 <Helmet>
                     <title>Punkte Ranking</title>
                 </Helmet>
-              <Table celled>
+              <Table celled color="red">
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Rang</Table.HeaderCell>
