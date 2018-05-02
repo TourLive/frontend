@@ -45,21 +45,37 @@ class OfficialRanking extends Component {
 
     componentWillReceiveProps(nextProps){
         const {cons} = nextProps;
-        this.setState({data : cons.sort((a, b) => a.officialGap - b.officialGap), sortOrder: 'ascending'});
+        this.setState({data : cons.sort((a, b) => a.officialTime - b.officialTime), sortOrder: 'ascending'});
         var hashtable = {};
         cons.sort((a,b) => a.officialTime - b.officialTime).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
         this.setState({ranking: hashtable});
     }
 
+    componentDidMount(){
+        const {cons} = this.props;
+        this.setState({data : cons.sort((a, b) => a.officialTime - b.officialTime), sortOrder: 'ascending'});
+        var hashtable = {};
+        cons.sort((a,b) => a.officialTime - b.officialTime).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
+        this.setState({ranking: hashtable});
+    }
+
+
+    dataNotReady(){
+        return (
+            <Table.Row>
+                <Table.Cell>Klassemente werden geladen</Table.Cell>
+            </Table.Row>
+        )
+    }
+
+
     render() {
         const {cons} = this.props;
-
         return(
             <div className="App-Table">
                 <Helmet>
                     <title>OfficialRanking</title>
                 </Helmet>
-                {this.state.data ? (
                 <Table celled color="red" sortable>
                   <Table.Header>
                     <Table.Row>
@@ -72,6 +88,7 @@ class OfficialRanking extends Component {
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
+                    {this.state.data.length === 0 && this.dataNotReady()}
                     {this.state.data && this.state.data.map((connection, i) => {
                       return (
                         <Table.Row key={connection.id}>
@@ -85,8 +102,7 @@ class OfficialRanking extends Component {
                       );
                     })}
                   </Table.Body>
-                </Table>) : (
-                    <div>Klassemente werden geladen</div>)}
+                </Table>
             </div>
         );
     }
