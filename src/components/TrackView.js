@@ -1,8 +1,9 @@
 import React, {Component} from "react";
-import {Header} from "semantic-ui-react";
+import {Search} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Timeline, TimelineEvent} from 'react-event-timeline'
 import {connect} from "react-redux";
+import RiderSearch from "./RiderSearch";
 
 class TrackView extends Component {
     render() {
@@ -22,7 +23,6 @@ class TrackView extends Component {
                 <Helmet>
                     <title>TrackView</title>
                 </Helmet>
-                <Header as="h1" color='red'>TrackView</Header>
                 <Timeline className="App-Timeline">
                     {judgments.sort((a,b) => b.distance - a.distance).map(element => {
                         const marker = "KM: " + element.distance + " | " + element.name;
@@ -31,6 +31,9 @@ class TrackView extends Component {
                         )
                     })}
                 </Timeline>
+                <div className="Search">
+                    <RiderSearch/>
+                </div>
             </div>
         );
     }

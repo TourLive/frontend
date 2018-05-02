@@ -86,6 +86,11 @@ i.icon {
   width: 6px !important;
 }
 
+.Search {
+  padding: 20px;
+  width: 10rem;
+}
+
 .half {
 
 }
@@ -93,6 +98,34 @@ i.icon {
 
 }
 
+.Horizontal-Line{
+  height:0.1rem;
+  width:99%;
+  background:#A3B0B9;
+  margin:0.3rem;
+}
+
 .App-Timestamp {
   margin-bottom: 1rem !important;
+}
+
+.App-Judgment-Rider {
+   size: 3rem;
+   margin: 0.3rem;
+   font-size: 1rem;
+   font-weight: normal;
+}
+
+.App-Trikot-Rider {
+  size: 3rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.App-RaceGroup-Rider {
+  size: 3rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+  font-weight: normal;
 }
