@@ -10,7 +10,6 @@ import PointRanking from "./PointRanking";
 import MountainRanking from "./MountainRanking";
 import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import * as dateUtil from "../util/date.js";
 
 class Rankings extends Component {
 
