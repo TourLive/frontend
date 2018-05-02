@@ -70,7 +70,6 @@ class OfficialRanking extends Component {
 
 
     render() {
-        const {cons} = this.props;
         return(
             <div className="App-Table">
                 <Helmet>
