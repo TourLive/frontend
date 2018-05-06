@@ -1,23 +1,42 @@
 import React, { Component } from 'react';
-import {Header} from "semantic-ui-react";
+import {Header, Button} from "semantic-ui-react";
 import {connect} from "react-redux";
 
 class SingleJudgment extends Component {
   render() {
     const judgment = this.props.data;
     const {riders} = this.props;
-    /*let rider = riders.find((e) => {
-      return e.id === trikot.riderId;
-    });
-    console.log(rider);*/
+    const {judgmentRiderConnections} = this.props;
 
     return(
-      <div>
+      <div className="App-Judgment-Single">
+        <Button onClick={this.props.close}>&lt; Zurück zu allen Wertungen</Button><br/>
         <Header as="h1">Wertung | {judgment.name}</Header>
+        <p>An Kilometer <b>{judgment.distance}</b> auf der Strecke</p>
         {judgment.reward.points.map((reward,i) => {
+          let rider;
+          let jRC = judgmentRiderConnections.find((e) => {
+            let rank = i+1;
+            return (e.judgment.id === judgment.id && e.rank === rank);
+          });
+          if (jRC !== undefined) {
+            rider = riders.find((o) => {
+              return o.id === jRC.rider.id;
+            });
+          }
+
+          const linkedRider = jRC !== undefined ? (
+            <p><b>{rider.startNr}</b> {rider.country} <b>{rider.name}</b>, {rider.teamName}</p>
+          ) : (
+            <p>Wertung wurde noch nicht vergeben</p>
+          );
+
           if (reward !== 0) {
             return (
-              <h5 key={i+1}>Platz {i+1}</h5>
+              <div className="App-Judgment-Rank">
+                <h5 key={i+1}>Platz {i+1}</h5>
+                {linkedRider}
+              </div>
             )
           }
         })}
@@ -28,7 +47,8 @@ class SingleJudgment extends Component {
 
 function mapStateToProps(store) {
   return {
-    riders : store.riders.riders
+    riders : store.riders.riders,
+    judgmentRiderConnections : store.judgmentRiderConnections.data
   }
 }
 

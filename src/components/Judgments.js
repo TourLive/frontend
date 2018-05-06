@@ -28,14 +28,13 @@ class Judgments extends Component {
     }
 
     onJudgmentClicked(element) {
-        console.log("IM HERE");
-        console.log(element);
         this.setState({judgmentSelected : true});
         this.setState({judgment : element});
     }
 
     onJudgmentClose() {
-
+      this.setState({judgmentSelected : false});
+      this.setState({judgment : {}});
     }
 
     render() {
@@ -65,22 +64,23 @@ class Judgments extends Component {
                 <Helmet>
                     <title>Wertungen</title>
                 </Helmet>
-                <Header as="h1" color='red'>Wertungen</Header>
-                <Timeline className={halfHeight}>
-                    {judgments.sort((a, b) => b.distance - a.distance).map(judgment => {
+                {this.state.judgmentSelected === false &&
+                  <div>
+                    <Header as="h1" color='red'>Wertungen</Header>
+                    <Timeline className={halfHeight}>
+                      {judgments.sort((a, b) => b.distance - a.distance).map(judgment => {
                         const marker = "KM: " + judgment.distance + " | " + judgment.name;
                         return (
-                            <TimelineEvent key={judgment.id} title='' contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
-                                <Button value={judgment.id} onClick={()=>this.onJudgmentClicked(judgment)}>Infos zur Wertung</Button>
-                            </TimelineEvent>
+                          <TimelineEvent key={judgment.id} title='' contentStyle={divStyle} bubbleStyle={iconStyle} createdAt={marker}>
+                            <Button value={judgment.id} onClick={()=>this.onJudgmentClicked(judgment)}>Infos zur Wertung</Button>
+                          </TimelineEvent>
                         )
-                    })}
-                </Timeline>
+                      })}
+                    </Timeline>
+                  </div>
+                }
                 {this.state.judgmentSelected === true &&
-                    <div>
-                        <Divider />
-                        <SingleJudgment data={this.state.judgment}/>
-                    </div>
+                    <SingleJudgment data={this.state.judgment} close={this.onJudgmentClose}/>
                 }
             </div>
         );
