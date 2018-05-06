@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import {Header, Button} from "semantic-ui-react";
+import {Header, Button, Flag} from "semantic-ui-react";
 import {connect} from "react-redux";
+import countries from "./countries";
 
 class SingleJudgment extends Component {
   render() {
     const judgment = this.props.data;
     const {riders} = this.props;
     const {judgmentRiderConnections} = this.props;
+    console.log(countries);
 
     return(
       <div className="App-Judgment-Single">
@@ -15,6 +17,7 @@ class SingleJudgment extends Component {
         <p>An Kilometer <b>{judgment.distance}</b> auf der Strecke</p>
         {judgment.reward.points.map((reward,i) => {
           let rider;
+          let flag;
           let jRC = judgmentRiderConnections.find((e) => {
             let rank = i+1;
             return (e.judgment.id === judgment.id && e.rank === rank);
@@ -23,10 +26,14 @@ class SingleJudgment extends Component {
             rider = riders.find((o) => {
               return o.id === jRC.rider.id;
             });
+            flag = countries.find((v) => {
+              return v.ioc === rider.country;
+            });
           }
 
+
           const linkedRider = jRC !== undefined ? (
-            <p><b>{rider.startNr}</b> {rider.country} <b>{rider.name}</b>, {rider.teamName}</p>
+            <p><b>{rider.startNr}</b> <Flag name={flag.iso.toLowerCase()}/> <b>{rider.name}</b>, {rider.teamName}</p>
           ) : (
             <p>Wertung wurde noch nicht vergeben</p>
           );
