@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {Table} from "semantic-ui-react";
+import {Table, Flag} from "semantic-ui-react";
 import {connect} from "react-redux";
 import * as dateUtil from "../util/date.js";
+import countries from "./countries";
 
 class VirtualRanking extends Component {
     constructor(props) {
@@ -74,7 +75,7 @@ class VirtualRanking extends Component {
                 <Helmet>
                     <title>Virtuelles Ranking</title>
                 </Helmet>
-                  <Table celled color="red" sortable>
+                  <Table className="App-Table-Grid" basic='very' color="red" celled collapsing sortable>
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>Rang</Table.HeaderCell>
@@ -88,6 +89,9 @@ class VirtualRanking extends Component {
                     <Table.Body>
                         {this.state.data.length === 0 && this.dataNotReady()}
                         {this.state.data && this.state.data.map((connection, i) => {
+                            let flag = countries.find((v) => {
+                              return v.ioc === connection.rider.country;
+                            });
                             return (
                                 <Table.Row key={connection.id}>
                                     <Table.Cell>{this.state.ranking[connection.id]}</Table.Cell>
@@ -95,7 +99,7 @@ class VirtualRanking extends Component {
                                     <Table.Cell>{dateUtil.mapValueToTimeString(connection.virtualGap)}</Table.Cell>
                                     <Table.Cell>{connection.rider.name}</Table.Cell>
                                     <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
-                                    <Table.Cell>{connection.rider.country}</Table.Cell>
+                                    <Table.Cell><Flag name={flag.iso.toLowerCase()}/></Table.Cell>
                                 </Table.Row>
                             );
                       })}

@@ -129,3 +129,23 @@ i.icon {
   font-size: 1rem;
   font-weight: normal;
 }
+
+.App-Judgment-Rank {
+
+}
+
+.App-Judgment-Rank > h5, .App-Judgment-Single > h1 {
+  margin-bottom: 0 !important;
+}
+
+.App-Judgment-Rank > p:last-child, .App-Judgment-Single > p:first-child {
+  margin-bottom: 2rem;
+}
+
+.App-Flag {
+  margin-left: 0.5rem !important;
+}
+
+.App-Table-Grid {
+  width: 100% !important;
+}
