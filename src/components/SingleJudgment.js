@@ -26,9 +26,11 @@ class SingleJudgment extends Component {
             rider = riders.find((o) => {
               return o.id === jRC.rider.id;
             });
-            flag = countries.find((v) => {
-              return v.ioc === rider.country;
-            });
+            if (rider !== undefined) {
+                flag = countries.find((v) => {
+                    return v.ioc === rider.country;
+                });
+            }
           }
 
 

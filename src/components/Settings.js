@@ -11,7 +11,7 @@ class Settings extends Component {
 
       this.state = {
         formPeriod: 0
-      }
+      };
 
       this.enableNotifications = this.enableNotifications.bind(this);
       this.disableNotifications = this.disableNotifications.bind(this);
@@ -29,7 +29,7 @@ class Settings extends Component {
     setPeriodTime = (event) => {
         let value = event.target.intervall.value;
         store.dispatch(settingsActions.setPeriodBetweenCalls(value))
-    }
+    };
 
     render() {
         const {settings} = this.props;
