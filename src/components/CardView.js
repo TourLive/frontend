@@ -17,7 +17,6 @@ class Card extends Component {
         gpsData.map(element => {
             array.push([element.latitude, element.longitude]);
         });
-        const data = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
         start === undefined ? (start = [], start.longitude=defaultLongitude, start.latitude=defaultLatitude) : (start = gpsData[0]);
         end === undefined ? (end = [], end.longitude=defaultLongitude, end.latitude=defaultLatitude) : (end = gpsData[gpsData.length -1]);
         return(

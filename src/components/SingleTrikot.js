@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {List, Image,Container} from "semantic-ui-react";
-import store from '../store'
-import { connect } from 'react-redux'
+import {List, Image,Container, Flag} from "semantic-ui-react";
+import { connect } from 'react-redux';
+import countries from "./countries";
 
 class SingleTrikot extends Component {
   render() {
@@ -10,10 +10,18 @@ class SingleTrikot extends Component {
     const {cons} = this.props;
     const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
     let rank;
+    let flag;
 
     let rider = riders.find((e) => {
         return e.id === trikot.riderId;
     });
+
+    if (rider !== undefined) {
+      flag = countries.find((v) => {
+        return v.ioc === rider.country;
+      });
+    }
+
 
     if(sortedConnections.length > 0){
         rank = sortedConnections.findIndex(con => con.rider.id === rider.id) + 1;
@@ -22,7 +30,7 @@ class SingleTrikot extends Component {
     const attachedRider = rider === undefined ? (
         <p>Fahrerdaten werden geladen</p>
     ) : (
-        <p>{rider.startNr}, {rider.country}, {rider.name}, {rider.teamName}, Rang: {rank}</p>
+      <p><b>{rider.startNr}</b> <Flag name={flag.iso.toLowerCase()}/> <b>{rider.name}</b>, {rider.teamName}, Rang: {rank}</p>
     );
 
     return(
