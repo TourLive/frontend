@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {List, Image,Container} from "semantic-ui-react";
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import countries from "./countries";
 
 class SingleTrikotActual extends Component {
 
@@ -45,8 +46,7 @@ class SingleTrikotActual extends Component {
                         <p>Fahrerdaten werden geladen</p>
                       )
           )
-      )
-
+      );
 
     return(
         <List.Item>

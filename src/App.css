@@ -141,3 +141,7 @@ i.icon {
 .App-Judgment-Rank > p:last-child, .App-Judgment-Single > p:first-child {
   margin-bottom: 2rem;
 }
+
+.App-Flag {
+  margin-left: 0.5rem !important;
+}

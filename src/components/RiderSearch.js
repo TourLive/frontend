@@ -17,12 +17,12 @@ class RiderSearch extends Component {
     }
 
     resetComponent = () => {
-        this.setState({ selectedRider: undefined, selectionActive:false, updated:false, isLoading: false, results: [], value: '' };
-    });
+        this.setState({ selectedRider: undefined, selectionActive:false, updated:false, isLoading: false, results: [], value: '' });
+    };
 
     handleResultSelect = (e, { result }) => {
-        this.setState({value: result.name, selectionActive:true, selectedRider : result};
-    });
+        this.setState({value: result.name, selectionActive:true, selectedRider : result});
+    };
 
 
     handleSearchChange = (e, { value }) => {
