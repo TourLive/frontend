@@ -145,3 +145,7 @@ i.icon {
 .App-Flag {
   margin-left: 0.5rem !important;
 }
+
+.App-Table-Grid {
+  width: 100% !important;
+}

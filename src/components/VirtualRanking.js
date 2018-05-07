@@ -75,7 +75,7 @@ class VirtualRanking extends Component {
                 <Helmet>
                     <title>Virtuelles Ranking</title>
                 </Helmet>
-                  <Table celled color="red" sortable>
+                  <Table className="App-Table-Grid" basic='very' color="red" celled collapsing sortable>
                     <Table.Header>
                       <Table.Row>
                         <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>Rang</Table.HeaderCell>
