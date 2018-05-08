@@ -8,6 +8,7 @@ import Rankings from "./components/Rankings";
 import Tricots from "./components/Tricots";
 import Judgments from "./components/Judgments";
 import Settings from "./components/Settings";
+import SearchResult from "./components/SearchResult";
 import GlobalHeader from "./components/GlobalHeader";
 import * as settingsActions from './actions/settingsActions'
 import store from './store'
@@ -60,6 +61,7 @@ class App extends Component {
                         <Route path="/tricots" component={Tricots}/>
                         <Route path="/judgments" component={Judgments}/>
                         <Route path="/settings" component={Settings}/>
+                        <Route path="/search" component={SearchResult}/>
                         <Route path="/" component={Home}/>
                     </Switch>
                     <footer className="App-footer">

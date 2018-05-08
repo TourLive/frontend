@@ -1,15 +1,15 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search, Grid, Header } from 'semantic-ui-react'
+import { Search } from 'semantic-ui-react'
 import {connect} from "react-redux";
+import { Redirect} from "react-router-dom";
 import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
 import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
 import * as maillotActions from "../actions/maillotActions";
 import * as raceGroupsActions from "../actions/raceGroupsActions";
 import store from "../store";
-import Popup from "reactjs-popup";
-import RiderDetail from "./RiderDetail/RiderDetail";
+import SearchResult from "./SearchResult";
 
 class RiderSearch extends Component {
     componentWillMount() {
@@ -67,21 +67,22 @@ class RiderSearch extends Component {
         };
 
         return (
-                <Grid>
-                    <Grid.Column width={8}>
-                        <Search
-                            loading={isLoading}
-                            onResultSelect={this.handleResultSelect}
-                            onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
-                            results={results}
-                            value={value}
-                            resultRenderer={RiderRenderer}
-                        />
-                    </Grid.Column>
-                    <Popup open={this.state.selectionActive} onClose={this.resetComponent} modal closeOnDocumentClick>
-                        <span><RiderDetail selectedRider={this.state.selectedRider}/></span>
-                    </Popup>
-                </Grid>
+            <div className="Search">
+                {this.state.selectionActive === false &&
+                    <Search
+                        loading={isLoading}
+                        onResultSelect={this.handleResultSelect}
+                        onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
+                        results={results}
+                        value={value}
+                        resultRenderer={RiderRenderer}
+                    />
+                }
+                {this.state.selectionActive === true &&
+                    <SearchResult selectedRider={this.state.selectedRider}/>
+                }
+            </div>
+
         )
     }
 }

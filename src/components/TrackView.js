@@ -31,9 +31,7 @@ class TrackView extends Component {
                         )
                     })}
                 </Timeline>
-                <div className="Search">
-                    <RiderSearch/>
-                </div>
+                <RiderSearch/>
             </div>
         );
     }
