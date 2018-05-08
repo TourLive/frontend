@@ -141,3 +141,11 @@ i.icon {
 .App-Table-Grid {
   width: 100% !important;
 }
+
+.App-Search > .input {
+  width: 100% !important;
+}
+
+.search .icon {
+  font-size: 1.5rem !important;
+}
