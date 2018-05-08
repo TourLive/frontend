@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Route, Switch, NavLink} from 'react-router-dom';
+import {Route, Switch, NavLink, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import TrackView from "./TrackView";
 import CardView from "./CardView";
@@ -65,6 +65,7 @@ class Home extends Component {
                     <Route path="/cardview" component={CardView}/>
                     <Route path="/heightview" component={HeightView}/>
                 </Switch>
+                <Redirect to="/trackview"/>
             </div>
         );
     }
