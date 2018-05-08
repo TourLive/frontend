@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {Timeline, TimelineEvent} from 'react-event-timeline'
+import {Timeline, TimelineEvent} from 'react-event-timeline';
 import {connect} from "react-redux";
 import RiderSearch from "./RiderSearch";
 import SearchResult from "./SearchResult";
