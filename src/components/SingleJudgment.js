@@ -8,7 +8,6 @@ class SingleJudgment extends Component {
     const judgment = this.props.data;
     const {riders} = this.props;
     const {judgmentRiderConnections} = this.props;
-    console.log(countries);
 
     return(
       <div className="App-Judgment-Single">

@@ -8,7 +8,7 @@ import OfficalRanking from "./OfficialRanking";
 import VirtualRanking from "./VirtualRanking";
 import PointRanking from "./PointRanking";
 import MountainRanking from "./MountainRanking";
-import {Route, Switch, Link} from 'react-router-dom';
+import {Route, Switch, Link, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 
 class Rankings extends Component {
@@ -28,6 +28,7 @@ class Rankings extends Component {
     fetchCurrentRiderStageConnections(id) {
         store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
+        this.setState({activeItem: 'officialRanking'});
     }
 
     render() {
@@ -77,6 +78,7 @@ class Rankings extends Component {
                     <Route path="/rankings/point" component={PointRanking}/>
                     <Route path="/rankings/mountain" component={MountainRanking}/>
                 </Switch>
+                <Redirect to="/rankings/official"/>
             </div>
         );
     }

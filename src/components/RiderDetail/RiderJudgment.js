@@ -8,7 +8,7 @@ class RiderJudgment extends Component {
 
         const judgments = judgmentRiderConnections.filter(jRC => jRC.rider.id === rider.id).map((jRC) =>
             <div key={jRC.id} className="App-Judgment-Rider">
-                {jRC.judgment.name}, Platz: {jRC.rank}
+                <b>{jRC.judgment.name} bei Kilometer {jRC.judgment.distance}</b>, {jRC.rank}. Platz
             </div>
         );
 

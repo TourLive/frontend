@@ -4,12 +4,11 @@ import {Helmet} from "react-helmet";
 import {Map, TileLayer, Marker, Popup, Polyline} from "react-leaflet";
 import {connect} from "react-redux";
 
-const zoomLevel = 13;
-
 class Card extends Component {
     render() {
         const defaultLatitude = 47.71780751;
         const defaultLongitude = 8.666430535;
+        const zoomLevel = 13;
         const {gpsData} = this.props;
         let start = gpsData[0];
         let end = gpsData[gpsData.length - 1];
@@ -22,9 +21,9 @@ class Card extends Component {
         return(
             <div className="App-Content">
                 <Helmet>
-                    <title>Card</title>
+                    <title>Kartenansicht</title>
                 </Helmet>
-                <Header as="h1" color='red'>Card</Header>
+                <Header as="h1" color='red'>Aktuelles Rennen auf der Karte</Header>
                 <Map zoom={zoomLevel} center={[start.latitude, start.longitude]} className="map">
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -9,6 +9,7 @@ import raceGroupReducer from "./raceGroupReducer";
 import judgmentReducer from "./judgmentReducer";
 import judgmentRiderConnectionReducer from "./judgmentRiderConnectionReducer";
 import gpxReducer from "./gpxReducer";
+import searchReducer from "./searchReducer";
 
 const rootReducer = combineReducers({
     actualStage : activeStageReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     raceGroups : raceGroupReducer,
     judgments : judgmentReducer,
     judgmentRiderConnections : judgmentRiderConnectionReducer,
-    gpsData : gpxReducer
+    gpsData : gpxReducer,
+    searchState : searchReducer
 });
 
 export default rootReducer;

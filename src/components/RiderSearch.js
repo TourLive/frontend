@@ -1,15 +1,14 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search, Grid, Header } from 'semantic-ui-react'
+import { Search } from 'semantic-ui-react'
 import {connect} from "react-redux";
 import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
 import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
 import * as maillotActions from "../actions/maillotActions";
 import * as raceGroupsActions from "../actions/raceGroupsActions";
+import * as searchActions from "../actions/searchActions";
 import store from "../store";
-import Popup from "reactjs-popup";
-import RiderDetail from "./RiderDetail/RiderDetail";
 
 class RiderSearch extends Component {
     componentWillMount() {
@@ -17,11 +16,11 @@ class RiderSearch extends Component {
     }
 
     resetComponent = () => {
-        this.setState({ selectedRider: undefined, selectionActive:false, updated:false, isLoading: false, results: [], value: '' });
+        this.setState({ updated:false, isLoading: false, results: []});
     };
 
     handleResultSelect = (e, { result }) => {
-        this.setState({value: result.name, selectionActive:true, selectedRider : result});
+        store.dispatch(searchActions.saveSearchResult(result.name, result));
     };
 
 
@@ -42,7 +41,7 @@ class RiderSearch extends Component {
         }, 300)
     };
 
-    fetchCurrentRiders(id) {
+    fetchCurrentData(id) {
         store.dispatch(riderActions.getRidersFromAPI(id));
         store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
         store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
@@ -55,7 +54,7 @@ class RiderSearch extends Component {
         const { isLoading, value, results } = this.state;
         const {actualStage} = this.props;
         if (actualStage.id !== undefined && !this.state.updated) {
-            this.fetchCurrentRiders(actualStage.id);
+            this.fetchCurrentData(actualStage.id);
         }
 
         const RiderRenderer = ({_id, startNr, name}) => {
@@ -67,21 +66,18 @@ class RiderSearch extends Component {
         };
 
         return (
-                <Grid>
-                    <Grid.Column width={8}>
-                        <Search
-                            loading={isLoading}
-                            onResultSelect={this.handleResultSelect}
-                            onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
-                            results={results}
-                            value={value}
-                            resultRenderer={RiderRenderer}
-                        />
-                    </Grid.Column>
-                    <Popup open={this.state.selectionActive} onClose={this.resetComponent} modal closeOnDocumentClick>
-                        <span><RiderDetail selectedRider={this.state.selectedRider}/></span>
-                    </Popup>
-                </Grid>
+            <div className="Search">
+                <Search
+                    loading={isLoading}
+                    onResultSelect={this.handleResultSelect}
+                    onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
+                    results={results}
+                    value={value}
+                    resultRenderer={RiderRenderer}
+                    className="App-Search"
+                />
+            </div>
+
         )
     }
 }
