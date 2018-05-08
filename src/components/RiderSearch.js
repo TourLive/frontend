@@ -2,7 +2,6 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import { Search } from 'semantic-ui-react'
 import {connect} from "react-redux";
-import { Redirect} from "react-router-dom";
 import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
 import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
@@ -10,7 +9,6 @@ import * as maillotActions from "../actions/maillotActions";
 import * as raceGroupsActions from "../actions/raceGroupsActions";
 import * as searchActions from "../actions/searchActions";
 import store from "../store";
-import SearchResult from "./SearchResult";
 
 class RiderSearch extends Component {
     componentWillMount() {
@@ -22,7 +20,6 @@ class RiderSearch extends Component {
     };
 
     handleResultSelect = (e, { result }) => {
-        //this.setState({value: result.name, selectionActive:true, selectedRider : result});
         store.dispatch(searchActions.saveSearchResult(result.name, result));
     };
 
@@ -56,7 +53,6 @@ class RiderSearch extends Component {
     render() {
         const { isLoading, value, results } = this.state;
         const {actualStage} = this.props;
-        const {search} = this.props;
         if (actualStage.id !== undefined && !this.state.updated) {
             this.fetchCurrentData(actualStage.id);
         }
@@ -71,19 +67,15 @@ class RiderSearch extends Component {
 
         return (
             <div className="Search">
-                {search.displayResult === false &&
-                    <Search
-                        loading={isLoading}
-                        onResultSelect={this.handleResultSelect}
-                        onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
-                        results={results}
-                        value={value}
-                        resultRenderer={RiderRenderer}
-                    />
-                }
-                {search.displayResult === true &&
-                    <SearchResult selectedRider={search.selectedRider}/>
-                }
+                <Search
+                    loading={isLoading}
+                    onResultSelect={this.handleResultSelect}
+                    onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
+                    results={results}
+                    value={value}
+                    resultRenderer={RiderRenderer}
+                    className="App-Search"
+                />
             </div>
 
         )
@@ -93,8 +85,7 @@ class RiderSearch extends Component {
 function mapStateToProps(store) {
     return {
         riders : store.riders.riders,
-        actualStage : store.actualStage.data,
-        search : store.searchState
+        actualStage : store.actualStage.data
     }
 }
 
