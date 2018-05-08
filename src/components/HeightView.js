@@ -36,13 +36,12 @@ class HeightView extends Component {
                 }
             ]
         };
-
         return(
             <div className="App-Content">
                 <Helmet>
-                    <title>HeightView</title>
+                    <title>Höhenansicht</title>
                 </Helmet>
-                <Header as="h1" color='red'>HeightView</Header>
+                <Header as="h1" color='red'>Aktuelles Rennen im Höhenprofil</Header>
                 <Line data={data}/>
             </div>
         );

@@ -24,7 +24,7 @@ class TrackView extends Component {
                 {search.displayResult === false &&
                     <div>
                         <Helmet>
-                            <title>TrackView</title>
+                            <title>Streckenansicht</title>
                         </Helmet>
 
                         <Timeline className="App-Timeline">
@@ -39,7 +39,13 @@ class TrackView extends Component {
                     </div>
                 }
                 {search.displayResult === true &&
-                    <SearchResult selectedRider={search.selectedRider}/>
+                    <div>
+                        <Helmet>
+                            <title>Suchresulat</title>
+                        </Helmet>
+                        <SearchResult selectedRider={search.selectedRider}/>
+                    </div>
+
                 }
 
             </div>
