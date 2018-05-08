@@ -8,6 +8,7 @@ import * as riderStageConnectionActions from "../actions/riderStageConnectionsAc
 import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
 import * as maillotActions from "../actions/maillotActions";
 import * as raceGroupsActions from "../actions/raceGroupsActions";
+import * as searchActions from "../actions/searchActions";
 import store from "../store";
 import SearchResult from "./SearchResult";
 
@@ -17,11 +18,12 @@ class RiderSearch extends Component {
     }
 
     resetComponent = () => {
-        this.setState({ selectedRider: undefined, selectionActive:false, updated:false, isLoading: false, results: [], value: '' });
+        this.setState({ updated:false, isLoading: false, results: []});
     };
 
     handleResultSelect = (e, { result }) => {
-        this.setState({value: result.name, selectionActive:true, selectedRider : result});
+        //this.setState({value: result.name, selectionActive:true, selectedRider : result});
+        store.dispatch(searchActions.saveSearchResult(result.name, result));
     };
 
 
@@ -42,7 +44,7 @@ class RiderSearch extends Component {
         }, 300)
     };
 
-    fetchCurrentRiders(id) {
+    fetchCurrentData(id) {
         store.dispatch(riderActions.getRidersFromAPI(id));
         store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
         store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
@@ -54,8 +56,9 @@ class RiderSearch extends Component {
     render() {
         const { isLoading, value, results } = this.state;
         const {actualStage} = this.props;
+        const {search} = this.props;
         if (actualStage.id !== undefined && !this.state.updated) {
-            this.fetchCurrentRiders(actualStage.id);
+            this.fetchCurrentData(actualStage.id);
         }
 
         const RiderRenderer = ({_id, startNr, name}) => {
@@ -68,7 +71,7 @@ class RiderSearch extends Component {
 
         return (
             <div className="Search">
-                {this.state.selectionActive === false &&
+                {search.displayResult === false &&
                     <Search
                         loading={isLoading}
                         onResultSelect={this.handleResultSelect}
@@ -78,8 +81,8 @@ class RiderSearch extends Component {
                         resultRenderer={RiderRenderer}
                     />
                 }
-                {this.state.selectionActive === true &&
-                    <SearchResult selectedRider={this.state.selectedRider}/>
+                {search.displayResult === true &&
+                    <SearchResult selectedRider={search.selectedRider}/>
                 }
             </div>
 
@@ -90,7 +93,8 @@ class RiderSearch extends Component {
 function mapStateToProps(store) {
     return {
         riders : store.riders.riders,
-        actualStage : store.actualStage.data
+        actualStage : store.actualStage.data,
+        search : store.searchState
     }
 }
 
