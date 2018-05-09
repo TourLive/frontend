@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search } from 'semantic-ui-react'
+import { Search, Header, Divider } from 'semantic-ui-react'
 import {connect} from "react-redux";
 import * as riderActions from "../actions/riderActions";
 import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
@@ -67,14 +67,18 @@ class RiderSearch extends Component {
 
         return (
             <div className="Search">
+                <Divider/>
+                <Header as="h5">Nach Fahrernummer oder Name suchen</Header>
                 <Search
                     loading={isLoading}
                     onResultSelect={this.handleResultSelect}
                     onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
                     results={results}
                     value={value}
+                    input={{ icon: 'search', iconPosition: 'left' }}
                     resultRenderer={RiderRenderer}
                     className="App-Search"
+                    noResultsMessage="Keine Resulate gefunden"
                 />
             </div>
 
