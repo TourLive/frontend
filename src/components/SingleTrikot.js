@@ -35,7 +35,7 @@ class SingleTrikot extends Component {
 
     return(
       <List.Item>
-        <Image avatar src='http://localhost:3000/maillot.svg' />
+        <Image avatar src='maillot.svg' />
         <List.Content>
           <div className="App-Trikot-Box">
             <List.Header>{trikot.name}</List.Header>
