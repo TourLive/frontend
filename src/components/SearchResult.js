@@ -24,16 +24,16 @@ class SearchResult extends Component {
         return <div>
             <Button onClick={this.onSearchClose}>&lt; Zurück zur Streckenübersicht</Button><br/>
             <h1>{rider.name}</h1>
-            <Header as="h3"><Icon name='info' />Informationen</Header>
+            <Header as="h3"><Icon name='info'/>Informationen</Header>
             <RiderInfo selectedRider={rider}/>
             <Divider/>
-            <Header as="h3"><Icon name='shirtsinbulk' />Trikots</Header>
+            <Header as="h3"><Icon name='shirtsinbulk'/>Trikots</Header>
             <RiderTrikot selectedRider={rider}/>
             <Divider/>
-            <Header as="h3"><Icon name='trophy' />Wertungen</Header>
+            <Header as="h3"><Icon name='trophy'/>Wertungen</Header>
             <RiderJudgment selectedRider={rider}/>
             <Divider/>
-            <Header as="h3"><Icon name='group' /> Gruppenhistorie</Header>
+            <Header as="h3"><Icon name='group'/>Gruppenhistorie</Header>
             <RiderRaceGroup selectedRider={rider}/>
         </div>
 
