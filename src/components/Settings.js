@@ -46,7 +46,7 @@ class Settings extends Component {
                 <Helmet>
                     <title>Einstellungen</title>
                 </Helmet>
-                <Header as="h1" className="SecondHeader">Einstellungen</Header>
+                <Header as="h1" className="SecondHeader" color='red'>Einstellungen</Header>
                 <Header as="h3">Benachrichtigungen</Header>
                 <p><b>Aktuell:</b> {stateNotifications}</p>
                 <Button className="App-Button" color="green" fluid onClick={this.enableNotifications}>Ein</Button><br/>

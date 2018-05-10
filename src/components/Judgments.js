@@ -67,6 +67,7 @@ class Judgments extends Component {
                 {this.state.judgmentSelected === false &&
                   <div>
                     <Header as="h1" color='red'>Wertungen</Header>
+                    <div className="circle"><span className="innerCircle">ZIEL</span></div>
                     <Timeline className={halfHeight}>
                       {judgments.sort((a, b) => b.distance - a.distance).map(judgment => {
                         const marker = "KM: " + judgment.distance + " | " + judgment.name;
@@ -77,6 +78,7 @@ class Judgments extends Component {
                         )
                       })}
                     </Timeline>
+                    <div className="circle"><span className="innerCircle">START</span></div>
                   </div>
                 }
                 {this.state.judgmentSelected === true &&

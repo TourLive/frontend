@@ -18,7 +18,8 @@ html,body {
 }
 
 .App-title {
-  font-size: 1.5em;
+  margin-left: 0.4rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
@@ -155,4 +156,27 @@ i.icon {
 
 .search .icon {
   font-size: 1.5rem !important;
+}
+
+.circle {
+  top: 0px;
+  border-radius: 25px;
+  padding: 1rem;
+  height: 30px;
+  width: 10rem;
+  margin-left: 0.5rem;
+  background: #00BFFF;
+  border: #00BFFF;
+  display: flex;
+  left: 0px;
+}
+
+.innerCircle {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
 }
