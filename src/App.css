@@ -79,6 +79,9 @@ footer > .ui.menu {
 
 i.icon {
   font-size: 2rem;
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .navitem {
