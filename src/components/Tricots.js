@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
-import {connect} from "react-redux";
 import {Route, Switch, Link, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import TricotsStart from "./TricotsStart";
@@ -34,7 +33,7 @@ class Trikots extends Component {
       );
 
       const nav = (
-          <Menu stackable>
+          <Menu compact>
               {navMenu}
           </Menu>
       );
@@ -56,9 +55,4 @@ class Trikots extends Component {
     }
 }
 
-function mapStateToProps(store) {
-  return {
-  }
-}
-
-export default connect(mapStateToProps)(Trikots);
+export default Trikots;

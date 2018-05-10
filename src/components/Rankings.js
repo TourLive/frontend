@@ -57,7 +57,7 @@ class Rankings extends Component {
         );
 
         const nav = (
-            <Menu stackable>
+            <Menu compact>
                 {navMenu}
             </Menu>
         );
