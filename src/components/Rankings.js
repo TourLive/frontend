@@ -38,30 +38,7 @@ class Rankings extends Component {
         if (actualStage.id !== undefined && !this.state.updated) {
             this.fetchCurrentRiderStageConnections(actualStage.id);
         }
-
-        const navMenu =  (
-            [
-                <Menu.Item as={Link} key={1} to="/rankings/official" name='officialRanking' active={activeItem === 'officialRanking'} onClick={this.handleMenuItemClick}>
-                    Offiziell
-                </Menu.Item>,
-                <Menu.Item as={Link} key={2} to="/rankings/virtual" name='virtualRanking' active={activeItem === 'virtualRanking'} onClick={this.handleMenuItemClick}>
-                    Virtuell
-                </Menu.Item>,
-                <Menu.Item as={Link} key={3} to="/rankings/point" name='pointRanking' active={activeItem === 'pointRanking'} onClick={this.handleMenuItemClick}>
-                    Punkte
-                </Menu.Item>,
-                <Menu.Item as={Link} key={4} to="/rankings/mountain" name='mountainRanking' active={activeItem === 'mountainRanking'} onClick={this.handleMenuItemClick}>
-                    Berg
-                </Menu.Item>
-            ]
-        );
-
-        const nav = (
-            <Menu compact>
-                {navMenu}
-            </Menu>
-        );
-
+        
         return(
             <div className="App-Content">
                 <Helmet>
@@ -71,7 +48,20 @@ class Rankings extends Component {
                     <Header as="h1" color='red'>Klassemente</Header>
                     <p className="App-Timestamp"><strong>Letzte Aktualisierung:</strong> {new Date().today()} {new Date().timeNow()}</p>
                 </div>
-                <div>{nav}</div>
+                <Menu compact>
+                  <Menu.Item as={Link} key={1} to="/rankings/official" name='officialRanking' active={activeItem === 'officialRanking'} onClick={this.handleMenuItemClick}>
+                    Offiziell
+                  </Menu.Item>
+                  <Menu.Item as={Link} key={2} to="/rankings/virtual" name='virtualRanking' active={activeItem === 'virtualRanking'} onClick={this.handleMenuItemClick}>
+                    Virtuell
+                  </Menu.Item>
+                  <Menu.Item as={Link} key={3} to="/rankings/point" name='pointRanking' active={activeItem === 'pointRanking'} onClick={this.handleMenuItemClick}>
+                    Punkte
+                  </Menu.Item>
+                  <Menu.Item as={Link} key={4} to="/rankings/mountain" name='mountainRanking' active={activeItem === 'mountainRanking'} onClick={this.handleMenuItemClick}>
+                    Berg
+                  </Menu.Item>
+                </Menu>
                 <Switch>
                     <Route path="/rankings/official" component={OfficalRanking}/>
                     <Route path="/rankings/virtual" component={VirtualRanking}/>
