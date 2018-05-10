@@ -4,6 +4,7 @@ import {Timeline, TimelineEvent} from 'react-event-timeline';
 import {connect} from "react-redux";
 import RiderSearch from "./RiderSearch";
 import SearchResult from "./SearchResult";
+import TimeLineEndBlock from "./TimeLineEndBlock";
 
 class TrackView extends Component {
     render() {
@@ -26,7 +27,7 @@ class TrackView extends Component {
                         <Helmet>
                             <title>Streckenansicht</title>
                         </Helmet>
-
+                        <TimeLineEndBlock content="ZIEL"/>
                         <Timeline className="App-Timeline">
                             {judgments.sort((a,b) => b.distance - a.distance).map(element => {
                                 const marker = "KM: " + element.distance + " | " + element.name;
@@ -35,6 +36,7 @@ class TrackView extends Component {
                                 )
                             })}
                         </Timeline>
+                        <TimeLineEndBlock content="START"/>
                         <RiderSearch/>
                     </div>
                 }

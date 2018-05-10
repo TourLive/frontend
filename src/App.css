@@ -78,7 +78,7 @@ footer > .ui.menu {
   color: white;
 }
 
-i.icon {
+footer i.icon {
   font-size: 2rem;
   display: block;
   margin-left: auto !important;
@@ -92,10 +92,6 @@ i.icon {
 .App-Timeline > div:first-child {
   left: 13.5px !important;
   width: 6px !important;
-}
-
-.Search {
-  padding: 20px;
 }
 
 .Horizontal-Line{
@@ -179,4 +175,17 @@ i.icon {
   align-items: center;
   font-weight: bold;
   color: white;
+}
+
+.long {
+  width: 100%;
+}
+
+.nomargin {
+  margin-left: 0;
+}
+
+.gaps {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }

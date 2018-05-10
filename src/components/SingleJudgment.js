@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import {Header, Button, Flag} from "semantic-ui-react";
 import {connect} from "react-redux";
 import countries from "./countries";
+import RoundedRecetangle from './RoundedRecetangle';
 
 class SingleJudgment extends Component {
   render() {
     const judgment = this.props.data;
     const {riders} = this.props;
     const {judgmentRiderConnections} = this.props;
+    const description = `An Kilometer ${judgment.distance} auf der Strecke`;
 
     return(
       <div className="App-Judgment-Single">
         <Button onClick={this.props.close}>&lt; Zurück zu allen Wertungen</Button><br/>
         <Header as="h1">Wertung | {judgment.name}</Header>
-        <p>An Kilometer <b>{judgment.distance}</b> auf der Strecke</p>
+        <RoundedRecetangle content={description}/>
         {judgment.reward.points.map((reward,i) => {
           let rider;
           let flag;
