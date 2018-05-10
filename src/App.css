@@ -55,8 +55,7 @@ html,body {
 }
 
 .App-Trikot-Box {
-  margin-left: 20px;
-  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .App-Trikot-Content {
@@ -211,3 +210,20 @@ footer i.icon {
   }
 
 }
+
+.ui.feed {
+  margin: 0;
+}
+
+.ui.feed > .event > .label {
+  height: 4rem;
+  width: 4rem;
+  margin-bottom: 1rem;
+}
+
+.ui.feed > .event > .content {
+  margin-top: 1.5rem !important;
+  font-weight: bold !important;
+  font-size: 1.71428571em;
+}
+
