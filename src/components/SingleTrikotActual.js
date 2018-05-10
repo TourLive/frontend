@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {List, Image,Container} from "semantic-ui-react";
+import {List, Feed} from "semantic-ui-react";
 import { connect } from 'react-redux';
 import countries from "./countries";
 
@@ -50,16 +50,20 @@ class SingleTrikotActual extends Component {
 
     return(
         <List.Item>
-            <Image avatar src='http://localhost:3000/maillot.svg' />
-            <List.Content>
-                <div className="App-Trikot-Box">
-                    <List.Header>{trikot.name}</List.Header>
-                    <Container className="App-Trikot-Content">
-                        <span><b>Partner:</b> {trikot.partner}<br/></span>
-                        {attachedRider}
-                    </Container>
-                </div>
-            </List.Content>
+          <Feed>
+            <Feed.Event>
+              <Feed.Label image='/maillot.svg' />
+              <Feed.Content>
+                <Feed.Date content={trikot.name} />
+              </Feed.Content>
+            </Feed.Event>
+          </Feed>
+          <List.Content>
+            <div className="App-Trikot-Box">
+              <span className="lineGap"><b>Partner:</b> {trikot.partner}<br/></span><br/>
+              {attachedRider}
+            </div>
+          </List.Content>
         </List.Item>
     );
   }
