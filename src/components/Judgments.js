@@ -6,6 +6,7 @@ import store from "../store"
 import * as judgmentRiderConnectionActions from '../actions/judgmentRiderConnectionActions';
 import SingleJudgment from "./SingleJudgment";
 import {Timeline, TimelineEvent} from 'react-event-timeline';
+import TimeLineEndBlock from "./TimeLineEndBlock";
 
 class Judgments extends Component {
     constructor(props){
@@ -67,7 +68,7 @@ class Judgments extends Component {
                 {this.state.judgmentSelected === false &&
                   <div>
                     <Header as="h1" color='red'>Wertungen</Header>
-                    <div className="circle"><span className="innerCircle">ZIEL</span></div>
+                    <TimeLineEndBlock content="ZIEL"/>
                     <Timeline className={halfHeight}>
                       {judgments.sort((a, b) => b.distance - a.distance).map(judgment => {
                         const marker = "KM: " + judgment.distance + " | " + judgment.name;
@@ -78,7 +79,7 @@ class Judgments extends Component {
                         )
                       })}
                     </Timeline>
-                    <div className="circle"><span className="innerCircle">START</span></div>
+                    <TimeLineEndBlock content="START"/>
                   </div>
                 }
                 {this.state.judgmentSelected === true &&
