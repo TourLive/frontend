@@ -23,7 +23,6 @@ class SearchResult extends Component {
         const rider = this.props.selectedRider;
         return <div>
             <Button onClick={this.onSearchClose}>&lt; Zurück zur Streckenübersicht</Button><br/>
-            <h1>{rider.name}</h1>
             <Header as="h3"><Icon name='info' />Informationen</Header>
             <RiderInfo selectedRider={rider}/>
             <Divider/>
