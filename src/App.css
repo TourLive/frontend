@@ -78,7 +78,11 @@ footer > .ui.menu {
 }
 
 i.icon {
-  font-size: 2.5rem;
+  font-size: 2rem;
+}
+
+.navitem {
+  width: 20%;
 }
 
 .App-Timeline > div:first-child {

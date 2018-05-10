@@ -27,19 +27,19 @@ class App extends Component {
 
         const footerMenu =  (
             [
-                <Menu.Item as={Link} key={1} to="/trackview" name='home' active={activeItem === 'home'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={1} to="/trackview" name='home' active={activeItem === 'home'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="home"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={2} to="/rankings" name='rankings' active={activeItem === 'rankings'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={2} to="/rankings" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="cubes"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={3} to="/tricots" name='tricots' active={activeItem === 'tricots'} onClick={this.handleMenuItemClick}>
-                    <Icon className="App-Icon-White" name="flag checkered"/>
+                <Menu.Item as={Link} key={3} to="/tricots" name='tricots' active={activeItem === 'tricots'} className="navitem" onClick={this.handleMenuItemClick}>
+                    <Icon className="App-Icon-White" name="shirtsinbulk"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={4} to="/judgments" name='judgments' active={activeItem === 'judgments'} onClick={this.handleMenuItemClick}>
-                    <Icon className="App-Icon-White" name="balance"/>
+                <Menu.Item as={Link} key={4} to="/judgments" name='judgments' active={activeItem === 'judgments'} className="navitem" onClick={this.handleMenuItemClick}>
+                    <Icon className="App-Icon-White" name="trophy"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={5} to="/settings" name='settings' active={activeItem === 'settings'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={5} to="/settings" name='settings' active={activeItem === 'settings'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="settings"/>
                 </Menu.Item>
             ]
