@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import {connect} from "react-redux";
-import {Table, Flag} from "semantic-ui-react";
+import { Table, Flag, Responsive, Icon } from 'semantic-ui-react'
 import countries from "./countries";
-
 class PointRanking extends Component {
     constructor(props) {
         super(props);
@@ -72,6 +71,12 @@ class PointRanking extends Component {
     }
 
     render() {
+        const sortIcon = this.state.uiOrder === undefined ?
+          (
+            <Icon name="sort"/>
+          ) : (
+            <span></span>
+        );
         return(
             <div className="App-Table">
                 <Helmet>
@@ -80,12 +85,12 @@ class PointRanking extends Component {
               <Table className="App-Table-Grid" basic='very' color="red" celled collapsing sortable>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>Rang</Table.HeaderCell>
-                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('startNr')}>StartNr</Table.HeaderCell>
-                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('points')}>Bonuspunkte</Table.HeaderCell>
-                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('name')}>Name</Table.HeaderCell>
-                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('team')}>Team</Table.HeaderCell>
-                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('country')}>Land</Table.HeaderCell>
+                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>{sortIcon} Rang</Table.HeaderCell>
+                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('startNr')}>{sortIcon} StartNr</Table.HeaderCell>
+                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('points')}>{sortIcon} Bonuspunkte</Table.HeaderCell>
+                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('name')}>{sortIcon} Name</Table.HeaderCell>
+                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('team')}>{sortIcon} Team</Table.HeaderCell>
+                    <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('country')}>{sortIcon} Land</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -94,16 +99,23 @@ class PointRanking extends Component {
                       let flag = countries.find((v) => {
                         return v.ioc === connection.rider.country;
                       });
-                    return (
-                      <Table.Row key={connection.id}>
-                        <Table.Cell>{this.state.ranking[connection.id]}</Table.Cell>
-                        <Table.Cell>{connection.rider.startNr}</Table.Cell>
-                        <Table.Cell>{connection.bonusPoints}</Table.Cell>
-                        <Table.Cell>{connection.rider.name}</Table.Cell>
-                        <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
-                        <Table.Cell><Flag name={flag.iso.toLowerCase()}/></Table.Cell>
-                      </Table.Row>
-                    );
+                      const keyOne = `1${connection.id}`;
+                      const keyTwo = `2${connection.id}`;
+                      return [
+                        <Responsive as={Table.Row} key={keyOne} {...Responsive.onlyMobile}>
+                          <Table.Cell>Rang: {this.state.ranking[connection.id]}</Table.Cell>
+                          <Table.Cell>Bonuspunkte: {connection.bonusPoints}</Table.Cell>
+                          <Table.Cell width="4">{connection.rider.startNr} <Flag name={flag.iso.toLowerCase()}/>  {connection.rider.name}, Team: {connection.rider.teamShortName}</Table.Cell>
+                        </Responsive>,
+                        <Responsive as={Table.Row} key={keyTwo} {...Responsive.onlyComputer}>
+                          <Table.Cell>{this.state.ranking[connection.id]}</Table.Cell>
+                          <Table.Cell>{connection.rider.startNr}</Table.Cell>
+                          <Table.Cell>{connection.bonusPoints}</Table.Cell>
+                          <Table.Cell>{connection.rider.name}</Table.Cell>
+                          <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
+                          <Table.Cell><Flag name={flag.iso.toLowerCase()}/></Table.Cell>
+                        </Responsive>
+                      ];
                   })}
                 </Table.Body>
               </Table>
