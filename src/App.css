@@ -189,3 +189,23 @@ footer i.icon {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
 }
+
+.ui.table:not(.unstackable) tr>th.floatLeft {
+  float: left;
+}
+
+.ui.table:not(.unstackable) tr>th.widthThird {
+  width: 33.3% !important;
+}
+
+@media (min-width: 767px) {
+
+  .ui.table:not(.unstackable) tr>th.floatLeft {
+    float: none;
+  }
+
+  .ui.table:not(.unstackable) tr>th.widthThird {
+    width: auto !important;
+  }
+
+}
