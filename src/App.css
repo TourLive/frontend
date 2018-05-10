@@ -30,11 +30,13 @@ html,body {
   width:100%;
   height:5rem;
   background-color: #ff0000;
+  z-index:1000;
 }
 
 .App-Content {
   padding: 20px;
   margin-bottom:5rem;
+  z-index:100;
 }
 
 .App-Logo {
