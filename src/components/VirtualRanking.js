@@ -85,12 +85,12 @@ class VirtualRanking extends Component {
                   <Table className="App-Table-Grid" basic='very' color="red" celled collapsing sortable>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>{sortIcon} Rang</Table.HeaderCell>
-                        <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('startNr')}>{sortIcon} StartNr</Table.HeaderCell>
-                        <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort()}>{sortIcon} Zeit</Table.HeaderCell>
-                        <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('name')}>{sortIcon} Name</Table.HeaderCell>
-                        <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('team')}>{sortIcon} Team</Table.HeaderCell>
-                        <Table.HeaderCell sorted={this.state.uiOrder} onClick={() => this.handleSort('country')}>{sortIcon} Land</Table.HeaderCell>
+                        <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort()}>{sortIcon} Rang</Table.HeaderCell>
+                        <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort('startNr')}>{sortIcon} StartNr</Table.HeaderCell>
+                        <Table.HeaderCell className="widthThird" sorted={this.state.uiOrder} onClick={() => this.handleSort()}>{sortIcon} Zeit</Table.HeaderCell>
+                        <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort('name')}>{sortIcon} Name</Table.HeaderCell>
+                        <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort('team')}>{sortIcon} Team</Table.HeaderCell>
+                        <Table.HeaderCell className="widthThird" sorted={this.state.uiOrder} onClick={() => this.handleSort('country')}>{sortIcon} Land</Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
