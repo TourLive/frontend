@@ -1,7 +1,6 @@
 import * as types from "./actionTypes";
 import axios from "axios";
 import * as api from "../util/api.js";
-import store from "../store";
 
 function receiveRiders(data) {
   return {
