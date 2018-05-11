@@ -1,10 +1,9 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import {Timeline, TimelineEvent} from 'react-event-timeline';
-import {connect} from "react-redux";
-import RiderSearch from "./RiderSearch";
-import SearchResult from "./SearchResult";
-import TimeLineEndBlock from "./TimeLineEndBlock";
+import SearchResult from "../search/SearchResult";
+import TimeLineEndBlock from "../common/TimeLineEndBlock";
+import RiderSearchContainer from '../../containers/RiderSearchContainer'
 
 class TrackView extends Component {
     render() {
@@ -37,7 +36,7 @@ class TrackView extends Component {
                             })}
                         </Timeline>
                         <TimeLineEndBlock content="START"/>
-                        <RiderSearch/>
+                        <RiderSearchContainer/>
                     </div>
                 }
                 {search.displayResult === true &&
@@ -55,12 +54,4 @@ class TrackView extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        judgments : store.judgments.data,
-        raceGroups : store.raceGroups.data,
-        search : store.searchState
-    }
-}
-
-export default connect(mapStateToProps)(TrackView);
+export default TrackView;

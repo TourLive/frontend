@@ -3,8 +3,8 @@ import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Route, Switch, Link, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import TricotsStart from "./TricotsStart";
-import TricotsActual from "./TricotsActual";
+import TricotsActualContainer from '../../containers/TricotsActualContainer'
+import TricotsStartContainer from '../../containers/TricotsStartContainer'
 
 class Trikots extends Component {
   constructor(props){
@@ -36,8 +36,8 @@ class Trikots extends Component {
                   </Menu.Item>
                 </Menu>
                 <Switch>
-                    <Route path="/tricots/start" component={TricotsStart}/>
-                    <Route path="/tricots/actual" component={TricotsActual}/>
+                    <Route path="/tricots/start" component={TricotsStartContainer}/>
+                    <Route path="/tricots/actual" component={TricotsActualContainer}/>
                 </Switch>
                 <Redirect to="/tricots/start"/>
             </div>

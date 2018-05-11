@@ -1,14 +1,11 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {connect} from "react-redux";
-import * as maillotActions from "../actions/maillotActions";
-import store from "../store";
-import SingleTrikotActual from "./SingleTrikotActual";
+import * as maillotActions from "../../actions/maillotActions";
+import store from "../../store";
+import SingleTrikotContainer from "../../containers/SingleTrikotContainer";
 import {List} from "semantic-ui-react";
-import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
 
-
-class TricotsActual extends Component {
+class TricotsStart extends Component {
 
     constructor(props){
         super(props);
@@ -20,7 +17,6 @@ class TricotsActual extends Component {
 
     fetchCurrentMaillots(id) {
         store.dispatch(maillotActions.getCurrentMaillots(id));
-        store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
     }
 
@@ -37,21 +33,14 @@ class TricotsActual extends Component {
         return(
             <div className="App-Content">
                 <Helmet>
-                    <title>Trikotträger Aktuell</title>
+                    <title>Trikotträger Start</title>
                 </Helmet>
                 <List divided verticalAlign='middle' size="massive">
-                    {maillots.map(x => <SingleTrikotActual key={x.id} data={x}/>)}
+                    {maillots.map(x => <SingleTrikotContainer key={x.id} data={x}/>)}
                 </List>
             </div>
         );
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        maillots: store.maillots.data,
-        actualStage : store.actualStage.data
-    }
-}
-
-export default connect(mapStateToProps)(TricotsActual);
+export default TricotsStart;

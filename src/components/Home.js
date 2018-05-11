@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {Route, Switch, NavLink, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import TrackView from "./TrackView";
-import CardView from "./CardView";
-import HeightView from "./HeightView";
-import { connect } from 'react-redux';
+import TrackViewContainer from "../containers/TrackViewContainer";
+import HeightViewContainer from "../containers/HeightViewContainer";
+import MapViewContainer from "../containers/MapViewContainer";
 import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
-
+import {geolocated} from "react-geolocated";
 
 class Home extends Component {
     constructor(props) {
@@ -36,13 +35,13 @@ class Home extends Component {
 
         const homeMenu =  (
             [
-                <Menu.Item as={NavLink} key={1} to="/trackview" name='trackview' active={activeItem === 'trackview'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={NavLink} key={1} to="/view/track" name='trackview' active={activeItem === 'trackview'} onClick={this.handleMenuItemClick}>
                     Streckenansicht
                 </Menu.Item>,
-                <Menu.Item as={NavLink} key={2} to="/cardview" name='cardview' active={activeItem === 'cardview'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={NavLink} key={2} to="/view/map" name='cardview' active={activeItem === 'cardview'} onClick={this.handleMenuItemClick}>
                     Kartenansicht
                 </Menu.Item>,
-                <Menu.Item as={NavLink} key={3} to="/heightview" name='heightview' active={activeItem === 'heightview'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={NavLink} key={3} to="/view/height" name='heightview' active={activeItem === 'heightview'} onClick={this.handleMenuItemClick}>
                     Höhenprofil
                 </Menu.Item>
             ]
@@ -55,26 +54,24 @@ class Home extends Component {
         );
 
 
+        console.log(this.props.coords);
         return(
             <div className="App-Content-Home">
                 <header className="App-header-home">
                     {homeNav}
                 </header>
                 <Switch>
-                    <Route path="/trackview" component={TrackView}/>
-                    <Route path="/cardview" component={CardView}/>
-                    <Route path="/heightview" component={HeightView}/>
+                    <Route exact path="/view/track" component={TrackViewContainer}/>
+                    <Route exact path="/view/map" component={MapViewContainer}/>
+                    <Route exact path="/view/height" component={HeightViewContainer}/>
                 </Switch>
-                <Redirect to="/trackview"/>
+                <Redirect to="/view/track"/>
             </div>
         );
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        actualStage : store.actualStage.data
-    }
-}
-
-export default connect(mapStateToProps)(Home);
+export default geolocated({positionOptions: {
+    enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000,})(Home);

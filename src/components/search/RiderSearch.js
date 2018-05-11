@@ -1,14 +1,13 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 import { Search, Header, Divider } from 'semantic-ui-react'
-import {connect} from "react-redux";
-import * as riderActions from "../actions/riderActions";
-import * as riderStageConnectionActions from "../actions/riderStageConnectionsActions"
-import * as judgmentRiderConnectionActions from "../actions/judgmentRiderConnectionActions"
-import * as maillotActions from "../actions/maillotActions";
-import * as raceGroupsActions from "../actions/raceGroupsActions";
-import * as searchActions from "../actions/searchActions";
-import store from "../store";
+import * as riderActions from "../../actions/riderActions";
+import * as riderStageConnectionActions from "../../actions/riderStageConnectionsActions"
+import * as judgmentRiderConnectionActions from "../../actions/judgmentRiderConnectionActions"
+import * as maillotActions from "../../actions/maillotActions";
+import * as raceGroupsActions from "../../actions/raceGroupsActions";
+import * as searchActions from "../../actions/searchActions";
+import store from "../../store";
 
 class RiderSearch extends Component {
     componentWillMount() {
@@ -86,11 +85,4 @@ class RiderSearch extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        riders : store.riders.riders,
-        actualStage : store.actualStage.data
-    }
-}
-
-export default connect(mapStateToProps)(RiderSearch);
+export default RiderSearch;

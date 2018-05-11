@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import {connect} from "react-redux";
 import {Menu, Icon} from 'semantic-ui-react';
-import Home from "./components/Home";
-import Rankings from "./components/Rankings";
-import Tricots from "./components/Tricots";
-import Judgments from "./components/Judgments";
-import Settings from "./components/Settings";
-import SearchResult from "./components/SearchResult";
-import GlobalHeader from "./components/GlobalHeader";
-import * as settingsActions from './actions/settingsActions'
-import store from './store'
+import Tricots from "./components/tricots/Tricots";
+import * as settingsActions from './actions/settingsActions';
+import store from './store';
+import HomeContainer from './containers/HomeContainer';
+import SettingsContainer from './containers/SettingsContainer';
+import RankingsContainer from './containers/RankingsContainer';
+import GlobalHeaderContainer from './containers/GlobalHeaderContainer';
+import JudgmentsContainer from './containers/JudgmentsContainer';
+import NoMatch from "./components/NoMatch";
 
 class App extends Component {
     state = {activeItem: 'home'}
@@ -27,7 +26,7 @@ class App extends Component {
 
         const footerMenu =  (
             [
-                <Menu.Item as={Link} key={1} to="/trackview" name='home' active={activeItem === 'home'} className="navitem" onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={1} to="/view/track" name='home' active={activeItem === 'home'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="home"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={2} to="/rankings" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
@@ -55,14 +54,15 @@ class App extends Component {
         return (
             <Router>
                 <div className="App" style={{ display:"flex", minHeight:"100vh", flexDirection:"column" }}>
-                    <GlobalHeader/>
+                    <GlobalHeaderContainer/>
                     <Switch>
-                        <Route path="/rankings" component={Rankings}/>
+                        <Route path="/rankings" component={RankingsContainer}/>
                         <Route path="/tricots" component={Tricots}/>
-                        <Route path="/judgments" component={Judgments}/>
-                        <Route path="/settings" component={Settings}/>
-                        <Route path="/search" component={SearchResult}/>
-                        <Route path="/" component={Home}/>
+                        <Route exact path="/judgments" component={JudgmentsContainer}/>
+                        <Route exact path="/settings" component={SettingsContainer}/>
+                        <Route exact path="/" component={HomeContainer}/>
+                        <Route exact path="/view/*" component={HomeContainer}/>
+                        <Route path="*" component={NoMatch} status={404}/>
                     </Switch>
                     <footer className="App-footer">
                         {footerNav}
@@ -73,8 +73,4 @@ class App extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {}
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

@@ -1,15 +1,14 @@
 import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
-import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
-import store from "../store";
-import {connect} from "react-redux";
-import OfficalRanking from "./OfficialRanking";
-import VirtualRanking from "./VirtualRanking";
-import PointRanking from "./PointRanking";
-import MountainRanking from "./MountainRanking";
+import * as riderStageConnectionsActions from "../../actions/riderStageConnectionsActions";
+import store from "../../store";
 import {Route, Switch, Link, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
+import OfficialRankingContainer from '../../containers/OfficialRankingContainer'
+import VirtualRankingContainer from '../../containers/VirtualRankingContainer'
+import PointRankingContainer from '../../containers/PointRankingContainer'
+import MountainRankingContainer from '../../containers/MountainRankingContainer'
 
 class Rankings extends Component {
 
@@ -63,10 +62,10 @@ class Rankings extends Component {
                   </Menu.Item>
                 </Menu>
                 <Switch>
-                    <Route path="/rankings/official" component={OfficalRanking}/>
-                    <Route path="/rankings/virtual" component={VirtualRanking}/>
-                    <Route path="/rankings/point" component={PointRanking}/>
-                    <Route path="/rankings/mountain" component={MountainRanking}/>
+                    <Route path="/rankings/official" component={OfficialRankingContainer}/>
+                    <Route path="/rankings/virtual" component={VirtualRankingContainer}/>
+                    <Route path="/rankings/point" component={PointRankingContainer}/>
+                    <Route path="/rankings/mountain" component={MountainRankingContainer}/>
                 </Switch>
                 <Redirect to="/rankings/official"/>
             </div>
@@ -74,11 +73,4 @@ class Rankings extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        cons : store.cons.cons,
-        actualStage : store.actualStage.data
-    }
-}
-
-export default connect(mapStateToProps)(Rankings);
+export default Rankings;

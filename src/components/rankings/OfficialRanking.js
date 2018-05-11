@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {connect} from "react-redux";
 import {Table, Flag, Responsive, Icon} from "semantic-ui-react";
-import * as dateUtil from "../util/date.js";
-import countries from "./countries";
+import * as dateUtil from "../../util/date.js";
+import countries from "../common/countries";
 
 class OfficialRanking extends Component {
 
@@ -124,12 +123,4 @@ class OfficialRanking extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        actualStage : store.actualStage.data,
-        cons : store.cons.cons
-    }
-}
-
-
-export default connect(mapStateToProps)(OfficialRanking);
+export default OfficialRanking;

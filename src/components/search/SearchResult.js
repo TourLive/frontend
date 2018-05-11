@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import RiderInfo from "./RiderDetail/RiderInfo";
-import RiderJudgment from "./RiderDetail/RiderJudgment";
-import RiderTrikot from "./RiderDetail/RiderTrikots";
-import RiderRaceGroup from "./RiderDetail/RiderRaceGroup";
+import RiderInfo from "../RiderDetail/RiderInfo";
+import RiderJudgment from "../RiderDetail/RiderJudgment";
+import RiderTrikot from "../RiderDetail/RiderTrikots";
+import RiderRaceGroup from "../RiderDetail/RiderRaceGroup";
 import {Divider, Icon, Header, Button} from "semantic-ui-react";
-import store from "../store";
-import * as searchActions from "../actions/searchActions";
+import store from "../../store";
+import * as searchActions from "../../actions/searchActions";
 
 class SearchResult extends Component {
     constructor(props){
@@ -15,7 +15,6 @@ class SearchResult extends Component {
     }
 
     onSearchClose() {
-        console.log("bndfkjnsdkjfnksdjnfkjsdnfkjsdnfkjndsfkjndsf");
         store.dispatch(searchActions.disableSearchResult());
     }
 

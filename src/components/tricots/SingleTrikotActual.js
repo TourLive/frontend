@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import {List, Feed} from "semantic-ui-react";
-import { connect } from 'react-redux';
-import countries from "./countries";
 
 class SingleTrikotActual extends Component {
 
@@ -69,10 +67,4 @@ class SingleTrikotActual extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-      cons : store.cons.cons
-  }
-}
-
-export default connect(mapStateToProps)(SingleTrikotActual);
+export default SingleTrikotActual;

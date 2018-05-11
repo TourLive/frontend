@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import {Table} from "semantic-ui-react";
+import {Card} from "semantic-ui-react";
 import {connect} from "react-redux";
+import RiderImage from "../common/RiderImage";
 
 class RiderInfo extends Component {
 
@@ -15,26 +16,20 @@ class RiderInfo extends Component {
             return sortedConnections.findIndex(con => con.rider.id === riderId) + 1;
         }
 
-        return <Table>
-            <tbody>
-            <tr>
-                <td>Name: {rider.name}</td>
-            </tr>
-            <tr>
-                <td>Team: {rider.team}</td>
-            </tr>
-            <tr>
-                <td>StartNr: {rider.startNr}</td>
-            </tr>
-            <tr>
-                <td>Nationalität: {rider.country}</td>
-            </tr>
-            <tr>
-                <td>Rang: {getRankOfRider(rider.id)}</td>
-            </tr>
-            </tbody>
-        </Table>
-       
+        const sourceImage = `../riders/${rider.startNr}.jpg`;
+
+        return (
+          <Card>
+            <RiderImage source={sourceImage} default="../placeholder.jpg" />
+            <Card.Content>
+              <Card.Header>{rider.name}</Card.Header>
+              <Card.Meta>{rider.team}</Card.Meta>
+              <Card.Description>Nationalität: {rider.country}</Card.Description>
+              <Card.Description>StartNr: {rider.startNr}</Card.Description>
+              <Card.Description>Aktueller Rang: {getRankOfRider(rider.id)}</Card.Description>
+            </Card.Content>
+          </Card>
+        )
 
     }
 }

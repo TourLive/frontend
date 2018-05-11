@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {Header, Button, Flag} from "semantic-ui-react";
-import {connect} from "react-redux";
-import countries from "./countries";
-import RoundedRecetangle from './RoundedRecetangle';
+import countries from "../common/countries";
+import RoundedRecetangle from '../common/RoundedRecetangle';
 
 class SingleJudgment extends Component {
   render() {
@@ -43,8 +42,8 @@ class SingleJudgment extends Component {
 
           if (reward !== 0) {
             return (
-              <div className="App-Judgment-Rank">
-                <h5 key={i+1}>Platz {i+1}</h5>
+              <div key={i+1} className="App-Judgment-Rank">
+                <h5>Platz {i+1}</h5>
                 {linkedRider}
               </div>
             )
@@ -55,11 +54,5 @@ class SingleJudgment extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-    riders : store.riders.riders,
-    judgmentRiderConnections : store.judgmentRiderConnections.data
-  }
-}
 
-export default connect(mapStateToProps)(SingleJudgment);
+export default SingleJudgment;

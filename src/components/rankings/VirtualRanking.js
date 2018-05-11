@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import { Table, Flag, Responsive, Icon } from 'semantic-ui-react'
-import {connect} from "react-redux";
-import * as dateUtil from "../util/date.js";
-import countries from "./countries";
+import { Table, Flag, Responsive, Icon } from 'semantic-ui-react';
+import * as dateUtil from "../../util/date.js";
+import countries from "../common/countries";
 
 class VirtualRanking extends Component {
     constructor(props) {
@@ -124,11 +123,4 @@ class VirtualRanking extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        actualStage : store.actualStage.data,
-        cons : store.cons.cons
-    }
-}
-
-export default connect(mapStateToProps)(VirtualRanking);
+export default VirtualRanking;

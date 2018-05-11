@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {connect} from "react-redux";
 import { Table, Flag, Responsive, Icon } from 'semantic-ui-react'
-import countries from "./countries";
+import countries from "../common/countries";
 
 class MountainRanking extends Component {
     constructor(props) {
@@ -125,11 +124,4 @@ class MountainRanking extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        actualStage : store.actualStage.data,
-        cons : store.cons.cons
-    }
-}
-
-export default connect(mapStateToProps)(MountainRanking);
+export default MountainRanking;

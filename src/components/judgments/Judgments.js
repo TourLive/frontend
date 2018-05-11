@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import {Header, Button, Divider} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
-import { connect } from 'react-redux'
-import store from "../store"
-import * as judgmentRiderConnectionActions from '../actions/judgmentRiderConnectionActions';
-import SingleJudgment from "./SingleJudgment";
+import store from "../../store"
+import * as judgmentRiderConnectionActions from '../../actions/judgmentRiderConnectionActions';
+import SingleJudgmentContainer from "../../containers/SingleJudgmentContainer";
 import {Timeline, TimelineEvent} from 'react-event-timeline';
-import TimeLineEndBlock from "./TimeLineEndBlock";
+import TimeLineEndBlock from "../common/TimeLineEndBlock";
 
 class Judgments extends Component {
     constructor(props){
@@ -83,19 +82,11 @@ class Judgments extends Component {
                   </div>
                 }
                 {this.state.judgmentSelected === true &&
-                    <SingleJudgment data={this.state.judgment} close={this.onJudgmentClose}/>
+                    <SingleJudgmentContainer data={this.state.judgment} close={this.onJudgmentClose}/>
                 }
             </div>
         );
     }
 }
 
-
-function mapStateToProps(store) {
-  return {
-    actualStage : store.actualStage.data,
-    judgments : store.judgments.data
-  }
-}
-
-export default connect(mapStateToProps)(Judgments);
+export default Judgments;
