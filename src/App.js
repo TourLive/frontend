@@ -3,13 +3,14 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Menu, Icon} from 'semantic-ui-react';
 import Tricots from "./components/tricots/Tricots";
-import * as settingsActions from './actions/settingsActions'
-import store from './store'
-import HomeContainer from './containers/HomeContainer'
-import SettingsContainer from './containers/SettingsContainer'
-import RankingsContainer from './containers/RankingsContainer'
-import GlobalHeaderContainer from './containers/GlobalHeaderContainer'
-import JudgmentsContainer from './containers/JudgmentsContainer'
+import * as settingsActions from './actions/settingsActions';
+import store from './store';
+import HomeContainer from './containers/HomeContainer';
+import SettingsContainer from './containers/SettingsContainer';
+import RankingsContainer from './containers/RankingsContainer';
+import GlobalHeaderContainer from './containers/GlobalHeaderContainer';
+import JudgmentsContainer from './containers/JudgmentsContainer';
+import NoMatch from "./components/NoMatch";
 
 class App extends Component {
     state = {activeItem: 'home'}
@@ -60,7 +61,8 @@ class App extends Component {
                         <Route exact path="/judgments" component={JudgmentsContainer}/>
                         <Route exact path="/settings" component={SettingsContainer}/>
                         <Route exact path="/" component={HomeContainer}/>
-                        <Route path="/view" component={HomeContainer}/>
+                        <Route exact path="/view/*" component={HomeContainer}/>
+                        <Route path="*" component={NoMatch} status={404}/>
                     </Switch>
                     <footer className="App-footer">
                         {footerNav}

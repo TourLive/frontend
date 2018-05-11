@@ -15,11 +15,11 @@ class RiderImage extends Component {
   }
 
   render () {
-    const defaultImage = <Image source="placeholder.jpg" style={this.props.style}/>;
+    const defaultImage = <Image source={this.props.default} style={this.props.style}/>;
 
     if (this.state.failed) return defaultImage;
 
-    const imageName = `${this.props.source}.jpg`;
+    const imageName = `../riders/${this.props.source}.jpg`;
     console.log(imageName);
 
     return (
