@@ -16,10 +16,11 @@ class RiderInfo extends Component {
             return sortedConnections.findIndex(con => con.rider.id === riderId) + 1;
         }
 
+        const sourceImage = `../riders/${rider.startNr}.jpg`;
 
         return (
           <Card>
-            <RiderImage source={rider.id} default="riders/placeholder.jpg" />
+            <RiderImage source={sourceImage} default="../placeholder.jpg" />
             <Card.Content>
               <Card.Header>{rider.name}</Card.Header>
               <Card.Meta>{rider.team}</Card.Meta>

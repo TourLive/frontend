@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
-import { Image } from 'semantic-ui-react'
 
 class RiderImage extends Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      failed: false
-    };
+    this.state={link: this.props.source, default: this.props.default};
+    this.onError=this.onError.bind(this);
   }
 
-  _onError = () => {
-    this.setState({failed: true});
-  }
+  onError(){
+    console.log("error: could not find picture");
+    this.setState(function(){ return {link: this.state.default}; });
+  };
 
   render () {
-    const defaultImage = <Image source={this.props.default} style={this.props.style}/>;
-
-    if (this.state.failed) return defaultImage;
-
-    const imageName = `../riders/${this.props.source}.jpg`;
-    console.log(imageName);
-
     return (
-      <Image onError={this._onError} src={imageName}/>
+      <img className="App-Image-Rider" onError={this.onError} src={this.state.link}/>
     );
   }
 }
