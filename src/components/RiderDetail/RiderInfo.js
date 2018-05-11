@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import {Card, Image} from "semantic-ui-react";
+import {Card} from "semantic-ui-react";
 import {connect} from "react-redux";
+import RiderImage from "../RiderImage";
 
 class RiderInfo extends Component {
 
@@ -18,7 +19,7 @@ class RiderInfo extends Component {
 
         return (
           <Card>
-            <Image src='/riders/placeholder.jpg' />
+            <RiderImage source={rider.id} />
             <Card.Content>
               <Card.Header>{rider.name}</Card.Header>
               <Card.Meta>{rider.team}</Card.Meta>

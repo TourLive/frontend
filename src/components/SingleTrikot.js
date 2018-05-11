@@ -54,11 +54,4 @@ class SingleTrikot extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-      riders : store.riders.riders,
-      cons: store.cons.cons
-  }
-}
-
-export default connect(mapStateToProps)(SingleTrikot);
+export default SingleTrikot;

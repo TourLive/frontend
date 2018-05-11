@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {connect} from "react-redux";
 import * as maillotActions from "../actions/maillotActions";
 import store from "../store";
-import SingleTrikot from "./SingleTrikot";
+import SingleTrikotContainer from "../containers/SingleTrikotContainer";
 import {List} from "semantic-ui-react";
 
 
@@ -38,18 +37,11 @@ class TricotsStart extends Component {
                     <title>Trikotträger Start</title>
                 </Helmet>
                 <List divided verticalAlign='middle' size="massive">
-                    {maillots.map(x => <SingleTrikot key={x.id} data={x}/>)}
+                    {maillots.map(x => <SingleTrikotContainer key={x.id} data={x}/>)}
                 </List>
             </div>
         );
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        maillots: store.maillots.data,
-        actualStage : store.actualStage.data,
-    }
-}
-
-export default connect(mapStateToProps)(TricotsStart);
+export default TricotsStart;

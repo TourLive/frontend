@@ -69,10 +69,4 @@ class SingleTrikotActual extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-      cons : store.cons.cons
-  }
-}
-
-export default connect(mapStateToProps)(SingleTrikotActual);
+export default SingleTrikotActual;

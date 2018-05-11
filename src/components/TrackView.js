@@ -55,12 +55,4 @@ class TrackView extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        judgments : store.judgments.data,
-        raceGroups : store.raceGroups.data,
-        search : store.searchState
-    }
-}
-
-export default connect(mapStateToProps)(TrackView);
+export default TrackView;

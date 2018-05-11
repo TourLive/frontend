@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {connect} from "react-redux";
 import * as maillotActions from "../actions/maillotActions";
 import store from "../store";
-import SingleTrikotActual from "./SingleTrikotActual";
+import SingleTrikotActualContainer from "../containers/SingleTrikotActualContainer";
 import {List} from "semantic-ui-react";
 import * as riderStageConnectionsActions from "../actions/riderStageConnectionsActions";
 
@@ -40,18 +39,11 @@ class TricotsActual extends Component {
                     <title>Trikotträger Aktuell</title>
                 </Helmet>
                 <List divided verticalAlign='middle' size="massive">
-                    {maillots.map(x => <SingleTrikotActual key={x.id} data={x}/>)}
+                    {maillots.map(x => <SingleTrikotActualContainer key={x.id} data={x}/>)}
                 </List>
             </div>
         );
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        maillots: store.maillots.data,
-        actualStage : store.actualStage.data
-    }
-}
-
-export default connect(mapStateToProps)(TricotsActual);
+export default TricotsActual;

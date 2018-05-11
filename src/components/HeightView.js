@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Line} from 'react-chartjs-2';
-import {connect} from "react-redux";
 
 class HeightView extends Component {
     render() {
@@ -48,10 +47,4 @@ class HeightView extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        gpsData : store.gpsData.data
-    }
-}
-
-export default connect(mapStateToProps)(HeightView);
+export default HeightView;

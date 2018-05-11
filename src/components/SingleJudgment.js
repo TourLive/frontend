@@ -43,8 +43,8 @@ class SingleJudgment extends Component {
 
           if (reward !== 0) {
             return (
-              <div className="App-Judgment-Rank">
-                <h5 key={i+1}>Platz {i+1}</h5>
+              <div key={i+1} className="App-Judgment-Rank">
+                <h5>Platz {i+1}</h5>
                 {linkedRider}
               </div>
             )
@@ -55,11 +55,5 @@ class SingleJudgment extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-    riders : store.riders.riders,
-    judgmentRiderConnections : store.judgmentRiderConnections.data
-  }
-}
 
-export default connect(mapStateToProps)(SingleJudgment);
+export default SingleJudgment;

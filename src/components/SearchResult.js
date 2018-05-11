@@ -15,7 +15,6 @@ class SearchResult extends Component {
     }
 
     onSearchClose() {
-        console.log("bndfkjnsdkjfnksdjnfkjsdnfkjsdnfkjndsfkjndsf");
         store.dispatch(searchActions.disableSearchResult());
     }
 

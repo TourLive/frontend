@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import {Header, Button, Divider, Form} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import * as settingsActions from '../actions/settingsActions'
-import store from '../store'
-import { connect } from 'react-redux'
+import store from '../store';
 
 class Settings extends Component {
     constructor(props) {
@@ -82,10 +81,4 @@ class Settings extends Component {
     }
 }
 
-function mapStateToProps(store) {
-  return {
-    settings: store.settings
-  }
-}
-
-export default connect(mapStateToProps)(Settings);
+export default Settings;

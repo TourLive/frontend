@@ -2,9 +2,8 @@ import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Map, TileLayer, Marker, Popup, Polyline} from "react-leaflet";
-import {connect} from "react-redux";
 
-class Card extends Component {
+class MapView extends Component {
     render() {
         const defaultLatitude = 47.71780751;
         const defaultLongitude = 8.666430535;
@@ -46,10 +45,4 @@ class Card extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        gpsData : store.gpsData.data
-    }
-}
-
-export default connect(mapStateToProps)(Card);
+export default MapView;

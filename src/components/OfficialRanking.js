@@ -124,12 +124,4 @@ class OfficialRanking extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        actualStage : store.actualStage.data,
-        cons : store.cons.cons
-    }
-}
-
-
-export default connect(mapStateToProps)(OfficialRanking);
+export default OfficialRanking;
