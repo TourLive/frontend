@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Card} from "semantic-ui-react";
 import {connect} from "react-redux";
-import RiderImage from "../RiderImage";
+import RiderImage from "../common/RiderImage";
 
 class RiderInfo extends Component {
 

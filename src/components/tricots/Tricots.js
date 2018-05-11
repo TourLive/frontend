@@ -3,8 +3,8 @@ import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Route, Switch, Link, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import TricotsActualContainer from '../containers/TricotsActualContainer'
-import TricotsStartContainer from '../containers/TricotsStartContainer'
+import TricotsActualContainer from '../../containers/TricotsActualContainer'
+import TricotsStartContainer from '../../containers/TricotsStartContainer'
 
 class Trikots extends Component {
   constructor(props){

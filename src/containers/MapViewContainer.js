@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MapView from "../components/MapView";
+import MapView from "../components/views/MapView";
 
 function mapStateToProps(store) {
   return {

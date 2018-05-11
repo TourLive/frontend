@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import VirtualRanking from "../components/VirtualRanking";
+import VirtualRanking from "../components/rankings/VirtualRanking";
 
 function mapStateToProps(store) {
   return {

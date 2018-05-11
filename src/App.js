@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import {connect} from "react-redux";
 import {Menu, Icon} from 'semantic-ui-react';
-import Tricots from "./components/Tricots";
-import Judgments from "./components/Judgments";
-import GlobalHeader from "./components/GlobalHeader";
+import Tricots from "./components/tricots/Tricots";
 import * as settingsActions from './actions/settingsActions'
 import store from './store'
 import HomeContainer from './containers/HomeContainer'
 import SettingsContainer from './containers/SettingsContainer'
 import RankingsContainer from './containers/RankingsContainer'
+import GlobalHeaderContainer from './containers/GlobalHeaderContainer'
+import JudgmentsContainer from './containers/JudgmentsContainer'
 
 class App extends Component {
     state = {activeItem: 'home'}
@@ -54,11 +53,11 @@ class App extends Component {
         return (
             <Router>
                 <div className="App" style={{ display:"flex", minHeight:"100vh", flexDirection:"column" }}>
-                    <GlobalHeader/>
+                    <GlobalHeaderContainer/>
                     <Switch>
                         <Route path="/rankings" component={RankingsContainer}/>
                         <Route path="/tricots" component={Tricots}/>
-                        <Route exact path="/judgments" component={Judgments}/>
+                        <Route exact path="/judgments" component={JudgmentsContainer}/>
                         <Route exact path="/settings" component={SettingsContainer}/>
                         <Route exact path="/" component={HomeContainer}/>
                         <Route path="/view" component={HomeContainer}/>
@@ -72,8 +71,4 @@ class App extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {}
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

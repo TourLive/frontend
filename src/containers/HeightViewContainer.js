@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HeightView from "../components/HeightView";
+import HeightView from "../components/views/HeightView";
 
 function mapStateToProps(store) {
   return {

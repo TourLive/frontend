@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import {List, Image,Container, Flag, Feed} from "semantic-ui-react";
-import { connect } from 'react-redux';
-import countries from "./countries";
+import {List, Flag, Feed} from "semantic-ui-react";
+import countries from "../common/countries";
 
 class SingleTrikot extends Component {
   render() {

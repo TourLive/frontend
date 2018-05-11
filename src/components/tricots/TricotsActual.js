@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import * as maillotActions from "../actions/maillotActions";
-import store from "../store";
-import SingleTrikotContainer from "../containers/SingleTrikotContainer";
+import * as maillotActions from "../../actions/maillotActions";
+import store from "../../store";
+import SingleTrikotActualContainer from "../../containers/SingleTrikotActualContainer";
 import {List} from "semantic-ui-react";
+import * as riderStageConnectionsActions from "../../actions/riderStageConnectionsActions";
 
 
-class TricotsStart extends Component {
+class TricotsActual extends Component {
 
     constructor(props){
         super(props);
@@ -18,6 +19,7 @@ class TricotsStart extends Component {
 
     fetchCurrentMaillots(id) {
         store.dispatch(maillotActions.getCurrentMaillots(id));
+        store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
     }
 
@@ -34,14 +36,14 @@ class TricotsStart extends Component {
         return(
             <div className="App-Content">
                 <Helmet>
-                    <title>Trikotträger Start</title>
+                    <title>Trikotträger Aktuell</title>
                 </Helmet>
                 <List divided verticalAlign='middle' size="massive">
-                    {maillots.map(x => <SingleTrikotContainer key={x.id} data={x}/>)}
+                    {maillots.map(x => <SingleTrikotActualContainer key={x.id} data={x}/>)}
                 </List>
             </div>
         );
     }
 }
 
-export default TricotsStart;
+export default TricotsActual;

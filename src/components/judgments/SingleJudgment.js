@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {Header, Button, Flag} from "semantic-ui-react";
-import {connect} from "react-redux";
-import countries from "./countries";
-import RoundedRecetangle from './RoundedRecetangle';
+import countries from "../common/countries";
+import RoundedRecetangle from '../common/RoundedRecetangle';
 
 class SingleJudgment extends Component {
   render() {

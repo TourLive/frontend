@@ -8,7 +8,6 @@ import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
 import {geolocated} from "react-geolocated";
 
-
 class Home extends Component {
     constructor(props) {
       super(props);

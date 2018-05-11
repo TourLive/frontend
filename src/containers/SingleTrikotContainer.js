@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SingleTrikot from "../components/SingleTrikot";
+import SingleTrikot from "../components/tricots/SingleTrikot";
 
 function mapStateToProps(store) {
   return {

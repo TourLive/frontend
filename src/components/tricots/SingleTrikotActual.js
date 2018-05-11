@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import {List, Feed} from "semantic-ui-react";
-import { connect } from 'react-redux';
-import countries from "./countries";
 
 class SingleTrikotActual extends Component {
 

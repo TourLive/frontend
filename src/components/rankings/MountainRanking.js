@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import { Table, Flag, Responsive, Icon } from 'semantic-ui-react'
-import countries from "./countries";
+import countries from "../common/countries";
 
 class MountainRanking extends Component {
     constructor(props) {
