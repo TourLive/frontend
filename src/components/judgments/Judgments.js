@@ -6,6 +6,7 @@ import * as judgmentRiderConnectionActions from '../../actions/judgmentRiderConn
 import SingleJudgmentContainer from "../../containers/SingleJudgmentContainer";
 import {Timeline, TimelineEvent} from 'react-event-timeline';
 import TimeLineEndBlock from "../common/TimeLineEndBlock";
+import * as riderStageConnectionsActions from '../../actions/riderStageConnectionsActions'
 
 class Judgments extends Component {
     constructor(props){
@@ -15,14 +16,31 @@ class Judgments extends Component {
         updated: false,
         selected : false,
         judgmentSelected: false,
-        judgment : {}
+        judgment : {},
+        timer : null
       };
 
       this.onJudgmentClicked = this.onJudgmentClicked.bind(this);
       this.onJudgmentClose = this.onJudgmentClose.bind(this);
     }
 
-    fetchJudgmentRiderConnections(id) {
+    componentDidMount() {
+      let timer = setInterval(this.tick, store.getState().settings.refreshPeriod * 1000);
+      this.setState({timer});
+    }
+
+    componentWillUnmount() {
+      this.clearInterval(this.state.timer);
+    }
+
+    tick() {
+      let stageID = store.getState().actualStage.data.id;
+      if (stageID !== undefined) {
+        store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(stageID));
+      }
+    }
+
+    fetchInitalJudgmentRiderConnections(id) {
         store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
         this.setState({updated : true});
     }
@@ -33,8 +51,8 @@ class Judgments extends Component {
     }
 
     onJudgmentClose() {
-      this.setState({judgmentSelected : false});
-      this.setState({judgment : {}});
+        this.setState({judgmentSelected : false});
+        this.setState({judgment : {}});
     }
 
     render() {
@@ -50,7 +68,7 @@ class Judgments extends Component {
         };
 
         if (actualStage.id !== undefined && !this.state.updated) {
-          this.fetchJudgmentRiderConnections(actualStage.id);
+          this.fetchInitalJudgmentRiderConnections(actualStage.id);
         }
 
         const halfHeight = this.state.judgmentSelected === true ? (

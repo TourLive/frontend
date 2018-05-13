@@ -17,7 +17,7 @@ class TricotsActual extends Component {
         }
     }
 
-    fetchCurrentMaillots(id) {
+    fetchInitalCurrentMaillots(id) {
         store.dispatch(maillotActions.getCurrentMaillots(id));
         store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
@@ -29,7 +29,7 @@ class TricotsActual extends Component {
         const {actualStage} = this.props;
 
         if (actualStage.id !== undefined && !this.state.updated) {
-            this.fetchCurrentMaillots(actualStage.id);
+            this.fetchInitalCurrentMaillots(actualStage.id);
         }
 
 

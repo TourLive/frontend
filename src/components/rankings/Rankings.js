@@ -17,17 +17,34 @@ class Rankings extends Component {
 
         this.state = {
             updated: false,
-            activeItem : 'official'
+            activeItem : 'official',
+            timer : null
         }
     }
 
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
 
-    fetchCurrentRiderStageConnections(id) {
+    fetchInitalRiderStageConnections(id) {
         store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
         this.setState({activeItem: 'officialRanking'});
+    }
+
+    componentDidMount() {
+      let timer = setInterval(this.tick, store.getState().settings.refreshPeriod * 1000);
+      this.setState({timer});
+    }
+
+    componentWillUnmount() {
+      this.clearInterval(this.state.timer);
+    }
+
+    tick() {
+      let stageID = store.getState().actualStage.data.id;
+      if (stageID !== undefined) {
+          store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(stageID));
+      }
     }
 
     render() {
@@ -35,7 +52,7 @@ class Rankings extends Component {
         const {actualStage} = this.props;
 
         if (actualStage.id !== undefined && !this.state.updated) {
-            this.fetchCurrentRiderStageConnections(actualStage.id);
+            this.fetchInitalRiderStageConnections(actualStage.id);
         }
         
         return(
