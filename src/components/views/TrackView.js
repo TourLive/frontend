@@ -8,7 +8,7 @@ import RiderSearchContainer from '../../containers/RiderSearchContainer'
 class TrackView extends Component {
     render() {
       const {judgments} = this.props;
-        const {search} = this.props;
+      const {search} = this.props;
       const {raceGroups} = this.props;
 
         const divStyle = {

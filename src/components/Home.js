@@ -7,6 +7,7 @@ import MapViewContainer from "../containers/MapViewContainer";
 import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
 import {geolocated} from "react-geolocated";
+import * as riderStageConnectionsActions from '../actions/riderStageConnectionsActions'
 
 class Home extends Component {
     constructor(props) {
@@ -14,15 +15,32 @@ class Home extends Component {
 
       this.state = {
         updated: false,
-        activeItem : 'trackview'
+        activeItem : 'trackview',
+        timer : null
       }
     }
 
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
-    fetchCurrentRaceGroups(id) {
+    fetchInitalCurrentRaceGroups(id) {
       store.dispatch(raceGroupActions.getCurrentRaceGroups(id));
       this.setState({updated: true});
+    }
+
+    componentDidMount() {
+      let timer = setInterval(this.tick, store.getState().settings.refreshPeriod * 1000);
+      this.setState({timer});
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.state.timer);
+    }
+
+    tick() {
+      let stageID = store.getState().actualStage.data.id;
+      if (stageID !== undefined) {
+        store.dispatch(raceGroupActions.getCurrentRaceGroups(stageID));
+      }
     }
 
     render() {
@@ -30,7 +48,7 @@ class Home extends Component {
         const {actualStage} = this.props;
 
         if (actualStage.id !== undefined && !this.state.updated) {
-          this.fetchCurrentRaceGroups(actualStage.id);
+          this.fetchInitalCurrentRaceGroups(actualStage.id);
         }
 
         const homeMenu =  (
