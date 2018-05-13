@@ -33,9 +33,9 @@ class Home extends Component {
     }
 
     componentWillUnmount() {
-      this.clearInterval(this.state.timer);
+      clearInterval(this.state.timer);
     }
-  
+
     tick() {
       let stageID = store.getState().actualStage.data.id;
       if (stageID !== undefined) {
