@@ -10,6 +10,7 @@ import judgmentReducer from "./judgmentReducer";
 import judgmentRiderConnectionReducer from "./judgmentRiderConnectionReducer";
 import gpxReducer from "./gpxReducer";
 import searchReducer from "./searchReducer";
+import notificationsReducer from "./notificationsReducer";
 
 const rootReducer = combineReducers({
     actualStage : activeStageReducer,
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
     judgments : judgmentReducer,
     judgmentRiderConnections : judgmentRiderConnectionReducer,
     gpsData : gpxReducer,
-    searchState : searchReducer
+    searchState : searchReducer,
+    notifications : notificationsReducer
 });
 
 export default rootReducer;

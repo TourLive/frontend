@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import 'react-notifications/lib/notifications.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Menu, Icon} from 'semantic-ui-react';
 import Tricots from "./components/tricots/Tricots";
@@ -10,6 +11,7 @@ import SettingsContainer from './containers/SettingsContainer';
 import RankingsContainer from './containers/RankingsContainer';
 import GlobalHeaderContainer from './containers/GlobalHeaderContainer';
 import JudgmentsContainer from './containers/JudgmentsContainer';
+import Notifications from "./containers/NotificationsContainer";
 import NoMatch from "./components/NoMatch";
 
 class App extends Component {
@@ -55,6 +57,7 @@ class App extends Component {
             <Router>
                 <div className="App" style={{ display:"flex", minHeight:"100vh", flexDirection:"column" }}>
                     <GlobalHeaderContainer/>
+                    <Notifications/>
                     <Switch>
                         <Route path="/rankings" component={RankingsContainer}/>
                         <Route path="/tricots" component={Tricots}/>
