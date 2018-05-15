@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import {Timeline, TimelineEvent} from 'react-event-timeline';
 import SearchResult from "../search/SearchResult";
 import TimeLineEndBlock from "../common/TimeLineEndBlock";
 import RiderSearchContainer from '../../containers/RiderSearchContainer'

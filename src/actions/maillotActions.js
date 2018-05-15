@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 import * as api from "../util/api.js"
-import store from "../store";
 
 function receiveMaillot(data) {
   return {

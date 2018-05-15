@@ -7,7 +7,6 @@ import MapViewContainer from "../containers/MapViewContainer";
 import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
 import {geolocated} from "react-geolocated";
-import * as riderStageConnectionsActions from '../actions/riderStageConnectionsActions'
 
 class Home extends Component {
     constructor(props) {
