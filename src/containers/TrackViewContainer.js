@@ -5,7 +5,8 @@ function mapStateToProps(store) {
   return {
     judgments : store.judgments.data,
     raceGroups : store.raceGroups.data,
-    search : store.searchState
+    search : store.searchState,
+    stage : store.actualStage.data
   }
 }
 

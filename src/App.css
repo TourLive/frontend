@@ -95,13 +95,6 @@ footer i.icon {
   width: 6px !important;
 }
 
-.Horizontal-Line{
-  height:0.1rem;
-  width:99%;
-  background:#A3B0B9;
-  margin:0.3rem;
-}
-
 .App-Timestamp {
   margin-bottom: 1rem !important;
 }
@@ -229,4 +222,49 @@ footer i.icon {
 
 .App-Image-Rider {
   width: 100%;
+}
+
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 6px;
+  height: auto;
+  background: rgb(160, 178, 184);
+}
+
+.timeline ul li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #6fba1c;
+  margin-left: 0.21rem;
+}
+
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  padding-bottom: 0.5rem;
+  width: 400px;
+  left: 2.5rem;
+}
+
+.App-Last-Timeline-Element::after {
+  background: none !important;
+}
+
+.App-Timeline {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.App-Timeline-Distance {
+  font-weight: bold;
+}
+
+.Fix-Header {
+  margin-top: 1.5rem !important;
 }

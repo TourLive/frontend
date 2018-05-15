@@ -7,7 +7,6 @@ import MapViewContainer from "../containers/MapViewContainer";
 import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
 import {geolocated} from "react-geolocated";
-import * as riderStageConnectionsActions from '../actions/riderStageConnectionsActions'
 
 class Home extends Component {
     constructor(props) {
@@ -66,16 +65,14 @@ class Home extends Component {
         );
 
         const homeNav = (
-            <Menu stackable>
+            <Menu compact>
                 {homeMenu}
             </Menu>
         );
 
-
-        console.log(this.props.coords);
         return(
-            <div className="App-Content-Home">
-                <header className="App-header-home">
+            <div className="App-Content">
+                <header>
                     {homeNav}
                 </header>
                 <Switch>
