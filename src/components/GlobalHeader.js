@@ -1,12 +1,10 @@
 import React, {Component} from "react";
 import * as globalActions from "../actions/globalActions";
-import {connect} from "react-redux";
 import store from "../store"
 import {Link} from "react-router-dom";
 import * as riderActions from '../actions/riderActions';
 import * as judgementActions from '../actions/judgmentActions';
 import * as gpxActions from '../actions/gpxActions';
-
 
 class GlobalHeader extends Component {
       constructor(props){
@@ -50,12 +48,4 @@ class GlobalHeader extends Component {
       }
 }
 
-
-function mapStateToProps(store) {
-    return {
-        actualStage : store.actualStage.data,
-        actualRace : store.actualRace.data
-    }
-}
-
-export default connect(mapStateToProps)(GlobalHeader);
+export default GlobalHeader;

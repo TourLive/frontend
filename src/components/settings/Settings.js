@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {Header, Button, Divider, Form} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
-import * as settingsActions from '../actions/settingsActions'
-import store from '../store'
-import { connect } from 'react-redux'
+import * as settingsActions from '../../actions/settingsActions'
+import store from '../../store';
 
 class Settings extends Component {
     constructor(props) {
@@ -11,7 +10,7 @@ class Settings extends Component {
 
       this.state = {
         formPeriod: 0
-      }
+      };
 
       this.enableNotifications = this.enableNotifications.bind(this);
       this.disableNotifications = this.disableNotifications.bind(this);
@@ -29,7 +28,7 @@ class Settings extends Component {
     setPeriodTime = (event) => {
         let value = event.target.intervall.value;
         store.dispatch(settingsActions.setPeriodBetweenCalls(value))
-    }
+    };
 
     render() {
         const {settings} = this.props;
@@ -46,7 +45,7 @@ class Settings extends Component {
                 <Helmet>
                     <title>Einstellungen</title>
                 </Helmet>
-                <Header as="h1" className="SecondHeader">Einstellungen</Header>
+                <Header as="h1" className="SecondHeader" color='red'>Einstellungen</Header>
                 <Header as="h3">Benachrichtigungen</Header>
                 <p><b>Aktuell:</b> {stateNotifications}</p>
                 <Button className="App-Button" color="green" fluid onClick={this.enableNotifications}>Ein</Button><br/>
@@ -82,10 +81,4 @@ class Settings extends Component {
     }
 }
 
-function mapStateToProps(store) {
-  return {
-    settings: store.settings
-  }
-}
-
-export default connect(mapStateToProps)(Settings);
+export default Settings;

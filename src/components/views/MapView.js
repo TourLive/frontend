@@ -2,29 +2,27 @@ import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Map, TileLayer, Marker, Popup, Polyline} from "react-leaflet";
-import {connect} from "react-redux";
 
-const zoomLevel = 13;
-
-class Card extends Component {
+class MapView extends Component {
     render() {
-        const center = [51.505, -0.09]
+        const defaultLatitude = 47.71780751;
+        const defaultLongitude = 8.666430535;
+        const zoomLevel = 13;
         const {gpsData} = this.props;
-        const start = gpsData[0];
-        const end = gpsData[gpsData.length - 1];
+        let start = gpsData[0];
+        let end = gpsData[gpsData.length - 1];
         const array = [];
         gpsData.map(element => {
             array.push([element.latitude, element.longitude]);
         });
-        console.log(array);
-        console.log(start);
-        const data = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
+        start === undefined ? (start = [], start.longitude=defaultLongitude, start.latitude=defaultLatitude) : (start = gpsData[0]);
+        end === undefined ? (end = [], end.longitude=defaultLongitude, end.latitude=defaultLatitude) : (end = gpsData[gpsData.length -1]);
         return(
             <div className="App-Content">
                 <Helmet>
-                    <title>Card</title>
+                    <title>Kartenansicht</title>
                 </Helmet>
-                <Header as="h1" color='red'>Card</Header>
+                <Header as="h1" color='red'>Aktuelles Rennen auf der Karte</Header>
                 <Map zoom={zoomLevel} center={[start.latitude, start.longitude]} className="map">
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -47,10 +45,4 @@ class Card extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        gpsData : store.gpsData.data
-    }
-}
-
-export default connect(mapStateToProps)(Card);
+export default MapView;

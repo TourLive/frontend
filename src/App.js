@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import './App.css';
+import 'react-notifications/lib/notifications.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import {connect} from "react-redux";
 import {Menu, Icon} from 'semantic-ui-react';
-import Home from "./components/Home";
-import Rankings from "./components/Rankings";
-import Tricots from "./components/Tricots";
-import Judgments from "./components/Judgments";
-import Settings from "./components/Settings";
-import GlobalHeader from "./components/GlobalHeader";
-import * as settingsActions from './actions/settingsActions'
-import store from './store'
+import Tricots from "./components/tricots/Tricots";
+import * as settingsActions from './actions/settingsActions';
+import store from './store';
+import HomeContainer from './containers/HomeContainer';
+import SettingsContainer from './containers/SettingsContainer';
+import RankingsContainer from './containers/RankingsContainer';
+import GlobalHeaderContainer from './containers/GlobalHeaderContainer';
+import JudgmentsContainer from './containers/JudgmentsContainer';
+import Notifications from "./containers/NotificationsContainer";
+import NoMatch from "./components/NoMatch";
 
 class App extends Component {
     state = {activeItem: 'home'}
@@ -26,19 +28,19 @@ class App extends Component {
 
         const footerMenu =  (
             [
-                <Menu.Item as={Link} key={1} to="/trackview" name='home' active={activeItem === 'home'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={1} to="/view/track" name='home' active={activeItem === 'home'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="home"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={2} to="/rankings" name='rankings' active={activeItem === 'rankings'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={2} to="/rankings" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="cubes"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={3} to="/tricots" name='tricots' active={activeItem === 'tricots'} onClick={this.handleMenuItemClick}>
-                    <Icon className="App-Icon-White" name="flag checkered"/>
+                <Menu.Item as={Link} key={3} to="/tricots" name='tricots' active={activeItem === 'tricots'} className="navitem" onClick={this.handleMenuItemClick}>
+                    <Icon className="App-Icon-White" name="shirtsinbulk"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={4} to="/judgments" name='judgments' active={activeItem === 'judgments'} onClick={this.handleMenuItemClick}>
-                    <Icon className="App-Icon-White" name="balance"/>
+                <Menu.Item as={Link} key={4} to="/judgments" name='judgments' active={activeItem === 'judgments'} className="navitem" onClick={this.handleMenuItemClick}>
+                    <Icon className="App-Icon-White" name="trophy"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={5} to="/settings" name='settings' active={activeItem === 'settings'} onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={5} to="/settings" name='settings' active={activeItem === 'settings'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="settings"/>
                 </Menu.Item>
             ]
@@ -54,13 +56,16 @@ class App extends Component {
         return (
             <Router>
                 <div className="App" style={{ display:"flex", minHeight:"100vh", flexDirection:"column" }}>
-                    <GlobalHeader/>
+                    <GlobalHeaderContainer/>
+                    <Notifications/>
                     <Switch>
-                        <Route path="/rankings" component={Rankings}/>
+                        <Route path="/rankings" component={RankingsContainer}/>
                         <Route path="/tricots" component={Tricots}/>
-                        <Route path="/judgments" component={Judgments}/>
-                        <Route path="/settings" component={Settings}/>
-                        <Route path="/" component={Home}/>
+                        <Route exact path="/judgments" component={JudgmentsContainer}/>
+                        <Route exact path="/settings" component={SettingsContainer}/>
+                        <Route exact path="/" component={HomeContainer}/>
+                        <Route exact path="/view/*" component={HomeContainer}/>
+                        <Route path="*" component={NoMatch} status={404}/>
                     </Switch>
                     <footer className="App-footer">
                         {footerNav}
@@ -71,8 +76,4 @@ class App extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {}
-}
-
-export default connect(mapStateToProps)(App);
+export default App;
