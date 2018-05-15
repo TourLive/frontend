@@ -36,10 +36,10 @@ class Trikots extends Component {
                   </Menu.Item>
                 </Menu>
                 <Switch>
+                    <Route path="/tricots" component={TricotsStartContainer}/>
                     <Route path="/tricots/start" component={TricotsStartContainer}/>
                     <Route path="/tricots/actual" component={TricotsActualContainer}/>
                 </Switch>
-                <Redirect to="/tricots/start"/>
             </div>
         );
     }
