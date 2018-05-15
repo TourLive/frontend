@@ -247,20 +247,20 @@ footer i.icon {
 .timeline ul li div {
   position: relative;
   bottom: 0;
+  padding-bottom: 0.5rem;
   width: 400px;
-  padding: 15px;
-  background: #F45B69;
-  left: 45px;
+  left: 2.5rem;
 }
 
-.timeline ul li div::before {
-  content: '';
-  position: absolute;
-  bottom: 7px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  left: -15px;
-  border-width: 8px 16px 8px 0;
-  border-color: transparent #F45B69 transparent transparent;
+.App-Last-Timeline-Element::after {
+  background: none !important;
+}
+
+.App-Timeline {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.App-Timeline-Distance {
+  font-weight: bold;
 }

@@ -66,13 +66,11 @@ class Home extends Component {
         );
 
         const homeNav = (
-            <Menu stackable>
+            <Menu compact>
                 {homeMenu}
             </Menu>
         );
 
-
-        console.log(this.props.coords);
         return(
             <div className="App-Content-Home">
                 <header className="App-header-home">

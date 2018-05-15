@@ -21,18 +21,19 @@ class TrackView extends Component {
       let elems = [];
       let lastElement = null;
       let size = elements.length;
+      let sizeBottom = 0;
       elements.map((elem, i) => {
           let gap = 0;
-          let gapEnd = 0;
           if (i === 0) {
               gap = stage.distance - elem.distance;
           } else if(size === i + 1) {
-              gapEnd = elem.distance;
+              sizeBottom = elem.distance;
+            gap = lastElement.distance - elem.distance;
           } else {
               gap = lastElement.distance - elem.distance;
           }
           lastElement = elem;
-          elems.push({distance : elem.distance, text : elem.text, gap: gap, gapEnd : gapEnd});
+          elems.push({distance : elem.distance, text : elem.text, gap: gap});
       });
 
       return(
@@ -43,7 +44,7 @@ class TrackView extends Component {
                             <title>Streckenansicht</title>
                         </Helmet>
                         <TimeLineEndBlock content="ZIEL"/>
-                        <TrackTimeline elements={elems}/>
+                        <TrackTimeline elements={elems} bottom={sizeBottom}/>
                         <TimeLineEndBlock content="START"/>
                         <RiderSearchContainer/>
                     </div>

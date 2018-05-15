@@ -3,19 +3,15 @@ import React, {Component} from "react";
 class TrackTimelineElement extends Component {
     render() {
         const element =  this.props.data;
-        console.log(element);
-        const calculationTop = 0.5 + 0.1 * element.gap;
-        const calculationBottom = 0.5 + 0.1 * element.gapEnd;
+        const calculationTop = 1 + 0.1 * element.gap;
         const divStyle = {
-            paddingTop: `${calculationTop}rem`,
-            paddingBottom: `${calculationBottom}rem`,
+            paddingTop: `${calculationTop}rem`
         };
 
         return(
             <li style={divStyle}>
                 <div>
-                    <time>{element.distance}</time>
-                    {element.text}
+                    <span className="App-Timeline-Distance">KM {element.distance} </span> | {element.text}
                 </div>
             </li>
         );

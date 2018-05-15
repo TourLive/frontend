@@ -3,7 +3,7 @@ import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import * as riderStageConnectionsActions from "../../actions/riderStageConnectionsActions";
 import store from "../../store";
-import {Route, Switch, Link, Redirect, withRouter} from 'react-router-dom';
+import {Route, Switch, Link, withRouter} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import OfficialRankingContainer from '../../containers/OfficialRankingContainer'
 import VirtualRankingContainer from '../../containers/VirtualRankingContainer'
