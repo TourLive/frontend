@@ -11,14 +11,29 @@ class TrackView extends Component {
       const {judgments} = this.props;
       const {search} = this.props;
       const {raceGroups} = this.props;
+      const {stage} = this.props;
 
-        const divStyle = {
-            margin: '0 0 3rem 0'
-        };
 
-        const iconStyle = {
-            backgroundColor: '#6fba1c'
-        };
+      let elements = [];
+      judgments.map(judgment => {elements.push({distance : judgment.distance, text : judgment.name})});
+      raceGroups.map(raceGroup => {elements.push({distance : 90, text : raceGroup.raceGroupType})});
+      elements.sort((a,b) => b.distance - a.distance);
+      let elems = [];
+      let lastElement = null;
+      let size = elements.length;
+      elements.map((elem, i) => {
+          let gap = 0;
+          let gapEnd = 0;
+          if (i === 0) {
+              gap = stage.distance - elem.distance;
+          } else if(size === i + 1) {
+              gapEnd = elem.distance;
+          } else {
+              gap = lastElement.distance - elem.distance;
+          }
+          lastElement = elem;
+          elems.push({distance : elem.distance, text : elem.text, gap: gap, gapEnd : gapEnd});
+      });
 
       return(
             <div className="App-Content">
@@ -27,7 +42,9 @@ class TrackView extends Component {
                         <Helmet>
                             <title>Streckenansicht</title>
                         </Helmet>
-                        <TrackTimeline elements={judgments}/>
+                        <TimeLineEndBlock content="ZIEL"/>
+                        <TrackTimeline elements={elems}/>
+                        <TimeLineEndBlock content="START"/>
                         <RiderSearchContainer/>
                     </div>
                 }
