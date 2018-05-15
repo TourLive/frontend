@@ -3,7 +3,7 @@ import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import * as riderStageConnectionsActions from "../../actions/riderStageConnectionsActions";
 import store from "../../store";
-import {Route, Switch, Link, Redirect} from 'react-router-dom';
+import {Route, Switch, Link, Redirect, withRouter} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import OfficialRankingContainer from '../../containers/OfficialRankingContainer'
 import VirtualRankingContainer from '../../containers/VirtualRankingContainer'
@@ -28,7 +28,7 @@ class Rankings extends Component {
     fetchInitalRiderStageConnections(id) {
         store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
         this.setState({updated: true});
-        this.setState({activeItem: 'officialRanking'});
+        this.setState({activeItem: 'official'});
     }
 
     componentDidMount() {
@@ -50,7 +50,6 @@ class Rankings extends Component {
     render() {
         const {activeItem} = this.state;
         const {actualStage} = this.props;
-
         if (actualStage.id !== undefined && !this.state.updated) {
             this.fetchInitalRiderStageConnections(actualStage.id);
         }
@@ -65,29 +64,30 @@ class Rankings extends Component {
                     <p className="App-Timestamp"><strong>Letzte Aktualisierung:</strong> {new Date().today()} {new Date().timeNow()}</p>
                 </div>
                 <Menu compact>
-                  <Menu.Item as={Link} key={1} to="/rankings/official" name='officialRanking' active={activeItem === 'officialRanking'} onClick={this.handleMenuItemClick}>
+                  <Menu.Item as={Link} key={1} to="/rankings/official" name='official' active={activeItem === 'official'} onClick={this.handleMenuItemClick}>
                     Offiziell
                   </Menu.Item>
-                  <Menu.Item as={Link} key={2} to="/rankings/virtual" name='virtualRanking' active={activeItem === 'virtualRanking'} onClick={this.handleMenuItemClick}>
+                  <Menu.Item as={Link} key={2} to="/rankings/virtual" name='virtual' active={activeItem === 'virtual'} onClick={this.handleMenuItemClick}>
                     Virtuell
                   </Menu.Item>
-                  <Menu.Item as={Link} key={3} to="/rankings/point" name='pointRanking' active={activeItem === 'pointRanking'} onClick={this.handleMenuItemClick}>
+                  <Menu.Item as={Link} key={3} to="/rankings/point" name='point' active={activeItem === 'point'} onClick={this.handleMenuItemClick}>
                     Punkte
                   </Menu.Item>
-                  <Menu.Item as={Link} key={4} to="/rankings/mountain" name='mountainRanking' active={activeItem === 'mountainRanking'} onClick={this.handleMenuItemClick}>
+                  <Menu.Item as={Link} key={4} to="/rankings/mountain" name='mountain' active={activeItem === 'mountain'} onClick={this.handleMenuItemClick}>
                     Berg
                   </Menu.Item>
                 </Menu>
+
                 <Switch>
+                    <Route path="/rankings" component={OfficialRankingContainer}/>
                     <Route path="/rankings/official" component={OfficialRankingContainer}/>
                     <Route path="/rankings/virtual" component={VirtualRankingContainer}/>
                     <Route path="/rankings/point" component={PointRankingContainer}/>
                     <Route path="/rankings/mountain" component={MountainRankingContainer}/>
                 </Switch>
-                <Redirect to="/rankings/official"/>
             </div>
         );
     }
 }
 
-export default Rankings;
+export default withRouter(Rankings);
