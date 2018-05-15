@@ -58,7 +58,7 @@ class HeightView extends Component {
             ]
         };
         return(
-            <div className="App-Content">
+            <div>
                 <Helmet>
                     <title>Höhenansicht</title>
                 </Helmet>

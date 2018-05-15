@@ -37,7 +37,7 @@ class TrackView extends Component {
       });
 
       return(
-            <div className="App-Content">
+            <div className="Fix-Header">
                 {search.displayResult === false &&
                     <div>
                         <Helmet>

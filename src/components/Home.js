@@ -72,8 +72,8 @@ class Home extends Component {
         );
 
         return(
-            <div className="App-Content-Home">
-                <header className="App-header-home">
+            <div className="App-Content">
+                <header>
                     {homeNav}
                 </header>
                 <Switch>

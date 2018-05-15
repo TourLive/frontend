@@ -264,3 +264,7 @@ footer i.icon {
 .App-Timeline-Distance {
   font-weight: bold;
 }
+
+.Fix-Header {
+  margin-top: 1.5rem !important;
+}

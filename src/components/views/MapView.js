@@ -18,11 +18,11 @@ class MapView extends Component {
         start === undefined ? (start = [], start.longitude=defaultLongitude, start.latitude=defaultLatitude) : (start = gpsData[0]);
         end === undefined ? (end = [], end.longitude=defaultLongitude, end.latitude=defaultLatitude) : (end = gpsData[gpsData.length -1]);
         return(
-            <div className="App-Content">
+            <div>
                 <Helmet>
                     <title>Kartenansicht</title>
                 </Helmet>
-                <Header as="h1" color='red'>Aktuelles Rennen auf der Karte</Header>
+                <Header as="h1" color='red' className="Fix-Header">Aktuelles Rennen auf der Karte</Header>
                 <Map zoom={zoomLevel} center={[start.latitude, start.longitude]} className="map">
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
