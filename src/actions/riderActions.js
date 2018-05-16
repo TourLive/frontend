@@ -16,8 +16,7 @@ export function getRidersFromAPI(id) {
           timeout : 20000,
           method: 'get',
           responseType: 'json'
-      })
-        .then(function (response) {
+      }).then(function (response) {
             dispatch(receiveRiders(response.data));
         })
 
