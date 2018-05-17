@@ -6,7 +6,7 @@ const initialState = {
   loading: false
 };
 
-const timelineReducer = (action, state = initialState) => {
+const timelineReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_TIMELINE_RESULT:
       return {...state, data : action.timelineData, loading : false};

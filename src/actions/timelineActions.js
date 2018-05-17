@@ -24,7 +24,7 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
             gap = lastElement.distance - elem.distance;
         }
         lastElement = elem;
-        elems.push({distance : elem.distance, text : elem.text, gap: gap});
+        return elems.push({distance : elem.distance, text : elem.text, gap: gap});
     });
     return {
     type : types.SET_TIMELINE_RESULT,
