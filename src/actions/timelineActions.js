@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 import * as api from "../util/api.js"
-import * as globalActions from "./globalActions";
+import store from "../store"
 
 function receiveTimeline(judgments, raceGroups, stage) {
     let elements = [];
@@ -38,8 +38,11 @@ function receiveTimelineError(data) {
 
 export function getTimelineOfStage(id) {
     return function (dispatch) {
-        axios.all([getJudgmentsOfStage(id), getCurrentRaceGroups(id), getActiveStageFromAPI(id)])
-            .then(axios.spread(function (judgments, raceGroups, stage) {
+        axios.all([getCurrentRaceGroups(id)])
+            .then(axios.spread(function (raceGroups) {
+                var actualStore = store.getState();
+                const judgments = actualStore.judgments.data;
+                const stage = actualStore.actualStage.data;
                 if(judgments === undefined || raceGroups === undefined || stage === undefined){
                   dispatch(receiveTimelineError("Error on loading data"));
                 } else {
@@ -47,23 +50,6 @@ export function getTimelineOfStage(id) {
                 }
             }));
     }
-}
-
-function getJudgmentsOfStage(id) {
-        return axios({
-            url : api.LINK_JUDGMENTS + id,
-            timeout : 20000,
-            method: 'get',
-            responseType: 'json'
-        }).then(function (response) {
-            if (response.status === 200) {
-                return response.data;
-            } else {
-               return undefined;
-            }
-        }).catch(function (response) {
-            return undefined;
-        });
 }
 
 function getCurrentRaceGroups(id) {
@@ -83,7 +69,7 @@ function getCurrentRaceGroups(id) {
         });
 }
 
-function getActiveStageFromAPI(stageId) {
+function getGPSDataFromCnlabAPI() {
     return axios({
         url : api.LINK_STAGES + stageId,
         timeout : 20000,
