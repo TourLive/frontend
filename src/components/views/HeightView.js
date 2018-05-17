@@ -24,7 +24,7 @@ class HeightView extends Component {
             array.push(element.height);
             labels.push("KM " + Math.round(currentDistance));
         });
-        
+
         const data = {
             labels : labels,
             datasets: [

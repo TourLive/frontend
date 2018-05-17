@@ -15,7 +15,7 @@ class RiderImage extends Component {
 
   render () {
     return (
-      <img className="App-Image-Rider" onError={this.onError} src={this.state.link}/>
+      <img className="App-Image-Rider" alt="Rider" onError={this.onError} src={this.state.link}/>
     );
   }
 }
