@@ -40,7 +40,10 @@ class Trikots extends Component {
                 <Helmet>
                     <title>Trikotträger</title>
                 </Helmet>
-                <Header as="h1" color='red'>Trikotträger</Header>
+                <div>
+                  <Header as="h1" color='red'>Trikotträger</Header>
+                  <p className="App-Timestamp"><strong>Letzte Aktualisierung:</strong> {new Date().today()} {new Date().timeNow()}</p>
+                </div>
                 <Menu compact>
                   <Menu.Item as={Link} key={1} to="/tricots/start" name='trikotsStart' active={activeItem === 'trikotsStart'} onClick={this.handleMenuItemClick}>
                     Stand beim Start

@@ -35,7 +35,6 @@ class GlobalHeader extends Component {
         const {actualRace} = this.props;
 
         if (actualStage.id !== undefined && !this.state.updated) {
-          console.log(actualStage.id);
           this.fetchStaticData(actualStage.id);
         }
 
