@@ -11,7 +11,7 @@ html,body {
 
 .App-header {
   background-color: #ff0000;
-  height: 80px;
+  height: 60px;
   padding: 10px;
   color: white;
   position: relative;
@@ -39,12 +39,8 @@ html,body {
   z-index:100;
 }
 
-.App-Logo {
-  height: 80px;
-}
-
 .App-Header-Image {
-  height: 60px;
+  height: 40px;
 }
 
 .Inline {
