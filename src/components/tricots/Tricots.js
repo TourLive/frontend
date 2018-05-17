@@ -5,21 +5,35 @@ import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import TricotsActualContainer from '../../containers/TricotsActualContainer'
 import TricotsStartContainer from '../../containers/TricotsStartContainer'
+import store from '../../store'
+import * as riderStageConnectionsActions from '../../actions/riderStageConnectionsActions'
+import * as maillotActions from '../../actions/maillotActions'
 
 class Trikots extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-        activeItem : 'trikotsStart'
-
+        activeItem : 'trikotsStart',
+        updated: false
     }
   }
 
-    handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
+  fetchCurrentData(id) {
+    store.dispatch(maillotActions.getCurrentMaillots(id));
+    store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(id));
+    this.setState({updated: true});
+  }
+
+  handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
   render() {
         const {activeItem} = this.state;
+        const {actualStage} = this.props;
+
+        if (actualStage.id !== undefined && !this.state.updated) {
+          this.fetchCurrentData(actualStage.id);
+        }
 
         return(
             <div className="App-Content">
@@ -36,7 +50,6 @@ class Trikots extends Component {
                   </Menu.Item>
                 </Menu>
                 <Switch>
-                    <Route path="/tricots" component={TricotsStartContainer}/>
                     <Route path="/tricots/start" component={TricotsStartContainer}/>
                     <Route path="/tricots/actual" component={TricotsActualContainer}/>
                 </Switch>

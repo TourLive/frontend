@@ -3,8 +3,7 @@ import TricotsStart from "../components/tricots/TricotsStart";
 
 function mapStateToProps(store) {
   return {
-    maillots: store.maillots.data,
-    actualStage : store.actualStage.data,
+    maillots: store.maillots.data
   }
 }
 

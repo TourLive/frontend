@@ -13,6 +13,7 @@ import GlobalHeaderContainer from './containers/GlobalHeaderContainer';
 import JudgmentsContainer from './containers/JudgmentsContainer';
 import Notifications from "./containers/NotificationsContainer";
 import NoMatch from "./components/NoMatch";
+import TricotsContainer from './containers/TricotsContainer'
 
 class App extends Component {
     state = {activeItem: 'home'}
@@ -31,10 +32,10 @@ class App extends Component {
                 <Menu.Item as={Link} key={1} to="/view/track" name='home' active={activeItem === 'home'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="home"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={2} to="/rankings" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={2} to="/rankings/official" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="cubes"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={3} to="/tricots" name='tricots' active={activeItem === 'tricots'} className="navitem" onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={3} to="/tricots/start" name='tricots' active={activeItem === 'tricots'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="shirtsinbulk"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={4} to="/judgments" name='judgments' active={activeItem === 'judgments'} className="navitem" onClick={this.handleMenuItemClick}>
@@ -60,7 +61,7 @@ class App extends Component {
                     <Notifications/>
                     <Switch>
                         <Route path="/rankings" component={RankingsContainer}/>
-                        <Route path="/tricots" component={Tricots}/>
+                        <Route path="/tricots" component={TricotsContainer}/>
                         <Route exact path="/judgments" component={JudgmentsContainer}/>
                         <Route exact path="/settings" component={SettingsContainer}/>
                         <Route exact path="/" component={HomeContainer}/>
