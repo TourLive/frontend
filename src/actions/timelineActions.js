@@ -3,10 +3,13 @@ import * as types from "./actionTypes";
 import * as api from "../util/api.js"
 import store from "../store"
 
-function receiveTimeline(judgments, raceGroups, stage) {
+function receiveTimeline(judgments, raceGroups, stage, gpsData) {
+    const jsonData = JSON.parse(JSON.stringify(gpsData));
+    const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "verkehrsspitze"; }).data.speed * 3.6;
+    const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "verkehrsspitze"; }).data.distance.toFixed(1);
     let elements = [];
     judgments.map(judgment => {elements.push({distance : judgment.distance, text : judgment.name})});
-    raceGroups.map(raceGroup => {elements.push({distance : 90, text : raceGroup.raceGroupType})});
+    raceGroups.map(raceGroup => { elements.push({distance : distanceLeadGroup - raceGroup.actualGapTime * speedLeadGroup, text : raceGroup.raceGroupType})});
     elements.sort((a,b) => b.distance - a.distance);
     let elems = [];
     let lastElement = null;
@@ -46,7 +49,7 @@ export function getTimelineOfStage(id) {
                 if(judgments === undefined || raceGroups === undefined || gpsData === undefined || stage === undefined){
                   dispatch(receiveTimelineError("Error on loading data"));
                 } else {
-                  dispatch(receiveTimeline(judgments, raceGroups, stage));
+                  dispatch(receiveTimeline(judgments, raceGroups, stage, gpsData));
                 }
             }));
     }
