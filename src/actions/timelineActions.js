@@ -38,12 +38,12 @@ function receiveTimelineError(data) {
 
 export function getTimelineOfStage(id) {
     return function (dispatch) {
-        axios.all([getCurrentRaceGroups(id)])
-            .then(axios.spread(function (raceGroups) {
+        axios.all([getCurrentRaceGroups(id), getGPSDataFromCnlabAPI()])
+            .then(axios.spread(function (raceGroups, gpsData) {
                 var actualStore = store.getState();
                 const judgments = actualStore.judgments.data;
                 const stage = actualStore.actualStage.data;
-                if(judgments === undefined || raceGroups === undefined || stage === undefined){
+                if(judgments === undefined || raceGroups === undefined || gpsData === undefined || stage === undefined){
                   dispatch(receiveTimelineError("Error on loading data"));
                 } else {
                   dispatch(receiveTimeline(judgments, raceGroups, stage));
@@ -71,7 +71,7 @@ function getCurrentRaceGroups(id) {
 
 function getGPSDataFromCnlabAPI() {
     return axios({
-        url : api.LINK_STAGES + stageId,
+        url : api.LINK_GPS,
         timeout : 20000,
         method: 'get',
         responseType: 'json'
