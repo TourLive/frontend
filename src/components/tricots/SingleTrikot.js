@@ -7,23 +7,26 @@ class SingleTrikot extends Component {
     const trikot = this.props.data;
     const {riders} = this.props;
     const {cons} = this.props;
-    const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
     let rank;
     let flag;
+    let rider;
 
-    let rider = riders.find((e) => {
-        return e.id === trikot.riderId;
-    });
+    if (cons !== undefined) {
+        console.log(cons);
+        const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
+        rider = riders.find((e) => {
+          return e.id === trikot.riderId;
+        });
 
-    if (rider !== undefined) {
-      flag = countries.find((v) => {
-        return v.ioc === rider.country;
-      });
-    }
+        if (rider !== undefined) {
+          flag = countries.find((v) => {
+            return v.ioc === rider.country;
+          });
+        }
+        if(sortedConnections.length > 0 && rider !== undefined){
+          rank = sortedConnections.findIndex(con => con.rider.id === rider.id) + 1;
+        }
 
-
-    if(sortedConnections.length > 0){
-        rank = sortedConnections.findIndex(con => con.rider.id === rider.id) + 1;
     }
 
     const attachedRider = rider === undefined ? (

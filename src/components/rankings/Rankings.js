@@ -3,7 +3,7 @@ import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import * as riderStageConnectionsActions from "../../actions/riderStageConnectionsActions";
 import store from "../../store";
-import {Route, Switch, Link, withRouter} from 'react-router-dom';
+import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
 import OfficialRankingContainer from '../../containers/OfficialRankingContainer'
 import VirtualRankingContainer from '../../containers/VirtualRankingContainer'
@@ -79,7 +79,6 @@ class Rankings extends Component {
                 </Menu>
 
                 <Switch>
-                    <Route path="/rankings" component={OfficialRankingContainer}/>
                     <Route path="/rankings/official" component={OfficialRankingContainer}/>
                     <Route path="/rankings/virtual" component={VirtualRankingContainer}/>
                     <Route path="/rankings/point" component={PointRankingContainer}/>
@@ -90,4 +89,4 @@ class Rankings extends Component {
     }
 }
 
-export default withRouter(Rankings);
+export default Rankings;

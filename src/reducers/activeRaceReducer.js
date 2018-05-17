@@ -9,7 +9,6 @@ const initialState = {
 const activeRaceReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.GET_ACTIVERACE:
-            console.log(state);
             return Object.assign({}, state, {
                 data : action.data,
                 error: false,
