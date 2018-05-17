@@ -7,10 +7,7 @@ import TrackTimeline from "../common/TrackTimeline";
 
 class TrackView extends Component {
     render() {
-      const {judgments} = this.props;
       const {search} = this.props;
-      const {raceGroups} = this.props;
-      const {stage} = this.props;
       const {timeline} = this.props;
 
       return(
