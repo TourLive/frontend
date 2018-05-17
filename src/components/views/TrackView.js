@@ -11,29 +11,7 @@ class TrackView extends Component {
       const {search} = this.props;
       const {raceGroups} = this.props;
       const {stage} = this.props;
-
-
-      let elements = [];
-      judgments.map(judgment => {elements.push({distance : judgment.distance, text : judgment.name})});
-      raceGroups.map(raceGroup => {elements.push({distance : 90, text : raceGroup.raceGroupType})});
-      elements.sort((a,b) => b.distance - a.distance);
-      let elems = [];
-      let lastElement = null;
-      let size = elements.length;
-      let sizeBottom = 0;
-      elements.map((elem, i) => {
-          let gap = 0;
-          if (i === 0) {
-              gap = stage.distance - elem.distance;
-          } else if(size === i + 1) {
-              sizeBottom = elem.distance;
-            gap = lastElement.distance - elem.distance;
-          } else {
-              gap = lastElement.distance - elem.distance;
-          }
-          lastElement = elem;
-          elems.push({distance : elem.distance, text : elem.text, gap: gap});
-      });
+      const {timeline} = this.props;
 
       return(
             <div className="Fix-Header">
@@ -43,7 +21,7 @@ class TrackView extends Component {
                             <title>Streckenansicht</title>
                         </Helmet>
                         <TimeLineEndBlock content="ZIEL"/>
-                        <TrackTimeline elements={elems} bottom={sizeBottom}/>
+                        <TrackTimeline elements={timeline}/>
                         <TimeLineEndBlock content="START"/>
                         <RiderSearchContainer/>
                     </div>

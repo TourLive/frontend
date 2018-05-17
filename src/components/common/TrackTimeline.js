@@ -5,11 +5,12 @@ import TrackTimelineEndElement from './TrackTimelineEndElement'
 class TrackTimeline extends Component {
     render() {
         const elements = this.props.elements;
-        const bottomSize = this.props.bottom;
+        let bottomSize = 0;
         return(
             <section class="timeline">
                 <ul className="App-Timeline">
-                    {elements.map(element => {
+                    {elements.map((element,i) => {
+                        if(elements.length === i + 1){bottomSize = element.distance;}
                         return (<TrackTimelineElement data={element}/>);
                     })}
                     <TrackTimelineEndElement size={bottomSize}/>

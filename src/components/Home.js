@@ -6,6 +6,7 @@ import HeightViewContainer from "../containers/HeightViewContainer";
 import MapViewContainer from "../containers/MapViewContainer";
 import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
+import * as timelineActions from "../actions/timelineActions";
 import {geolocated} from "react-geolocated";
 
 class Home extends Component {
@@ -23,6 +24,7 @@ class Home extends Component {
 
     fetchInitalCurrentRaceGroups(id) {
       store.dispatch(raceGroupActions.getCurrentRaceGroups(id));
+      store.dispatch(timelineActions.getTimelineOfStage(id));
       this.setState({updated: true});
     }
 
@@ -39,6 +41,7 @@ class Home extends Component {
       let stageID = store.getState().actualStage.data.id;
       if (stageID !== undefined) {
         store.dispatch(raceGroupActions.getCurrentRaceGroups(stageID));
+        store.dispatch(timelineActions.getTimelineOfStage(stageID));
       }
     }
 
