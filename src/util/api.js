@@ -11,3 +11,4 @@ export const LINK_JUDGMENTS = HOST + "/judgments/stages/";
 export const LINK_JUDGMENT_RIDER_CONNECTIONS = HOST + "/judgmentriderconnections/stages/";
 export const LINK_GPXTRACKS = HOST + "/gpxtracks/stages/";
 export const LINK_NOTIFICATIONS = HOST + "/notifications/stages/";
+export const LINK_GPS = "https://tlng.cnlab.ch/wo/cars.json";
