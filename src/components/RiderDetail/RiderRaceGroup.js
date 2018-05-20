@@ -31,6 +31,7 @@ class RiderRaceGroup extends Component {
 
 
         console.log("aktuelle stage: " + actualStage);
+        console.log("aktuelle log: " + logsRaceGroupHistory);
         if(logsRaceGroupHistory !== undefined){
             logsRaceGroupHistory.map(a => {
                 console.log("history data:" +a.message);
@@ -38,7 +39,7 @@ class RiderRaceGroup extends Component {
 
         }
 
-        const raceGroups  = logsRaceGroupHistory !== undefined ? (
+        const raceGroups  = logsRaceGroupHistory !== "" ? (
             logsRaceGroupHistory.map(rG => {
             <div key={rG.id} className="App-RaceGroup-Rider">
                 Renngruppe : {rG.message}
@@ -55,13 +56,17 @@ class RiderRaceGroup extends Component {
                     Aktuelle Renngruppe: {actualRaceGroup.raceGroupType}
                 </div>
         ): <div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden, Fahrer nimmt aktuell nicht am Rennen teil</div>;
-*/
+    */
         return (
             <div>
-                {logsRaceGroupHistory.map((rG, i) => {
-                    if(i === 0){ return <p>{rG.message} -> Aktuelle Renngruppe</p>}
-                    return <p>{rG.message}</p>
-                })}
+                {logsRaceGroupHistory.length > 0 ? (logsRaceGroupHistory.map((rG, i) => {
+                    if(i === 0){ return <div key={i} className="App-RaceGroup-Rider">
+                        Aktuelle Renngruppe: {rG.message}
+                    </div>}
+                    return<div key={i} className="App-RaceGroup-Rider">
+                        {rG.message}
+                    </div>
+                })):(<div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden, Fahrer nimmt aktuell nicht am Rennen teil</div>)}
             </div>
         );
     }
