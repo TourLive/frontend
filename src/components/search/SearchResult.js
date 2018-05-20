@@ -6,6 +6,7 @@ import RiderRaceGroup from "../RiderDetail/RiderRaceGroup";
 import {Divider, Icon, Header, Button} from "semantic-ui-react";
 import store from "../../store";
 import * as searchActions from "../../actions/searchActions";
+import RiderRaceGroupContainer from '../../containers/RiderRaceGroupContainer';
 
 class SearchResult extends Component {
     constructor(props){
