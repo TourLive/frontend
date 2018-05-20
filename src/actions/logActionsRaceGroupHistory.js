@@ -16,10 +16,10 @@ function receiveLogsError(data) {
   }
 }
 
-export function getLogsForStageAndRider(stageId, riderId) {
+export function getLogsRaceGroupHistory(stageId, riderId) {
   return function (dispatch) {
     return axios({
-      url : api.LINKG_LOGS + stageId +"/" + riderId,
+      url : api.LINKG_LOGS + stageId +"/" + riderId + "/RACEGROUP",
       timeout : 20000,
       method: 'get',
       responseType: 'json'

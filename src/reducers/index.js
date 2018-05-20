@@ -12,7 +12,7 @@ import gpxReducer from "./gpxReducer";
 import searchReducer from "./searchReducer";
 import notificationsReducer from "./notificationsReducer";
 import timelineReducer from "./timelineReducer";
-import logReducerForARider from "./logReducerForARider";
+import logReducerRaceGroupHistory from "./logReducerRaceGroupHistory";
 
 const rootReducer = combineReducers({
     actualStage : activeStageReducer,
@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
     searchState : searchReducer,
     notifications : notificationsReducer,
     timeline : timelineReducer,
-    logsForARider : logReducerForARider
+    logsRaceGroupHistory : logReducerRaceGroupHistory
 });
 
 export default rootReducer;

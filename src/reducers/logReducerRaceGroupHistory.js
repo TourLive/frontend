@@ -6,7 +6,7 @@ const initialState = {
   loading: false
 };
 
-const logReducerForARider = (state = initialState, action) => {
+const logReducerRaceGroupHistory = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_LOGS_RESULT:
       return {...state, data : action.data, loading : false};
@@ -16,4 +16,4 @@ const logReducerForARider = (state = initialState, action) => {
       return state;
   }
 }
-export default logReducerForARider;
+export default logReducerRaceGroupHistory;
