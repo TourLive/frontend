@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import RiderInfo from "../RiderDetail/RiderInfo";
 import RiderJudgment from "../RiderDetail/RiderJudgment";
 import RiderTrikot from "../RiderDetail/RiderTrikot";
-import RiderRaceGroup from "../RiderDetail/RiderRaceGroup";
 import {Divider, Icon, Header, Button} from "semantic-ui-react";
 import store from "../../store";
 import * as searchActions from "../../actions/searchActions";

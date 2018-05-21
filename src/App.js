@@ -3,7 +3,6 @@ import './App.css';
 import 'react-notifications/lib/notifications.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Menu, Icon} from 'semantic-ui-react';
-import Tricots from "./components/tricots/Tricots";
 import * as settingsActions from './actions/settingsActions';
 import store from './store';
 import HomeContainer from './containers/HomeContainer';
