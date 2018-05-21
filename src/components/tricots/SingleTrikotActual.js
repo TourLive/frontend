@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {List, Feed} from "semantic-ui-react";
+import {List, Feed, Flag} from "semantic-ui-react";
+import countries from '../../util/countries'
 
 class SingleTrikotActual extends Component {
 
@@ -16,6 +17,7 @@ class SingleTrikotActual extends Component {
         let rankOfMountain;
         let rankOfPoint;
         let rankOfBestSwiss;
+        let flag;
 
         if(cons.length > 0){
             leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
@@ -28,18 +30,50 @@ class SingleTrikotActual extends Component {
             rankOfBestSwiss = sortedConnections.findIndex(con => con.rider.id === bestSwiss.id) + 1;
         }
 
+      switch(trikot.type) {
+        case 'leader':
+          if (leader !== undefined) {
+            flag = countries.find((v) => {
+              return v.ioc === leader.country;
+            });
+          }
+          break;
+        case 'mountain':
+          if (mountain !== undefined) {
+            flag = countries.find((v) => {
+              return v.ioc === mountain.country;
+            });
+          }
+          break;
+        case 'points':
+          if (point !== undefined) {
+            flag = countries.find((v) => {
+              return v.ioc === point.country;
+            });
+          }
+          break;
+        case 'bestSwiss':
+          if (bestSwiss !== undefined) {
+            flag = countries.find((v) => {
+              return v.ioc === bestSwiss.country;
+            });
+          }
+          break;
+        default:
+          flag = undefined;
+      }
 
       const attachedRider = trikot.type === 'leader' && leader !== undefined? (
-          <p>{leader.startNr}, {leader.country}, {leader.name}, {leader.teamName}, Rang: {rankOfLeader}</p>
+          <p><b>{leader.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{leader.name}</b>, {leader.teamName}, Rang: {rankOfLeader}</p>
       ) : (
           trikot.type === 'mountain' && mountain !== undefined ? (
-              <p>{mountain.startNr}, {mountain.country}, {mountain.name}, {mountain.teamName}, Rang: {rankOfMountain}</p>
+              <p><b>{mountain.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{mountain.name}</b>, {mountain.teamName}, Rang: {rankOfMountain}</p>
           ) : (
               trikot.type === 'points' && point !== undefined ? (
-                  <p>{point.startNr}, {point.country}, {point.name}, {point.teamName}, Rang: {rankOfPoint}</p>
+                  <p><b>{point.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{point.name}</b>, {point.teamName}, Rang: {rankOfPoint}</p>
               ):
                   trikot.type === 'bestSwiss' && bestSwiss !== undefined ? (
-                          <p>{bestSwiss.startNr}, {bestSwiss.country}, {bestSwiss.name}, {bestSwiss.teamName}, Rang: {rankOfBestSwiss}</p>
+                          <p><b>{bestSwiss.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{bestSwiss.name}</b>, {bestSwiss.teamName}, Rang: {rankOfBestSwiss}</p>
                   ) : (
                         <p>Fahrerdaten werden geladen</p>
                       )
