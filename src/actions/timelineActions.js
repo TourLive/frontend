@@ -43,7 +43,7 @@ export function getTimelineOfStage(id) {
     return function (dispatch) {
         axios.all([getCurrentRaceGroups(id), getGPSDataFromCnlabAPI()])
             .then(axios.spread(function (raceGroups, gpsData) {
-                var actualStore = store.getState();
+                const actualStore = store.getState();
                 const judgments = actualStore.judgments.data;
                 const stage = actualStore.actualStage.data;
                 if(judgments === undefined || raceGroups === undefined || gpsData === undefined || stage === undefined){

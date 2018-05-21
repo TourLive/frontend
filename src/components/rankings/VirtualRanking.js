@@ -45,7 +45,7 @@ class VirtualRanking extends Component {
     componentWillReceiveProps(nextProps){
         const {cons} = nextProps;
         this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'ascending'});
-        var hashtable = {};
+        let hashtable = {};
         cons.sort((a,b) => a.virtualGap - b.virtualGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
         this.setState({ranking: hashtable});
     }
@@ -53,7 +53,7 @@ class VirtualRanking extends Component {
     componentDidMount(){
         const {cons} = this.props;
         this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'ascending'});
-        var hashtable = {};
+        let hashtable = {};
         cons.sort((a,b) => a.virtualGap - b.virtualGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
         this.setState({ranking: hashtable});
     }
