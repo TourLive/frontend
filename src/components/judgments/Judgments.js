@@ -3,7 +3,7 @@ import {Header, Button} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import store from "../../store"
 import * as judgmentRiderConnectionActions from '../../actions/judgmentRiderConnectionActions';
-import SingleJudgmentContainer from "../../containers/SingleJudgmentContainer";
+import SingleJudgmentContainer from "../../containers/judgments/SingleJudgmentContainer";
 import {Timeline, TimelineEvent} from 'react-event-timeline';
 import TimeLineEndBlock from "../common/TimeLineEndBlock";
 

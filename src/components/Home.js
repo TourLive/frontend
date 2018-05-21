@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Route, Switch, NavLink, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import TrackViewContainer from "../containers/TrackViewContainer";
-import HeightViewContainer from "../containers/HeightViewContainer";
-import MapViewContainer from "../containers/MapViewContainer";
+import TrackViewContainer from "../containers/views/TrackViewContainer";
+import HeightViewContainer from "../containers/views/HeightViewContainer";
+import MapViewContainer from "../containers/views/MapViewContainer";
 import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
 import * as timelineActions from "../actions/timelineActions";

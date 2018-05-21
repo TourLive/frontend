@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {connect} from "react-redux";
 import store from "../../store";
 import * as logActionsRaceGroupHistory from "../../actions/logActionsRaceGroupHistory";
 import RiderRaceGroupElement from "./RiderRaceGroupElement";
@@ -11,7 +10,7 @@ class RiderRaceGroup extends Component {
     }
 
     resetComponent = () => {
-        this.setState({ updated:false, isLoading: false, results: []});
+        this.setState({ updated:false});
     };
 
     fetchCurrentData(stageId, riderId) {
@@ -21,9 +20,8 @@ class RiderRaceGroup extends Component {
 
 
     render() {
-        const { isLoading, value, results } = this.state;
         const rider = this.props.selectedRider;
-        const {logsRaceGroupHistory} = this.props;
+        const {logs} = this.props;
         const {actualStage} = this.props;
         if (actualStage !== undefined && !this.state.updated) {
             this.fetchCurrentData(actualStage.id, rider.riderId);
@@ -32,7 +30,7 @@ class RiderRaceGroup extends Component {
         return (
             <section className="timeline">
                 <ul>
-                    {logsRaceGroupHistory.length > 0 ? (logsRaceGroupHistory.map((rG, i) => {
+                    {logs.length > 0 ? (logs.map((rG, i) => {
                         return <RiderRaceGroupElement key={i} data={rG} index={i}/>
                     })):(<div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden, Fahrer nimmt aktuell nicht am Rennen teil</div>)}
                 </ul>
@@ -41,11 +39,4 @@ class RiderRaceGroup extends Component {
     }
 }
 
-function mapStateToProps(store) {
-    return {
-        logsRaceGroupHistory: store.logsRaceGroupHistory.data,
-        actualStage: store.actualStage.data
-    }
-}
-
-export default connect(mapStateToProps)(RiderRaceGroup);
+export default RiderRaceGroup;

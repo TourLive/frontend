@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import SearchResult from "../search/SearchResult";
 import TimeLineEndBlock from "../common/TimeLineEndBlock";
-import RiderSearchContainer from '../../containers/RiderSearchContainer'
+import RiderSearchContainer from '../../containers/search/RiderSearchContainer'
 import TrackTimeline from "../common/TrackTimeline";
 
 class TrackView extends Component {

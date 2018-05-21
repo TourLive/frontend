@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import RiderInfo from "../RiderDetail/RiderInfo";
 import RiderJudgment from "../RiderDetail/RiderJudgment";
-import RiderTrikot from "../RiderDetail/RiderTrikots";
+import RiderTrikot from "../RiderDetail/RiderTrikot";
 import RiderRaceGroup from "../RiderDetail/RiderRaceGroup";
 import {Divider, Icon, Header, Button} from "semantic-ui-react";
 import store from "../../store";
 import * as searchActions from "../../actions/searchActions";
-import RiderRaceGroupContainer from '../../containers/RiderRaceGroupContainer';
+import RiderRaceGroupContainer from '../../containers/search/RiderRaceGroupContainer';
 
 class SearchResult extends Component {
     constructor(props){
@@ -34,7 +34,7 @@ class SearchResult extends Component {
             <RiderJudgment selectedRider={rider}/>
             <Divider/>
             <Header as="h3"><Icon name='group'/>Gruppenhistorie</Header>
-            <RiderRaceGroup selectedRider={rider}/>
+            <RiderRaceGroupContainer selectedRider={rider}/>
         </div>
 
     }

@@ -5,10 +5,10 @@ import * as riderStageConnectionsActions from "../../actions/riderStageConnectio
 import store from "../../store";
 import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import OfficialRankingContainer from '../../containers/OfficialRankingContainer'
-import VirtualRankingContainer from '../../containers/VirtualRankingContainer'
-import PointRankingContainer from '../../containers/PointRankingContainer'
-import MountainRankingContainer from '../../containers/MountainRankingContainer'
+import OfficialRankingContainer from '../../containers/rankings/OfficialRankingContainer'
+import VirtualRankingContainer from '../../containers/rankings/VirtualRankingContainer'
+import PointRankingContainer from '../../containers/rankings/PointRankingContainer'
+import MountainRankingContainer from '../../containers/rankings/MountainRankingContainer'
 
 class Rankings extends Component {
 
