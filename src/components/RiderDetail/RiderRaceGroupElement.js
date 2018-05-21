@@ -4,7 +4,7 @@ class RiderRaceGroupElement extends Component {
     render() {
         const rG =  this.props.data;
         const index = this.props.index;
-        const calculationTop = 1;
+        const calculationTop = 1.5;
         const divStyle = {
             paddingTop: `${calculationTop}rem`
         };
