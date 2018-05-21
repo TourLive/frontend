@@ -3,17 +3,16 @@ import './App.css';
 import 'react-notifications/lib/notifications.css';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Menu, Icon} from 'semantic-ui-react';
-import Tricots from "./components/tricots/Tricots";
 import * as settingsActions from './actions/settingsActions';
 import store from './store';
 import HomeContainer from './containers/HomeContainer';
-import SettingsContainer from './containers/SettingsContainer';
-import RankingsContainer from './containers/RankingsContainer';
+import SettingsContainer from './containers/settings/SettingsContainer';
+import RankingsContainer from './containers/rankings/RankingsContainer';
 import GlobalHeaderContainer from './containers/GlobalHeaderContainer';
-import JudgmentsContainer from './containers/JudgmentsContainer';
-import Notifications from "./containers/NotificationsContainer";
+import JudgmentsContainer from './containers/judgments/JudgmentsContainer';
+import Notifications from "./containers/notifications/NotificationsContainer";
 import NoMatch from "./components/NoMatch";
-import TricotsContainer from './containers/TricotsContainer'
+import TricotsContainer from './containers/tricots/TricotsContainer'
 
 class App extends Component {
     state = {activeItem: 'home'}

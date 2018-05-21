@@ -1,4 +1,4 @@
-var countries = [
+const countries = [
   {
     "ioc": "AFG",
     "iso": "AF"

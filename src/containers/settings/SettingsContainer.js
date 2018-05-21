@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Settings from "../components/settings/Settings";
+import Settings from "../../components/settings/Settings";
 
 function mapStateToProps(store) {
   return {

@@ -54,10 +54,6 @@ html,body {
   margin-bottom: 1rem;
 }
 
-.App-Trikot-Content {
-  padding-top: 0.5rem;
-}
-
 .map {
   height: 600px;
 }
@@ -145,7 +141,7 @@ footer i.icon {
 }
 
 .circle {
-  top: 0px;
+  top: 0;
   border-radius: 25px;
   padding: 1rem;
   height: 30px;
@@ -154,7 +150,7 @@ footer i.icon {
   background: #00BFFF;
   border: #00BFFF;
   display: flex;
-  left: 0px;
+  left: 0;
 }
 
 .innerCircle {

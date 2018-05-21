@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {List, Flag, Feed} from "semantic-ui-react";
-import countries from "../common/countries";
+import countries from "../../util/countries";
 
 class SingleTrikot extends Component {
   render() {
@@ -12,7 +12,6 @@ class SingleTrikot extends Component {
     let rider;
 
     if (cons !== undefined) {
-        console.log(cons);
         const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
         rider = riders.find((e) => {
           return e.id === trikot.riderId;

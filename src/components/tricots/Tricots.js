@@ -3,8 +3,8 @@ import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Route, Switch, Link} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import TricotsActualContainer from '../../containers/TricotsActualContainer'
-import TricotsStartContainer from '../../containers/TricotsStartContainer'
+import TricotsActualContainer from '../../containers/tricots/TricotsActualContainer'
+import TricotsStartContainer from '../../containers/tricots/TricotsStartContainer'
 import store from '../../store'
 import * as riderStageConnectionsActions from '../../actions/riderStageConnectionsActions'
 import * as maillotActions from '../../actions/maillotActions'

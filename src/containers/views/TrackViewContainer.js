@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TrackView from "../components/views/TrackView";
+import TrackView from "../../components/views/TrackView";
 
 function mapStateToProps(store) {
   return {

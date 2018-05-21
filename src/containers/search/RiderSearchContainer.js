@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import RiderSearch from "../components/search/RiderSearch";
+import RiderSearch from "../../components/search/RiderSearch";
 
 function mapStateToProps(store) {
   return {

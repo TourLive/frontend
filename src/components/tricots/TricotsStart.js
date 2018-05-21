@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import SingleTrikotContainer from "../../containers/SingleTrikotContainer";
+import SingleTrikotContainer from "../../containers/tricots/SingleTrikotContainer";
 import {List} from "semantic-ui-react";
 
 class TricotsStart extends Component {

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import OfficialRanking from "../components/rankings/OfficialRanking";
+import OfficialRanking from "../../components/rankings/OfficialRanking";
 
 function mapStateToProps(store) {
   return {

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Helmet} from "react-helmet";
-import SingleTrikotActualContainer from "../../containers/SingleTrikotActualContainer";
+import SingleTrikotActualContainer from "../../containers/tricots/SingleTrikotActualContainer";
 import {List} from "semantic-ui-react";
 
 
