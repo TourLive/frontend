@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {List, Flag, Feed} from "semantic-ui-react";
-import countries from "../common/countries";
+import countries from "../../util/countries";
 
 class SingleTrikot extends Component {
   render() {

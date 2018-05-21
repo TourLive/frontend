@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import {Table, Flag, Responsive, Icon} from "semantic-ui-react";
 import * as dateUtil from "../../util/date.js";
-import countries from "../common/countries";
+import countries from "../../util/countries";
 
 class OfficialRanking extends Component {
 
