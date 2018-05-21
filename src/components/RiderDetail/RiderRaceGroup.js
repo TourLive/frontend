@@ -30,11 +30,13 @@ class RiderRaceGroup extends Component {
         }
 
         return (
-            <div>
-                {logsRaceGroupHistory.length > 0 ? (logsRaceGroupHistory.map((rG, i) => {
-                    return <RiderRaceGroupElement key={i} data={rG} index={i}/>
-                })):(<div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden, Fahrer nimmt aktuell nicht am Rennen teil</div>)}
-            </div>
+            <section className="timeline">
+                <ul>
+                    {logsRaceGroupHistory.length > 0 ? (logsRaceGroupHistory.map((rG, i) => {
+                        return <RiderRaceGroupElement key={i} data={rG} index={i}/>
+                    })):(<div className="App-RaceGroup-Rider">Keine Renngruppe vorhanden, Fahrer nimmt aktuell nicht am Rennen teil</div>)}
+                </ul>
+            </section>
         );
     }
 }
