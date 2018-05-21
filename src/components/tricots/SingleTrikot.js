@@ -12,7 +12,6 @@ class SingleTrikot extends Component {
     let rider;
 
     if (cons !== undefined) {
-        console.log(cons);
         const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
         rider = riders.find((e) => {
           return e.id === trikot.riderId;
