@@ -2,27 +2,29 @@ import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Line} from 'react-chartjs-2';
-import * as gpsUtil from "../../util/gps.js";
+import {Chart} from 'react-chartjs-2';
 
 class HeightView extends Component {
+
+
+
     render() {
+        const plugins = [{
+            afterDraw: (chartInstance, easing) => {
+                const ctx = chartInstance.chart.ctx;
+                console.log(ctx);
+                ctx.fillText("This text drawn by a plugin", 100, 100);
+            }
+        }];
+
+
         const {gpsData} = this.props;
+        const {timeline} = this.props;
         const array = [];
         const labels = [];
-
-        let currentDistance = 0.0;
-        let lastElement  = null;
         gpsData.map(element => {
-            let distance = 0.0;
-            if (lastElement === null) {
-                distance = 0.0;
-            } else {
-                distance += gpsUtil.distance(lastElement, element);
-            }
-            lastElement = element;
-            currentDistance += distance;
             array.push(element.height);
-            labels.push("KM " + Math.round(currentDistance));
+            labels.push("KM " + Math.round(element.distance));
         });
 
         const data = {
@@ -44,13 +46,14 @@ class HeightView extends Component {
                 }
             ]
         };
+
         return(
             <div>
                 <Helmet>
                     <title>Höhenansicht</title>
                 </Helmet>
                 <Header as="h1" color='red'>Aktuelles Rennen im Höhenprofil</Header>
-                <Line data={data}/>
+                <Line data={data} plugins={plugins}/>
             </div>
         );
     }
