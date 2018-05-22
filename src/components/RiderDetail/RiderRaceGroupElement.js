@@ -10,13 +10,11 @@ class RiderRaceGroupElement extends Component {
         };
 
         return(
-            <li style={divStyle}>
-                <div className="App-RaceGroup-Rider">
-                    {index === 0 ? (
-                        <span className="App-Timeline-Distance">Aktuelle Renngruppe: {rG.message}</span>
-                    ): <span>{rG.message}</span> }
-                </div>
-            </li>
+            <div className="history-element">
+                 {index === 0 ? (
+                    <span>{rG.message}: Aktuelle Renngruppe</span>
+                 ): <span>{rG.message}</span> }
+            </div>
         );
     }
 }
