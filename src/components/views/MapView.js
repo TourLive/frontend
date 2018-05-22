@@ -12,19 +12,20 @@ class MapView extends Component {
         let end = gpsData[gpsData.length - 1];
         const array = [];
         const marker = [];
+
         gpsData.map(element => {
-            array.push([element.latitude, element.longitude]);
+            return array.push([element.latitude, element.longitude]);
         });
         timeline.map(elem => {
             let points = gpsData.filter(e => {
                 return (elem.distance - e.distance) < 0.5 && (elem.distance - e.distance) >= -0.5
             });
-            console.log(points);
             let temp = points[points.length -1];
-            marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text});
+            return marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text});
         });
 
         end !== undefined && console.log("ziel: " + end.latitude + " " + end.longitude);
+
         return(
             <div>
                 <Helmet>

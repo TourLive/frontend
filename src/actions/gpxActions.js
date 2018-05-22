@@ -16,7 +16,7 @@ function receiveGPXTracks(data) {
         }
         lastElement = element;
         currentDistance += distance;
-        array.push({id: element.id, height: element.height, latitude : element.latitude, longitude : element.longitude, stage_id : element.stage_id, distance : currentDistance});
+        return array.push({id: element.id, height: element.height, latitude : element.latitude, longitude : element.longitude, stage_id : element.stage_id, distance : currentDistance});
     });
     return {
         type : types.SET_GPXTRACKS,

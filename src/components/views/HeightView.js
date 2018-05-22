@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Line} from 'react-chartjs-2';
-import {Chart} from 'react-chartjs-2';
 
 class HeightView extends Component {
 
@@ -14,7 +13,7 @@ class HeightView extends Component {
         const labels = [];
         gpsData.map(element => {
             array.push(element.height);
-            labels.push("KM " + Math.round(element.distance));
+            return labels.push("KM " + Math.round(element.distance));
         });
 
         const data = {
@@ -43,7 +42,7 @@ class HeightView extends Component {
                     <title>Höhenansicht</title>
                 </Helmet>
                 <Header as="h1" color='red'>Aktuelles Rennen im Höhenprofil</Header>
-                <Line data={data} plugins={plugins}/>
+                <Line data={data}/>
             </div>
         );
     }
