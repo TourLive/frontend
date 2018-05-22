@@ -5,11 +5,11 @@ import store from "../store"
 
 function receiveTimeline(judgments, raceGroups, stage, gpsData) {
     const jsonData = JSON.parse(JSON.stringify(gpsData));
-    const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "verkehrsspitze"; }).data.speed;
-    const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "verkehrsspitze"; }).data.distance.toFixed(1);
+    const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.speed;
+    const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.distance.toFixed(1);
     let elements = [];
     judgments.map(judgment => {return elements.push({distance : judgment.distance, text : judgment.name})});
-    raceGroups.map(raceGroup => { return elements.push({distance : distanceLeadGroup - (raceGroup.actualGapTime * speedLeadGroup / 1000), text : raceGroup.raceGroupType})});
+    raceGroups.map(raceGroup => { return elements.push({distance : distanceLeadGroup - (raceGroup.actualGapTime * speedLeadGroup / 3600), text : raceGroup.raceGroupType})});
     elements.sort((a,b) => b.distance - a.distance);
     let elems = [];
     let lastElement = null;
