@@ -9,7 +9,6 @@ class RiderImage extends Component {
   }
 
   onError(){
-    console.log("error: could not find picture");
     this.setState(function(){ return {link: this.state.default}; });
   };
 
