@@ -140,6 +140,10 @@ footer i.icon {
   font-size: 1.5rem !important;
 }
 
+.Search {
+  padding-bottom: 100px;
+}
+
 .circle {
   top: 0;
   border-radius: 25px;
@@ -259,4 +263,25 @@ footer i.icon {
 
 .Fix-Header {
   margin-top: 1.5rem !important;
+}
+
+.history-element {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.history-element:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 1.75rem;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 1.0rem;
+  background: rgb(160, 178, 184);
+  left: 1rem;
+}
+
+.history-element:first-child {
+  font-weight: bold;
 }
