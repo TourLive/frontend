@@ -1,4 +1,4 @@
-const HOST = "http://prod-api.tourlive.ch";
+const HOST = "https://prod-api.tourlive.ch";
 
 export const LINK_SETTINGS = HOST + "/settings";
 export const LINK_STAGES = HOST + "/stages/";
