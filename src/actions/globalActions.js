@@ -23,7 +23,7 @@ export function getSettingsFromAPI() {
             timeout : 20000,
             method: 'get',
             responseType: 'json'
-        }). then(function (response) {
+        }).then(function (response) {
             dispatch(getActiveRaceFromAPI(response.data.raceID));
             dispatch(getActiveStageFromAPI(response.data.stageID));
         }).catch(function (response) {

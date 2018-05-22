@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Header, Button, Flag} from "semantic-ui-react";
-import countries from "../common/countries";
+import countries from "../../util/countries";
 import RoundedRecetangle from '../common/RoundedRecetangle';
 
 class SingleJudgment extends Component {

@@ -1,12 +1,11 @@
 import React, {Component} from "react";
-import {Header, Button, Divider} from "semantic-ui-react";
+import {Header, Button} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import store from "../../store"
 import * as judgmentRiderConnectionActions from '../../actions/judgmentRiderConnectionActions';
-import SingleJudgmentContainer from "../../containers/SingleJudgmentContainer";
+import SingleJudgmentContainer from "../../containers/judgments/SingleJudgmentContainer";
 import {Timeline, TimelineEvent} from 'react-event-timeline';
 import TimeLineEndBlock from "../common/TimeLineEndBlock";
-import * as riderStageConnectionsActions from '../../actions/riderStageConnectionsActions'
 
 class Judgments extends Component {
     constructor(props){

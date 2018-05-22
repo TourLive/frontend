@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import {Route, Switch, NavLink, Redirect} from 'react-router-dom';
 import {Menu} from 'semantic-ui-react';
-import TrackViewContainer from "../containers/TrackViewContainer";
-import HeightViewContainer from "../containers/HeightViewContainer";
-import MapViewContainer from "../containers/MapViewContainer";
+import TrackViewContainer from "../containers/views/TrackViewContainer";
+import HeightViewContainer from "../containers/views/HeightViewContainer";
+import MapViewContainer from "../containers/views/MapViewContainer";
 import store from "../store";
 import * as raceGroupActions from "../actions/raceGroupsActions";
+import * as timelineActions from "../actions/timelineActions";
 import {geolocated} from "react-geolocated";
-import * as riderStageConnectionsActions from '../actions/riderStageConnectionsActions'
 
 class Home extends Component {
     constructor(props) {
@@ -24,6 +24,7 @@ class Home extends Component {
 
     fetchInitalCurrentRaceGroups(id) {
       store.dispatch(raceGroupActions.getCurrentRaceGroups(id));
+      store.dispatch(timelineActions.getTimelineOfStage(id));
       this.setState({updated: true});
     }
 
@@ -40,6 +41,7 @@ class Home extends Component {
       let stageID = store.getState().actualStage.data.id;
       if (stageID !== undefined) {
         store.dispatch(raceGroupActions.getCurrentRaceGroups(stageID));
+        store.dispatch(timelineActions.getTimelineOfStage(stageID));
       }
     }
 
@@ -66,16 +68,14 @@ class Home extends Component {
         );
 
         const homeNav = (
-            <Menu stackable>
+            <Menu compact>
                 {homeMenu}
             </Menu>
         );
 
-
-        console.log(this.props.coords);
         return(
-            <div className="App-Content-Home">
-                <header className="App-header-home">
+            <div className="App-Content">
+                <header>
                     {homeNav}
                 </header>
                 <Switch>

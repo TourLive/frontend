@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SingleJudgment from "../components/judgments/SingleJudgment";
+import SingleJudgment from "../../components/judgments/SingleJudgment";
 
 function mapStateToProps(store) {
   return {

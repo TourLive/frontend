@@ -23,7 +23,7 @@ export function getJudgmentRiderConnections(id) {
       timeout : 20000,
       method: 'get',
       responseType: 'json'
-    }). then(function (response) {
+    }).then(function (response) {
       if (response.status === 200) {
         dispatch(receiveJudgmentRiderConnections(response.data));
       } else {

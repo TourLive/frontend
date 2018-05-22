@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 import * as api from "../util/api.js"
-import store from "../store";
 
 function receiveMaillot(data) {
   return {
@@ -24,7 +23,7 @@ export function getCurrentMaillots(id) {
       timeout : 20000,
       method: 'get',
       responseType: 'json'
-    }). then(function (response) {
+    }).then(function (response) {
       if (response.status === 200) {
         dispatch(receiveMaillot(response.data));
       } else {

@@ -35,13 +35,12 @@ class GlobalHeader extends Component {
         const {actualRace} = this.props;
 
         if (actualStage.id !== undefined && !this.state.updated) {
-          console.log(actualStage.id);
           this.fetchStaticData(actualStage.id);
         }
 
         return(
           <header className="App-header">
-            <Link to="/"><img src="logo.png" alt="Logo" className="App-Header-Image"/></Link>
+            <Link to="/view/track"><img src="../logo.png" alt="Logo" className="App-Header-Image"/></Link>
             <div className="App-title Inline">{actualRace.name} / {actualStage.stageName}</div>
           </header>
         );

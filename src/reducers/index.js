@@ -11,6 +11,8 @@ import judgmentRiderConnectionReducer from "./judgmentRiderConnectionReducer";
 import gpxReducer from "./gpxReducer";
 import searchReducer from "./searchReducer";
 import notificationsReducer from "./notificationsReducer";
+import timelineReducer from "./timelineReducer";
+import logReducerRaceGroupHistory from "./logReducerRaceGroupHistory";
 
 const rootReducer = combineReducers({
     actualStage : activeStageReducer,
@@ -24,7 +26,9 @@ const rootReducer = combineReducers({
     judgmentRiderConnections : judgmentRiderConnectionReducer,
     gpsData : gpxReducer,
     searchState : searchReducer,
-    notifications : notificationsReducer
+    notifications : notificationsReducer,
+    timeline : timelineReducer,
+    logsRaceGroupHistory : logReducerRaceGroupHistory
 });
 
 export default rootReducer;

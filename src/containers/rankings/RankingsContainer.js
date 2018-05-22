@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Rankings from "../components/rankings/Rankings";
+import Rankings from "../../components/rankings/Rankings";
 
 function mapStateToProps(store) {
   return {

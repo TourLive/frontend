@@ -2,35 +2,35 @@ import axios from "axios";
 import * as types from "./actionTypes";
 import * as api from "../util/api.js"
 
-function receiveJudgments(data) {
+function receiveLogs(data) {
   return {
-    type : types.SET_JUDGMENTS,
+    type : types.SET_LOGS_RESULT,
     data : data
   }
 }
 
-function receiveJudgmentsError(data) {
+function receiveLogsError(data) {
   return {
-    type : types.SET_JUDGMENTS_ERROR,
+    type : types.SET_LOGS_ERROR,
     data : data
   }
 }
 
-export function getJudgmentsOfStage(id) {
+export function getLogsRaceGroupHistory(stageId, riderId) {
   return function (dispatch) {
     return axios({
-      url : api.LINK_JUDGMENTS + id,
+      url : api.LINKG_LOGS + stageId +"/" + riderId + "/RACEGROUP",
       timeout : 20000,
       method: 'get',
       responseType: 'json'
     }).then(function (response) {
       if (response.status === 200) {
-        dispatch(receiveJudgments(response.data));
+        dispatch(receiveLogs(response.data));
       } else {
-        dispatch(receiveJudgmentsError("Error on loading data"));
+        dispatch(receiveLogsError("Error on loading data"));
       }
     }).catch(function (response) {
-      dispatch(receiveJudgmentsError(response));
+      dispatch(receiveLogsError(response));
     });
   }
 }

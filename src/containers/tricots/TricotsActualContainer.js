@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-import TricotsActual from "../components/tricots/TricotsActual";
+import TricotsActual from "../../components/tricots/TricotsActual";
 
 
 function mapStateToProps(store) {
   return {
-    maillots: store.maillots.data,
-    actualStage : store.actualStage.data
+    maillots: store.maillots.data
   }
 }
 

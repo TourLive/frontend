@@ -11,7 +11,7 @@ html,body {
 
 .App-header {
   background-color: #ff0000;
-  height: 80px;
+  height: 60px;
   padding: 10px;
   color: white;
   position: relative;
@@ -39,12 +39,8 @@ html,body {
   z-index:100;
 }
 
-.App-Logo {
-  height: 80px;
-}
-
 .App-Header-Image {
-  height: 60px;
+  height: 40px;
 }
 
 .Inline {
@@ -56,10 +52,6 @@ html,body {
 
 .App-Trikot-Box {
   margin-bottom: 1rem;
-}
-
-.App-Trikot-Content {
-  padding-top: 0.5rem;
 }
 
 .map {
@@ -93,13 +85,6 @@ footer i.icon {
 .App-Timeline > div:first-child {
   left: 13.5px !important;
   width: 6px !important;
-}
-
-.Horizontal-Line{
-  height:0.1rem;
-  width:99%;
-  background:#A3B0B9;
-  margin:0.3rem;
 }
 
 .App-Timestamp {
@@ -155,8 +140,12 @@ footer i.icon {
   font-size: 1.5rem !important;
 }
 
+.Search {
+  padding-bottom: 100px;
+}
+
 .circle {
-  top: 0px;
+  top: 0;
   border-radius: 25px;
   padding: 1rem;
   height: 30px;
@@ -165,7 +154,7 @@ footer i.icon {
   background: #00BFFF;
   border: #00BFFF;
   display: flex;
-  left: 0px;
+  left: 0;
 }
 
 .innerCircle {
@@ -229,4 +218,70 @@ footer i.icon {
 
 .App-Image-Rider {
   width: 100%;
+}
+
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 6px;
+  height: auto;
+  background: rgb(160, 178, 184);
+}
+
+.timeline ul li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #6fba1c;
+  margin-left: 0.21rem;
+}
+
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  padding-bottom: 0.5rem;
+  width: 400px;
+  left: 2.5rem;
+}
+
+.App-Last-Timeline-Element::after {
+  background: none !important;
+}
+
+.App-Timeline {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.App-Timeline-Distance {
+  font-weight: bold;
+}
+
+.Fix-Header {
+  margin-top: 1.5rem !important;
+}
+
+.history-element {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.history-element:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 1.75rem;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 1.0rem;
+  background: rgb(160, 178, 184);
+  left: 1rem;
+}
+
+.history-element:first-child {
+  font-weight: bold;
 }

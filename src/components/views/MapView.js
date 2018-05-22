@@ -15,14 +15,25 @@ class MapView extends Component {
         gpsData.map(element => {
             array.push([element.latitude, element.longitude]);
         });
-        start === undefined ? (start = [], start.longitude=defaultLongitude, start.latitude=defaultLatitude) : (start = gpsData[0]);
-        end === undefined ? (end = [], end.longitude=defaultLongitude, end.latitude=defaultLatitude) : (end = gpsData[gpsData.length -1]);
+        
+        if (start === undefined) {
+          start = [];
+          start.longitude=defaultLongitude;
+          start.latitude=defaultLatitude;
+        }
+
+        if (end === undefined) {
+          end = [];
+          end.longitude=defaultLongitude;
+          end.latitude=defaultLatitude;
+        }
+
         return(
-            <div className="App-Content">
+            <div>
                 <Helmet>
                     <title>Kartenansicht</title>
                 </Helmet>
-                <Header as="h1" color='red'>Aktuelles Rennen auf der Karte</Header>
+                <Header as="h1" color='red' className="Fix-Header">Aktuelles Rennen auf der Karte</Header>
                 <Map zoom={zoomLevel} center={[start.latitude, start.longitude]} className="map">
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
