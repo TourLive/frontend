@@ -3,8 +3,7 @@ import HeightView from "../../components/views/HeightView";
 
 function mapStateToProps(store) {
   return {
-    gpsData : store.gpsData.data,
-    timeline : store.timeline.data
+    gpsData : store.gpsData.data
   }
 }
 

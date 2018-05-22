@@ -9,17 +9,7 @@ class HeightView extends Component {
 
 
     render() {
-        const plugins = [{
-            afterDraw: (chartInstance, easing) => {
-                const ctx = chartInstance.chart.ctx;
-                console.log(ctx);
-                ctx.fillText("This text drawn by a plugin", 100, 100);
-            }
-        }];
-
-
         const {gpsData} = this.props;
-        const {timeline} = this.props;
         const array = [];
         const labels = [];
         gpsData.map(element => {
