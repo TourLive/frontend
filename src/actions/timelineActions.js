@@ -5,11 +5,11 @@ import store from "../store"
 
 function receiveTimeline(judgments, raceGroups, stage, gpsData) {
     const jsonData = JSON.parse(JSON.stringify(gpsData));
-    const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "verkehrsspitze"; }).data.speed;
-    const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "verkehrsspitze"; }).data.distance.toFixed(1);
+    const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.speed;
+    const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.distance.toFixed(1);
     let elements = [];
-    judgments.map(judgment => {elements.push({distance : judgment.distance, text : judgment.name})});
-    raceGroups.map(raceGroup => { elements.push({distance : distanceLeadGroup - (raceGroup.actualGapTime * speedLeadGroup / 1000), text : raceGroup.raceGroupType})});
+    judgments.map(judgment => {return elements.push({distance : judgment.distance, text : judgment.name})});
+    raceGroups.map(raceGroup => { return elements.push({distance : distanceLeadGroup - (raceGroup.actualGapTime * speedLeadGroup / 3600), text : raceGroup.raceGroupType})});
     elements.sort((a,b) => b.distance - a.distance);
     let elems = [];
     let lastElement = null;
@@ -23,12 +23,19 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
         } else {
             gap = lastElement.distance - elem.distance;
         }
+        if (lastElement !== null && elems.length >= 1) {
+            if (lastElement.distance === elem.distance) {
+                let current = elems.pop();
+                current.text = current.text + " & " + elem.text;
+                return elems.push(current);
+            }
+        }
         lastElement = elem;
         return elems.push({distance : elem.distance, text : elem.text, gap: gap});
     });
     return {
-    type : types.SET_TIMELINE_RESULT,
-    timelineData : elems
+        type : types.SET_TIMELINE_RESULT,
+        timelineData : elems
   }
 }
 

@@ -2,27 +2,18 @@ import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
 import {Line} from 'react-chartjs-2';
-import * as gpsUtil from "../../util/gps.js";
 
 class HeightView extends Component {
+
+
+
     render() {
         const {gpsData} = this.props;
         const array = [];
         const labels = [];
-
-        let currentDistance = 0.0;
-        let lastElement  = null;
         gpsData.map(element => {
-            let distance = 0.0;
-            if (lastElement === null) {
-                distance = 0.0;
-            } else {
-                distance += gpsUtil.distance(lastElement, element);
-            }
-            lastElement = element;
-            currentDistance += distance;
             array.push(element.height);
-            labels.push("KM " + Math.round(currentDistance));
+            return labels.push("KM " + Math.round(element.distance));
         });
 
         const data = {
@@ -44,6 +35,7 @@ class HeightView extends Component {
                 }
             ]
         };
+
         return(
             <div>
                 <Helmet>

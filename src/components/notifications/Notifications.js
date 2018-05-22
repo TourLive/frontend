@@ -42,7 +42,7 @@ class Notifications extends Component {
         return <div>
             {notifications !== undefined && notifications.map(notification => {
                 NotificationManager.info(notification.message);
-                console.log(notification.message);
+                return null;
             })}
             <NotificationContainer/>
         </div>;
