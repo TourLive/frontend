@@ -8,8 +8,20 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
     const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.speed;
     const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.distance.toFixed(1);
     let elements = [];
-    judgments.map(judgment => {return elements.push({distance : judgment.distance, text : judgment.name})});
-    raceGroups.map(raceGroup => { return elements.push({distance : distanceLeadGroup - (raceGroup.actualGapTime * speedLeadGroup / 3600), text : raceGroup.raceGroupType})});
+    judgments.map(judgment => {return elements.push({distance : judgment.distance.toFixed(2), text : judgment.name})});
+    raceGroups.map(raceGroup => {
+        let left = distanceLeadGroup;
+        let right = (raceGroup.actualGapTime * speedLeadGroup / 3600);
+        let distance = left - right;
+        let text;
+        if (raceGroup.raceGroupType === 'LEAD' || raceGroup.raceGroupType === 'FELD') {
+            text = raceGroup.raceGroupType;
+        } else
+        {
+            text = "GRUPPE " + raceGroup.position;
+        }
+        return elements.push({distance : distance.toFixed(2), text : text})
+    });
     elements.sort((a,b) => b.distance - a.distance);
     let elems = [];
     let lastElement = null;
