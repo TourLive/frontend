@@ -5,7 +5,6 @@ import TrackViewContainer from "../containers/views/TrackViewContainer";
 import HeightViewContainer from "../containers/views/HeightViewContainer";
 import MapViewContainer from "../containers/views/MapViewContainer";
 import store from "../store";
-import * as raceGroupActions from "../actions/raceGroupsActions";
 import * as timelineActions from "../actions/timelineActions";
 import {geolocated} from "react-geolocated";
 
@@ -23,7 +22,6 @@ class Home extends Component {
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name})
 
     fetchInitalCurrentRaceGroups(id) {
-      store.dispatch(raceGroupActions.getCurrentRaceGroups(id));
       store.dispatch(timelineActions.getTimelineOfStage(id));
       this.setState({updated: true});
     }
@@ -40,7 +38,6 @@ class Home extends Component {
     tick() {
       let stageID = store.getState().actualStage.data.id;
       if (stageID !== undefined) {
-        store.dispatch(raceGroupActions.getCurrentRaceGroups(stageID));
         store.dispatch(timelineActions.getTimelineOfStage(stageID));
       }
     }
