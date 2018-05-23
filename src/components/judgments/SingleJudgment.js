@@ -48,6 +48,7 @@ class SingleJudgment extends Component {
               </div>
             )
           }
+          return null;
         })}
       </div>
     );

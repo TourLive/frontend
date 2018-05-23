@@ -5,7 +5,6 @@ import riderReducer from "./riderReducer";
 import riderStageConnectionReducer from "./riderStageConnectionReducer";
 import maillotReducer from "./maillotReducer";
 import settingsReducer from "./settingsReducer";
-import raceGroupReducer from "./raceGroupReducer";
 import judgmentReducer from "./judgmentReducer";
 import judgmentRiderConnectionReducer from "./judgmentRiderConnectionReducer";
 import gpxReducer from "./gpxReducer";
@@ -21,7 +20,6 @@ const rootReducer = combineReducers({
     cons : riderStageConnectionReducer,
     maillots : maillotReducer,
     settings : settingsReducer,
-    raceGroups : raceGroupReducer,
     judgments : judgmentReducer,
     judgmentRiderConnections : judgmentRiderConnectionReducer,
     gpsData : gpxReducer,

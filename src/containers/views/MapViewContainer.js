@@ -3,7 +3,8 @@ import MapView from "../../components/views/MapView";
 
 function mapStateToProps(store) {
   return {
-    gpsData : store.gpsData.data
+    gpsData : store.gpsData.data,
+    timeline : store.timeline.data
   }
 }
 

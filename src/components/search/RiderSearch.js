@@ -5,7 +5,6 @@ import * as riderActions from "../../actions/riderActions";
 import * as riderStageConnectionActions from "../../actions/riderStageConnectionsActions"
 import * as judgmentRiderConnectionActions from "../../actions/judgmentRiderConnectionActions"
 import * as maillotActions from "../../actions/maillotActions";
-import * as raceGroupsActions from "../../actions/raceGroupsActions";
 import * as searchActions from "../../actions/searchActions";
 import store from "../../store";
 
@@ -45,7 +44,6 @@ class RiderSearch extends Component {
         store.dispatch(riderStageConnectionActions.getRiderStageConnectionsFromAPI(id));
         store.dispatch(judgmentRiderConnectionActions.getJudgmentRiderConnections(id));
         store.dispatch(maillotActions.getCurrentMaillots(id));
-        store.dispatch(raceGroupsActions.getCurrentRaceGroups(id));
         this.setState({updated: true});
     }
 
