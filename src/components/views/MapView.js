@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Header} from "semantic-ui-react";
 import {Helmet} from "react-helmet";
-import {Map, TileLayer, Marker, Popup, Polyline, CircleMarker, Tooltip} from "react-leaflet";
+import {Map, TileLayer, Marker, Popup, Polyline, Tooltip} from "react-leaflet";
 import Leaflet from "leaflet";
 
 class MapView extends Component {
