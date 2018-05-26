@@ -16,8 +16,23 @@ class MapView extends Component {
             iconSize:     [40, 40]
         });
 
-        const iconBerg = Leaflet.icon({
-            iconUrl: require('./mapIcons/berg.png'),
+        const iconBergHC = Leaflet.icon({
+            iconUrl: require('./mapIcons/berg_hc.png'),
+            iconSize:     [40, 40]
+        });
+
+        const iconBergKat1 = Leaflet.icon({
+            iconUrl: require('./mapIcons/berg_kat1.png'),
+            iconSize:     [40, 40]
+        });
+
+        const iconBergKat2 = Leaflet.icon({
+            iconUrl: require('./mapIcons/berg_kat2.png'),
+            iconSize:     [40, 40]
+        });
+
+        const iconBergKat3 = Leaflet.icon({
+            iconUrl: require('./mapIcons/berg_kat3.png'),
             iconSize:     [40, 40]
         });
 
@@ -27,7 +42,10 @@ class MapView extends Component {
         });
 
         const SPRINT_REGEX = /sprint/i;
-        const BERG_REGEX = /berg/i;
+        const BERG_HC_REGEX = /berg.*hc/i;
+        const BERG_KAT1_REGEX = /berg.*kat.*1/i;
+        const BERG_KAT2_REGEX = /berg.*kat.*2/i;
+        const BERG_KAT3_REGEX = /berg.*kat.*3/i;
         const PUNKTE_ZEIT_REGEX = /punkte|zeit/i;
 
         const zoomLevel = 13;
@@ -75,13 +93,20 @@ class MapView extends Component {
                     <Polyline color="blue" positions={array} />
                     {marker.map((elem,i) => {
                         var icon = null;
-                        console.log("text" + elem.text);
                         var sprint = SPRINT_REGEX.exec(elem.text);
-                        var berg = BERG_REGEX.exec(elem.text);
+                        var bergHC = BERG_HC_REGEX.exec(elem.text);
+                        var bergKat1 = BERG_KAT1_REGEX.exec(elem.text);
+                        var bergKat2 = BERG_KAT2_REGEX.exec(elem.text);
+                        var bergKat3 = BERG_KAT3_REGEX.exec(elem.text);
                         var punkteZeit = PUNKTE_ZEIT_REGEX.exec(elem.text);
+
                         if(sprint !== null && sprint[0] !== null){ icon = iconSprint;}
-                        else if(berg !== null && berg[0] !== null){ icon = iconBerg;}
-                        else if(punkteZeit !== null && punkteZeit[0] !== null) {icon = iconZiel;}
+                        if(bergHC !== null && bergHC[0] !== null){ icon = iconBergHC;}
+                        if(bergKat1 !== null && bergKat1[0] !== null){ icon = iconBergKat1;}
+                        if(bergKat2 !== null && bergKat2[0] !== null){ icon = iconBergKat2;}
+                        if(bergKat3 !== null && bergKat3[0] !== null){ icon = iconBergKat3;}
+                        if(punkteZeit !== null && punkteZeit[0] !== null) {icon = iconZiel;}
+
                         return icon !== null ? (<Marker key={i} position={[elem.latitude, elem.longitude]} icon={icon}>
                             <Tooltip>
                                 <span><b>{elem.text}</b></span>
