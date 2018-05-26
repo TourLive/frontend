@@ -43,9 +43,9 @@ class MapView extends Component {
 
         const SPRINT_REGEX = /sprint/i;
         const BERG_HC_REGEX = /berg.*hc/i;
-        const BERG_KAT1_REGEX = / berg.*kat.*1/i;
-        const BERG_KAT2_REGEX = / berg.*kat.*2/i;
-        const BERG_KAT3_REGEX = / berg.*kat.*3/i;
+        const BERG_KAT1_REGEX = /berg.*kat.*1/i;
+        const BERG_KAT2_REGEX = /berg.*kat.*2/i;
+        const BERG_KAT3_REGEX = /berg.*kat.*3/i;
         const PUNKTE_ZEIT_REGEX = /punkte|zeit/i;
 
         const zoomLevel = 13;
