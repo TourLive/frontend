@@ -17,7 +17,7 @@ class MapView extends Component {
         });
 
         const iconBerg = Leaflet.icon({
-            iconUrl: require('./mapIcons/berg.png'),
+            iconUrl: require('./mapIcons/berg_hc.png'),
             iconSize:     [40, 40]
         });
 
