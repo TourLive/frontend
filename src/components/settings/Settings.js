@@ -50,7 +50,7 @@ class Settings extends Component {
                 <p><b>Aktuell:</b> {stateNotifications}</p>
                 <Button className="App-Button" color="green" fluid onClick={this.enableNotifications}>Ein</Button><br/>
                 <Button className="App-Button" color="red" fluid onClick={this.disableNotifications}>Aus</Button>
-                <Divider />
+                {/*<Divider />
                 <Header as="h3">Etappe auswählen</Header>
                 <Form>
                   <Form.Field control="select">
@@ -65,20 +65,20 @@ class Settings extends Component {
                     <option>Etappe 9</option>
                   </Form.Field>
                   <Button primary fluid >Etappe wechseln</Button>
-                </Form>
-                <Divider />
-                <Header as="h3">Aktualisierungsintervall</Header>
-                <p><b>Aktuell:</b> {settings.refreshPeriod} Sekunden</p>
-                <Form onSubmit={this.setPeriodTime}>
-                  <Form.Input name="intervall" label="Aktualisierungsparameter in Sekunden einstellen" defaultValue={settings.refreshPeriod}></Form.Input>
-                  <Button primary fluid type="submit">Aktualisierungsintervall setzen</Button>
-                </Form>
-                <Divider />
-                <Header as="h3">Copyright</Header>
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            </div>
-        );
+                    </Form>*/}
+                    <Divider />
+                    <Header as="h3">Aktualisierungsintervall</Header>
+                    <p><b>Aktuell:</b> {settings.refreshPeriod} Sekunden</p>
+                    <Form onSubmit={this.setPeriodTime}>
+                      <Form.Input name="intervall" label="Aktualisierungsparameter in Sekunden einstellen" defaultValue={settings.refreshPeriod}></Form.Input>
+                      <Button primary fluid type="submit">Aktualisierungsintervall setzen</Button>
+                    </Form>
+                    <Divider />
+                    <Header as="h3">Copyright</Header>
+                  <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                </div>
+            );
+        }
     }
-}
 
 export default Settings;

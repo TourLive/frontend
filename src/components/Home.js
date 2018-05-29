@@ -6,7 +6,6 @@ import HeightViewContainer from "../containers/views/HeightViewContainer";
 import MapViewContainer from "../containers/views/MapViewContainer";
 import store from "../store";
 import * as timelineActions from "../actions/timelineActions";
-import {geolocated} from "react-geolocated";
 
 class Home extends Component {
     constructor(props) {
@@ -86,7 +85,4 @@ class Home extends Component {
     }
 }
 
-export default geolocated({positionOptions: {
-    enableHighAccuracy: false,
-  },
-  userDecisionTimeout: 5000,})(Home);
+export default Home;
