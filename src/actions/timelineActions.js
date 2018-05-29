@@ -38,7 +38,7 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
         if (lastElement !== null && elems.length >= 1) {
             if (lastElement.distance === elem.distance) {
                 let current = elems.pop();
-                current.text = current.text + " & " + elem.text;
+                current.text = current.text + " & <br/> " + elem.text;
                 return elems.push(current);
             }
         }
