@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Parser from 'html-react-parser';
 
 class TrackTimelineElement extends Component {
     render() {
@@ -11,7 +12,7 @@ class TrackTimelineElement extends Component {
         return(
             <li style={divStyle}>
                 <div>
-                    <span className="App-Timeline-Distance">KM {element.distance} </span> | {element.text}
+                    <span className="App-Timeline-Distance">KM {element.distance} </span> | {Parser(element.text)}
                 </div>
             </li>
         );
