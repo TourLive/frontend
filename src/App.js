@@ -32,7 +32,7 @@ class App extends Component {
                     <Icon className="App-Icon-White" name="home"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={2} to="/rankings/official" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
-                    <Icon className="App-Icon-White" name="cubes"/>
+                    <Icon className="App-Icon-White" name="list layout"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={3} to="/tricots/start" name='tricots' active={activeItem === 'tricots'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="shirtsinbulk"/>
