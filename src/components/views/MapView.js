@@ -90,13 +90,13 @@ class MapView extends Component {
                     </Marker>
                     <Polyline color="blue" positions={array} />
                     {marker.map((elem,i) => {
-                        var icon = null;
-                        var sprint = SPRINT_REGEX.exec(elem.text);
-                        var bergHC = BERG_HC_REGEX.exec(elem.text);
-                        var bergKat1 = BERG_KAT1_REGEX.exec(elem.text);
-                        var bergKat2 = BERG_KAT2_REGEX.exec(elem.text);
-                        var bergKat3 = BERG_KAT3_REGEX.exec(elem.text);
-                        var punkteZeit = PUNKTE_ZEIT_REGEX.exec(elem.text);
+                        let icon = null;
+                        let sprint = SPRINT_REGEX.exec(elem.text);
+                        let bergHC = BERG_HC_REGEX.exec(elem.text);
+                        let bergKat1 = BERG_KAT1_REGEX.exec(elem.text);
+                        let bergKat2 = BERG_KAT2_REGEX.exec(elem.text);
+                        let bergKat3 = BERG_KAT3_REGEX.exec(elem.text);
+                        let punkteZeit = PUNKTE_ZEIT_REGEX.exec(elem.text);
 
                         if(sprint !== null && sprint[0] !== null){ icon = iconSprint;}
                         if(bergHC !== null && bergHC[0] !== null){ icon = iconBergHC;}
