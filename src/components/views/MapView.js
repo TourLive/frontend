@@ -67,8 +67,6 @@ class MapView extends Component {
             return marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text});
         });
 
-        end !== undefined && console.log("ziel: " + end.latitude + " " + end.longitude);
-
         return(
             <div>
                 <Helmet>
@@ -82,12 +80,12 @@ class MapView extends Component {
                   />
                     <Marker key="start" position={[start.latitude, start.longitude]} icon={iconStart}>
                         <Popup>
-                            <span><b>Start:</b></span>
+                            <span><b>Start</b></span>
                         </Popup>
                     </Marker>
                     <Marker key="end" position={[end.latitude, end.longitude]} icon={iconZiel}>
                         <Popup>
-                            <span><b>Ziel:</b></span>
+                            <span><b>Ziel</b></span>
                         </Popup>
                     </Marker>
                     <Polyline color="blue" positions={array} />
