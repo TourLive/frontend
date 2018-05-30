@@ -9,7 +9,7 @@ class Settings extends Component {
       super(props);
 
       this.state = {
-        formPeriod: 0
+        toSmallRefreshPeriod: false
       };
 
       this.enableNotifications = this.enableNotifications.bind(this);
@@ -28,6 +28,14 @@ class Settings extends Component {
     setPeriodTime = (event) => {
         let value = event.target.intervall.value;
         store.dispatch(settingsActions.setPeriodBetweenCalls(value))
+    };
+
+    handleChange = (e, { value } ) => {
+        if (value < 30) {
+            this.setState({toSmallRefreshPeriod: true});
+        } else {
+            this.setState({toSmallRefreshPeriod: false});
+        }
     };
 
     render() {
@@ -70,8 +78,8 @@ class Settings extends Component {
                     <Header as="h3">Aktualisierungsintervall</Header>
                     <p><b>Aktuell:</b> {settings.refreshPeriod} Sekunden</p>
                     <Form onSubmit={this.setPeriodTime}>
-                      <Form.Input name="intervall" label="Aktualisierungsparameter in Sekunden einstellen" defaultValue={settings.refreshPeriod}></Form.Input>
-                      <Button primary fluid type="submit">Aktualisierungsintervall setzen</Button>
+                      <Form.Input onChange={this.handleChange} name="intervall" label="Aktualisierungsparameter in Sekunden einstellen (Wert muss grösser als 30 sein)" defaultValue={settings.refreshPeriod} min="30"></Form.Input>
+                      <Button disabled={this.state.toSmallRefreshPeriod} primary fluid type="submit">Aktualisierungsintervall setzen</Button>
                     </Form>
                     <Divider />
                     <Header as="h3">Copyright</Header>
