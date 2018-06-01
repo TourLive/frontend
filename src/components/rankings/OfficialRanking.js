@@ -96,15 +96,16 @@ class OfficialRanking extends Component {
                     {this.state.data.length === 0 && this.dataNotReady()}
                     {this.state.data && this.state.data.map((connection, i) => {
                       let flag = countries.find((v) => {
-                        return v.ioc === connection.rider.country;
+                          return v.ioc === connection.rider.country;
                       });
+                      let disableFlag = flag === undefined;
                       const keyOne = `1${connection.id}`;
                       const keyTwo = `2${connection.id}`;
                       return [
                           <Responsive as={Table.Row} key={keyOne} {...Responsive.onlyMobile}>
                             <Table.Cell>Rang: {this.state.ranking[connection.id]}</Table.Cell>
                             <Table.Cell>Zeit: {dateUtil.mapValueToTimeString(connection.officialTime)}</Table.Cell>
-                            <Table.Cell width="4">{connection.rider.startNr} <Flag name={flag.iso.toLowerCase()}/>  {connection.rider.name}, Team: {connection.rider.teamShortName}</Table.Cell>
+                            <Table.Cell width="4">{connection.rider.startNr} {disableFlag === true ? (connection.rider.country) : (<Flag name={flag.iso.toLowerCase()}/>)}  {connection.rider.name}, Team: {connection.rider.teamShortName}</Table.Cell>
                           </Responsive>,
                           <Responsive as={Table.Row} key={keyTwo} {...Responsive.onlyComputer}>
                             <Table.Cell>{this.state.ranking[connection.id]}</Table.Cell>
@@ -112,7 +113,7 @@ class OfficialRanking extends Component {
                             <Table.Cell>{dateUtil.mapValueToTimeString(connection.officialTime)}</Table.Cell>
                             <Table.Cell>{connection.rider.name}</Table.Cell>
                             <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
-                            <Table.Cell><Flag name={flag.iso.toLowerCase()}/></Table.Cell>
+                            <Table.Cell>{disableFlag === true ? (connection.rider.country) : (<Flag name={flag.iso.toLowerCase()}/>)}</Table.Cell>
                           </Responsive>
                       ];
                     })}
