@@ -10,5 +10,6 @@ export function distance(elementOne, elementTwo) {
   const theta_1 = lon_1*Math.PI/180.0;
   const theta_2 = lon_2*Math.PI/180.0;
   const d = rho*Math.acos( Math.sin(phi_1)*Math.sin(phi_2)*Math.cos(theta_1 - theta_2) + Math.cos(phi_1)*Math.cos(phi_2) );
+  if(isNaN(d)){ return 0;}
   return 1.609344*d;
 }
