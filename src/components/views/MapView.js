@@ -118,12 +118,12 @@ class MapView extends Component {
 
                         return icon !== null ? (<Marker key={i} position={[elem.latitude, elem.longitude]} icon={icon}>
                             <Tooltip>
-                                <span><b>{elem.text}</b></span>
+                                <span><b>{elem.text.replace(/<br\/>/ig, '')}</b></span>
                             </Tooltip>
                         </Marker>) : (
                             <Marker key={i} position={[elem.latitude, elem.longitude]}>
                                 <Tooltip>
-                                    <span><b>{elem.text}</b></span>
+                                    <span><b>{elem.text.replace(/<br\/>/ig, '')}</b></span>
                                 </Tooltip>
                             </Marker>
                         )
