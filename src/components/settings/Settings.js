@@ -82,8 +82,23 @@ class Settings extends Component {
                       <Button disabled={this.state.toSmallRefreshPeriod} primary fluid type="submit">Aktualisierungsintervall setzen</Button>
                     </Form>
                     <Divider />
-                    <Header as="h3">Copyright</Header>
-                  <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <Header as="h3">Impressum</Header>
+                  <p>Das TourLive System wird seit 2003 an Radrennen eingesetzt. Es umfasst GPS-Aufnahmesysteme, welche im Renntross mitgeführt werden, Datenerfassungs- und Web-Anwendungen bei cnlab AG und die RadioTour Anwendung. Die RadioTour Anwendung dient dem RadioTour Speaker zur Erfassung der Zusammensetzungen und Zeitabstände der Ausreissergruppen. Die vom TourLive System gesammelten Daten nutzen die Rennorganisation,  die Verkehrssicherheitsdienste, Mannschaftsleiter und Zuschauer am Strassenrand oder irgendwo in der Welt am Internet.
+                      <br/><br/>
+                      Grundlagen zum TourLive System wurden im Rahmen verschiedener Studien- und Bachelorarbeit an der HSR Hochschule für Technik Rapperswil erarbeitet:
+                      <br/>
+                      <ul>
+                        <li>Nov 2001, Philipp Brunner und Sandro    Danioth, Diplomarbeit Abt. Elektrotechnik, TourLive - Kopplung und Steuerung von Velo-Trainingssystemen via Internet</li>
+                        <li>Nov 2003, Daniel Kamm, Diplomarbeit Abt. Informatik,  Rennsimulator mit Tacx</li>
+                        <li>Nov 2005, Livio Schirru und Christian Schellenberg, Studienarbeit Abt. Informatik, TourLive Windmesser</li>
+                        <li>Sep 2007, Bruno Krieg und Daniel Wydler, Diplomarbeit Abt. Informatik, TourLive mit Windows Mobile</li>
+                        <li>Feb 2009, Michael Wagner, Stephan Hauser, Bachelorarbeit Abt. Informatik,  TourLive EcoHelper App</li>
+                        <li>Jan 2011, Daniel Stucki, Florian        Bentele , Studienarbeit Abt. Informatik, Android Applikation RadioTour</li>
+                        <li>Feb 2013, Florian Bentele, Patrizia Heer und Simon Stäheli, Bachelorarbeit Abt. Informatik,  TourLive NG</li>
+                        <li>Sep 2017,  Urs Forrer, Dominik Good, Studienarbeit Abt. Informatik, Radio Tour Android Anwendung</li>
+                        <li>Jun 2018, Urs Forrer und Dominik Good, Bachelorarbeit Abt. Informatik,  TourLive Webanwendung</li>
+                      </ul>
+                      Bei cnlab wird das TourLive System von Patrick Eichler, Lukas Frey, Raphael Juchli und Peter Heinzmann betreut und weiter entwickelt.</p>
                 </div>
             );
         }
