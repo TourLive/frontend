@@ -16,6 +16,11 @@ class MapView extends Component {
             iconSize:     [40, 40]
         });
 
+        const iconBerg = Leaflet.icon({
+            iconUrl: require('./mapIcons/berg.png'),
+            iconSize:     [40, 40]
+        });
+
         const iconBergHC = Leaflet.icon({
             iconUrl: require('./mapIcons/berg_hc.png'),
             iconSize:     [40, 40]
@@ -42,6 +47,8 @@ class MapView extends Component {
         });
 
         const SPRINT_REGEX = /sprint/i;
+        const SPURT_REGEX = /spurt/i;
+        const BERG_REGEX = /berg/i;
         const BERG_HC_REGEX = /berg.*hc/i;
         const BERG_KAT1_REGEX = /berg.*kat.*1/i;
         const BERG_KAT2_REGEX = /berg.*kat.*2/i;
@@ -92,6 +99,8 @@ class MapView extends Component {
                     {marker.map((elem,i) => {
                         let icon = null;
                         let sprint = SPRINT_REGEX.exec(elem.text);
+                        let spurt = SPURT_REGEX.exec(elem.text);
+                        let berg = BERG_REGEX.exec(elem.text);
                         let bergHC = BERG_HC_REGEX.exec(elem.text);
                         let bergKat1 = BERG_KAT1_REGEX.exec(elem.text);
                         let bergKat2 = BERG_KAT2_REGEX.exec(elem.text);
@@ -99,6 +108,8 @@ class MapView extends Component {
                         let punkteZeit = PUNKTE_ZEIT_REGEX.exec(elem.text);
 
                         if(sprint !== null && sprint[0] !== null){ icon = iconSprint;}
+                        if(spurt !== null && spurt[0] !== null) { icon = iconSprint; }
+                        if(berg !== null && berg[0] !== null) { icon = iconBerg; }
                         if(bergHC !== null && bergHC[0] !== null){ icon = iconBergHC;}
                         if(bergKat1 !== null && bergKat1[0] !== null){ icon = iconBergKat1;}
                         if(bergKat2 !== null && bergKat2[0] !== null){ icon = iconBergKat2;}
@@ -107,12 +118,12 @@ class MapView extends Component {
 
                         return icon !== null ? (<Marker key={i} position={[elem.latitude, elem.longitude]} icon={icon}>
                             <Tooltip>
-                                <span><b>{elem.text}</b></span>
+                                <span><b>{elem.text.replace(/<br\/>/ig, '')}</b></span>
                             </Tooltip>
                         </Marker>) : (
                             <Marker key={i} position={[elem.latitude, elem.longitude]}>
                                 <Tooltip>
-                                    <span><b>{elem.text}</b></span>
+                                    <span><b>{elem.text.replace(/<br\/>/ig, '')}</b></span>
                                 </Tooltip>
                             </Marker>
                         )

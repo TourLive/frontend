@@ -12,9 +12,13 @@ class TricotsStart extends Component {
                 <Helmet>
                     <title>Trikotträger Start</title>
                 </Helmet>
-                <List divided verticalAlign='middle' size="massive">
-                    {maillots.map(x => <SingleTrikotContainer key={x.id} data={x}/>)}
-                </List>
+                {maillots.length === 0 ? (
+                    <div>In diesem Rennen werden keine Trikots vergeben</div>
+                ):(
+                    <List divided verticalAlign='middle' size="massive">
+                        {maillots.map(x => <SingleTrikotContainer key={x.id} data={x}/>)}
+                    </List>
+                )}
             </div>
         );
     }
