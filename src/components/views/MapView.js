@@ -67,10 +67,14 @@ class MapView extends Component {
             return array.push([element.latitude, element.longitude]);
         });
         timeline.map(elem => {
-            let points = gpsData.filter(e => {
-                return (elem.distance - e.distance) < 0.5 && (elem.distance - e.distance) >= -0.5
-            });
-            let temp = points[points.length -1];
+            let points;
+            for(var i = 0.05; i <= 0.5; i += 0.05){
+                 points = gpsData.filter(e => {
+                    return (elem.distance - e.distance) < i && (elem.distance - e.distance) >= -i
+                 });
+                 if(points.length > 0) {break};
+            }
+            let temp = points[parseInt(points.length / 2,0)];
             return marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text, skip : elem.skip});
         });
 
@@ -97,7 +101,6 @@ class MapView extends Component {
                     </Marker>
                     <Polyline color="blue" positions={array} />
                     {marker.map((elem,i) => {
-                        console.log(elem);
                         if(elem.skip === false){
                         let icon = null;
                         let sprint = SPRINT_REGEX.exec(elem.text);
