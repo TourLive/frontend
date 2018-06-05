@@ -71,7 +71,7 @@ class MapView extends Component {
                 return (elem.distance - e.distance) < 0.5 && (elem.distance - e.distance) >= -0.5
             });
             let temp = points[points.length -1];
-            return marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text});
+            return marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text, skip : elem.skip});
         });
 
         return(
@@ -97,6 +97,8 @@ class MapView extends Component {
                     </Marker>
                     <Polyline color="blue" positions={array} />
                     {marker.map((elem,i) => {
+                        console.log(elem);
+                        if(elem.skip === false){
                         let icon = null;
                         let sprint = SPRINT_REGEX.exec(elem.text);
                         let spurt = SPURT_REGEX.exec(elem.text);
@@ -126,7 +128,7 @@ class MapView extends Component {
                                     <span><b>{elem.text.replace(/<br\/>/ig, '')}</b></span>
                                 </Tooltip>
                             </Marker>
-                        )
+                        )}
                     })}
                 </Map>}
             </div>
