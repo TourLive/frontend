@@ -18,10 +18,23 @@ class SingleJudgment extends Component {
         {judgment.reward.points.map((reward,i) => {
           let rider;
           let flag;
+          let RewardRank = reward;
           let jRC = judgmentRiderConnections.find((e) => {
             let rank = i+1;
             return (e.judgment.id === judgment.id && e.rank === rank);
           });
+          if (jRC === undefined) {
+            let moneyArray = judgment.reward.money;
+            let money = moneyArray[i];
+            if (money !== undefined && money !== 0) {
+                RewardRank = 1;
+                jRC = judgmentRiderConnections.find((e) => {
+                    let rank = i+1;
+                    console.log(rank);
+                    return (e.judgment.id === judgment.id && e.rank === rank);
+                });
+            }
+          }
           if (jRC !== undefined) {
             rider = riders.find((o) => {
               return o.id === jRC.rider.id;
@@ -40,7 +53,7 @@ class SingleJudgment extends Component {
             <p>Wertung wurde noch nicht vergeben</p>
           );
 
-          if (reward !== 0) {
+          if (RewardRank !== 0) {
             return (
               <div key={i+1} className="App-Judgment-Rank">
                 <h5>Platz {i+1}</h5>
