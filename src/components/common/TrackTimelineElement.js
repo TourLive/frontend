@@ -11,7 +11,7 @@ class TrackTimelineElement extends Component {
 
         return(
             <li style={divStyle}>
-                <div>
+                <div className="App-Timeline-Text">
                     <span className="App-Timeline-Distance">KM {element.distance} </span> | {Parser(element.text)}
                 </div>
             </li>
