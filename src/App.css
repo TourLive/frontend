@@ -261,6 +261,10 @@ footer i.icon {
   font-weight: bold;
 }
 
+.App-Timeline-Text {
+  font-size : 9pt;
+}
+
 .Fix-Header {
   margin-top: 1.5rem !important;
 }
