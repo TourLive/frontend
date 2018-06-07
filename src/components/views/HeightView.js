@@ -11,11 +11,17 @@ class HeightView extends Component {
         const {gpsData} = this.props;
         const array = [];
         const labels = [];
+        let temp = 0;
         gpsData.map(element => {
-            array.push(element.height);
-            return labels.push("KM " + Math.round(element.distance));
+            if (temp === 1)  {
+                temp = 0;
+                return;
+            } else {
+                temp = 1;
+                array.push(element.height);
+                return labels.push("KM " + Math.round(element.distance));
+            }
         });
-
         const data = {
             labels : labels,
             datasets: [
