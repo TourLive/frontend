@@ -31,7 +31,7 @@ class Settings extends Component {
     };
 
     handleChange = (e, { value } ) => {
-        if (value < 30) {
+        if (value < 10) {
             this.setState({toSmallRefreshPeriod: true});
         } else {
             this.setState({toSmallRefreshPeriod: false});
@@ -78,7 +78,7 @@ class Settings extends Component {
                     <Header as="h3">Aktualisierungsintervall</Header>
                     <p><b>Aktuell:</b> {settings.refreshPeriod} Sekunden</p>
                     <Form onSubmit={this.setPeriodTime}>
-                      <Form.Input onChange={this.handleChange} name="intervall" label="Aktualisierungsparameter in Sekunden einstellen (Wert muss grösser als 30 sein)" defaultValue={settings.refreshPeriod} min="30"></Form.Input>
+                      <Form.Input onChange={this.handleChange} name="intervall" label="Aktualisierungsparameter in Sekunden einstellen (Wert muss grösser/gleich als 10 sein)" defaultValue={settings.refreshPeriod} min="10"></Form.Input>
                       <Button disabled={this.state.toSmallRefreshPeriod} primary fluid type="submit">Aktualisierungsintervall setzen</Button>
                     </Form>
                     <Divider />

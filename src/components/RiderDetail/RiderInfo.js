@@ -21,6 +21,7 @@ class RiderInfo extends Component {
         return (
           <Card>
             <RiderImage source={sourceImage} default="../placeholder.jpg" />
+              <p>© Chris Auld Photography</p>
             <Card.Content>
               <Card.Header>{rider.name}</Card.Header>
               <Card.Meta>{rider.team}</Card.Meta>

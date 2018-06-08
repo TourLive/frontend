@@ -31,7 +31,7 @@ class App extends Component {
                 <Menu.Item as={Link} key={1} to="/view/track" name='home' active={activeItem === 'home'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="home"/>
                 </Menu.Item>,
-                <Menu.Item as={Link} key={2} to="/rankings/official" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
+                <Menu.Item as={Link} key={2} to="/rankings/virtual" name='rankings' active={activeItem === 'rankings'} className="navitem" onClick={this.handleMenuItemClick}>
                     <Icon className="App-Icon-White" name="list layout"/>
                 </Menu.Item>,
                 <Menu.Item as={Link} key={3} to="/tricots/start" name='tricots' active={activeItem === 'tricots'} className="navitem" onClick={this.handleMenuItemClick}>
