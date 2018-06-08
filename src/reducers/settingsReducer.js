@@ -1,7 +1,7 @@
 import * as types from "../actions/actionTypes";
 
 const initialState = {
-  refreshPeriod: 60,
+  refreshPeriod: 10,
   notifications: false,
   actualStage: 0
 };
