@@ -22,7 +22,8 @@ class TrackTimeline extends Component {
                 <ul className="App-Timeline">
                     {elements.map((element,i) => {
                         if(elements.length === i + 1){bottomSize = element.distance;}
-                        if (element.text === "FELD") {
+                        let contains = element.text.search("FELD");
+                        if (contains === 0) {
                             return (<TrackTimelineElement key={i} ref={e => this.ref = e } data={element}/>);
                         } else {
                             return (<TrackTimelineElement key={i} data={element}/>);

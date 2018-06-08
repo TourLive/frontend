@@ -19,12 +19,12 @@ class MountainRanking extends Component {
         let temp = this.state.cons;
         switch(type){
             case 'points':
-                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => parseInt(a.rank) - parseInt(b.rank)), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : this.state.cons.sort((a, b) => parseInt(b.rank) - parseInt(a.rank)), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             case 'startNr':
-                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => parseInt(a.rider.startNr) - parseInt(b.rider.startNr)), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : this.state.cons.sort((a, b) => parseInt(b.rider.startNr) - parseInt(a.rider.startNr)), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rider.startNr - a.rider.startNr), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             case 'name':
                 this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'}) :
@@ -40,7 +40,7 @@ class MountainRanking extends Component {
                 break;
             default: // Default sorted by rank
                 this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : this.state.cons.sort((a, b) => parseInt(b.rank) - parseInt(a.rank)), sortOrder: 'ascending', uiOrder:'descending'});
+                    this.setState({data : this.state.cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
         }
         this.setState({cons : temp});
