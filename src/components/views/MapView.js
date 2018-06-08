@@ -121,7 +121,7 @@ class MapView extends Component {
                         if(bergKat3 !== null && bergKat3[0] !== null){ icon = iconBergKat3;}
                         if(punkteZeit !== null && punkteZeit[0] !== null) {icon = iconZiel;}
 
-                        return icon !== null ? (<Marker key={i} position={[elem.latitude, elem.longitude]} icon={icon}>
+                        return icon !== null && icon !== undefined ? (<Marker key={i} position={[elem.latitude, elem.longitude]} icon={icon}>
                             <Tooltip>
                                 <span><b>{elem.text.replace(/<br\/>/ig, '')}</b></span>
                             </Tooltip>

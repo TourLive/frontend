@@ -10,8 +10,7 @@ class PointRanking extends Component {
         this.state = {
             sortOrder : 'ascending',
             uiOrder : undefined,
-            data : [],
-            ranking : []
+            data : []
         };
     }
 
@@ -19,8 +18,8 @@ class PointRanking extends Component {
         const {cons} = this.props;
         switch(type){
             case 'points':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.bonusPoints - b.rider.bonusPoints), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.rider.bonusPoints - a.rider.bonusPoints), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rank- b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             case 'startNr':
                 this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
@@ -39,26 +38,32 @@ class PointRanking extends Component {
                     this.setState({data : cons.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             default: // Default sorted by rank
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.virtualGap - a.virtualGap), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
         }
     };
 
     componentWillReceiveProps(nextProps){
         const {cons} = nextProps;
-        this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'ascending'});
-        let hashtable = {};
-        cons.sort((a,b) => a.virtualGap - b.virtualGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
-        this.setState({ranking: hashtable});
+        this.setState({cons : cons});
+        let array = [];
+        cons.sort((a,b) => b.bonusPoints - a.bonusPoints).map((con,i) => {
+            con.rank = i + 1;
+            return array.push(con);
+        });
+        this.setState({data : array});
     }
 
     componentDidMount(){
         const {cons} = this.props;
-        this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'ascending'});
-        let hashtable = {};
-        cons.sort((a,b) => a.virtualGap - b.virtualGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
-        this.setState({ranking: hashtable});
+        this.setState({cons : cons});
+        let array = [];
+        cons.sort((a,b) => b.bonusPoints - a.bonusPoints).map((con,i) => {
+            con.rank = i + 1;
+            return array.push(con);
+        });
+        this.setState({data : array});
     }
 
 
@@ -103,12 +108,12 @@ class PointRanking extends Component {
                       const keyTwo = `2${connection.id}`;
                       return [
                         <Responsive as={Table.Row} key={keyOne} {...Responsive.onlyMobile}>
-                          <Table.Cell>Rang: {this.state.ranking[connection.id]}</Table.Cell>
+                          <Table.Cell>Rang: {connection.rank}</Table.Cell>
                           <Table.Cell>Bonuspunkte: {connection.bonusPoints}</Table.Cell>
                           <Table.Cell width="4">{connection.rider.startNr} <Flag name={flag.iso.toLowerCase()}/>  {connection.rider.name}, Team: {connection.rider.teamShortName}</Table.Cell>
                         </Responsive>,
                         <Responsive as={Table.Row} key={keyTwo} {...Responsive.onlyComputer}>
-                          <Table.Cell>{this.state.ranking[connection.id]}</Table.Cell>
+                          <Table.Cell>{connection.rank}</Table.Cell>
                           <Table.Cell>{connection.rider.startNr}</Table.Cell>
                           <Table.Cell>{connection.bonusPoints}</Table.Cell>
                           <Table.Cell>{connection.rider.name}</Table.Cell>
