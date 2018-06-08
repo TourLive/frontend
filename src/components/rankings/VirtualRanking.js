@@ -90,6 +90,7 @@ class VirtualRanking extends Component {
                 <Helmet>
                     <title>Virtuelles Ranking</title>
                 </Helmet>
+                <p>Einzelgesamtwertung nach Zeit</p>
                   <Table className="App-Table-Grid" basic='very' color="red" celled collapsing sortable>
                     <Table.Header>
                       <Table.Row>
