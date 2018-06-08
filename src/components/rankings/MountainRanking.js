@@ -11,54 +11,64 @@ class MountainRanking extends Component {
             sortOrder : 'ascending',
             uiOrder : undefined,
             data : [],
-            ranking : []
+            cons : [],
         };
     }
 
     handleSort(type) {
-        const {cons} = this.props;
+        let temp = this.state.cons;
         switch(type){
             case 'points':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.mountainBonusPoints - b.rider.mountainBonusPoints), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.rider.mountainBonusPoints - a.rider.mountainBonusPoints), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             case 'startNr':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.rider.startNr - a.rider.startNr), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rider.startNr - a.rider.startNr), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             case 'name':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.rider.name.replace(/ /g,'').toLowerCase().localeCompare(a.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rider.name.replace(/ /g,'').toLowerCase().localeCompare(a.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             case 'team':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.teamShortName.localeCompare(b.rider.teamShortName)), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.rider.teamShortName.localeCompare(a.rider.teamShortName)), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rider.teamShortName.localeCompare(b.rider.teamShortName)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rider.teamShortName.localeCompare(a.rider.teamShortName)), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             case 'country':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.country.localeCompare(b.rider.country)), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rider.country.localeCompare(b.rider.country)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
             default: // Default sorted by rank
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'descending', uiOrder :'ascending'}) :
-                    this.setState({data : cons.sort((a, b) => b.virtualGap - a.virtualGap), sortOrder: 'ascending', uiOrder:'descending'});
+                this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : this.state.cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
                 break;
         }
+        this.setState({cons : temp});
     };
 
     componentWillReceiveProps(nextProps){
         const {cons} = nextProps;
-        this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'ascending'});
-        let hashtable = {};
-        cons.sort((a,b) => a.virtualGap - b.virtualGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
-        this.setState({ranking: hashtable});
+        this.setState({cons : cons});
+        let array = [];
+        cons.sort((a,b) => b.mountainBonusPoints - a.mountainBonusPoints).map((con,i) => {
+            con.rank = i + 1;
+            return array.push(con);
+        });
+        console.log(array);
+        this.setState({data : array});
     }
 
     componentDidMount(){
         const {cons} = this.props;
-        this.setState({data : cons.sort((a, b) => a.virtualGap - b.virtualGap), sortOrder: 'ascending'});
-        let hashtable = {};
-        cons.sort((a,b) => a.virtualGap - b.virtualGap).map(con => hashtable[con.id] = cons.findIndex(c => c.id === con.id)+1);
-        this.setState({ranking: hashtable});
+        this.setState({cons : cons});
+        let array = [];
+        cons.sort((a,b) => b.mountainBonusPoints - a.mountainBonusPoints).map((con,i) => {
+            con.rank = i + 1;
+            console.log(con);
+            return array.push(con);
+        });
+        console.log(array);
+        this.setState({data : array});
     }
 
 
@@ -103,12 +113,12 @@ class MountainRanking extends Component {
                       const keyTwo = `2${connection.id}`;
                       return [
                         <Responsive as={Table.Row} key={keyOne} {...Responsive.onlyMobile}>
-                          <Table.Cell>Rang: {this.state.ranking[connection.id]}</Table.Cell>
+                          <Table.Cell>Rang: {connection.rank}</Table.Cell>
                           <Table.Cell>Punkte: {connection.mountainBonusPoints}</Table.Cell>
                           <Table.Cell width="4">{connection.rider.startNr} <Flag name={flag.iso.toLowerCase()}/>  {connection.rider.name}, Team: {connection.rider.teamShortName}</Table.Cell>
                         </Responsive>,
                         <Responsive as={Table.Row} key={keyTwo} {...Responsive.onlyComputer}>
-                          <Table.Cell>{this.state.ranking[connection.id]}</Table.Cell>
+                          <Table.Cell>{connection.rank}</Table.Cell>
                           <Table.Cell>{connection.rider.startNr}</Table.Cell>
                           <Table.Cell>{connection.mountainBonusPoints}</Table.Cell>
                           <Table.Cell>{connection.rider.name}</Table.Cell>

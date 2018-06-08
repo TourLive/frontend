@@ -8,8 +8,9 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
     const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.speed;
     const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.distance.toFixed(1);
     let elements = [];
-    judgments.map(judgment => {return elements.push({distance : judgment.distance.toFixed(2), text : judgment.name, skip : judgment.skipForDisplay})});
+    judgments.map(judgment => {return elements.push({distance : judgment.distance.toFixed(2), text : judgment.name, skip : judgment.skipForDisplay, type : "judgment"})});
     raceGroups.map(raceGroup => {
+        let riders = raceGroup.riders.length;
         let left = distanceLeadGroup;
         let right = (raceGroup.actualGapTime * speedLeadGroup / 3600);
         let distance = left - right;
@@ -20,7 +21,8 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
         {
             text = "GRUPPE " + raceGroup.position;
         }
-        return elements.push({distance : distance.toFixed(2), text : text, skip : false})
+        text += " (" + riders + " Fahrer)  ";
+        return elements.push({distance : distance.toFixed(2), text : text, skip : false, type : "racegroup"})
     });
     elements.sort((a,b) => b.distance - a.distance);
     let elems = [];
@@ -36,14 +38,14 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
             gap = lastElement.distance - elem.distance;
         }
         if (lastElement !== null && elems.length >= 1) {
-            if (lastElement.distance === elem.distance) {
+            if (lastElement.distance === elem.distance && lastElement.type !== elem.type) {
                 let current = elems.pop();
                 current.text = current.text + " & <br/> " + elem.text;
                 return elems.push(current);
             }
         }
         lastElement = elem;
-        return elems.push({distance : elem.distance, text : elem.text, gap: gap, skip: elem.skip});
+        return elems.push({distance : elem.distance, text : elem.text, gap: gap, skip: elem.skip, type: elem.type});
     });
     return {
         type : types.SET_TIMELINE_RESULT,
