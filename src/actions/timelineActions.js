@@ -15,13 +15,17 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
         let right = (raceGroup.actualGapTime * speedLeadGroup / 3600);
         let distance = left - right;
         let text;
-        if (raceGroup.raceGroupType === 'LEAD' || raceGroup.raceGroupType === 'FELD') {
+        if (raceGroup.raceGroupType === 'LEAD') {
             text = raceGroup.raceGroupType;
+            text += " (" + riders + " Fahrer)";
+        } else if (raceGroup.raceGroupType === 'FELD') {
+            text = raceGroup.raceGroupType;
+            text += " (" + riders + " Fahrer)  | + " + raceGroup.actualGapTime + " sec";
         } else
         {
             text = "GRUPPE " + raceGroup.position;
+            text += " (" + riders + " Fahrer)  | + " + raceGroup.actualGapTime + " sec";
         }
-        text += " (" + riders + " Fahrer)  ";
         return elements.push({distance : distance.toFixed(2), text : text, skip : false, type : "racegroup"})
     });
     elements.sort((a,b) => b.distance - a.distance);

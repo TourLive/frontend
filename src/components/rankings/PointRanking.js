@@ -87,6 +87,7 @@ class PointRanking extends Component {
                 <Helmet>
                     <title>Punkte Ranking</title>
                 </Helmet>
+                <p>Punkteklassement search.ch</p>
               <Table className="App-Table-Grid" basic='very' color="red" celled collapsing sortable>
                 <Table.Header>
                   <Table.Row>
