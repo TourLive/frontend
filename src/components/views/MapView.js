@@ -83,7 +83,8 @@ class MapView extends Component {
                 <Helmet>
                     <title>Kartenansicht</title>
                 </Helmet>
-                <Header as="h1" color='red' className="Fix-Header">Aktuelles Rennen auf der Karte</Header>
+                <br/>
+                <p className="App-Timestamp"><strong>Letzte Aktualisierung:</strong> {new Date().today()} {new Date().timeNow()}</p>
                 {start !== undefined && end !== undefined  && <Map zoom={zoomLevel} center={[start.latitude, start.longitude]} className="map">
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
