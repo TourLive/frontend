@@ -62,7 +62,7 @@ class MountainRanking extends Component {
             return array.push(con);
         });
 
-        switch(this.state.activeSort){
+        switch(this.state.activeSort){ 
             case 'points':
                 this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : array.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
