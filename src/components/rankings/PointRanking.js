@@ -10,6 +10,7 @@ class PointRanking extends Component {
         this.state = {
             sortOrder : 'ascending',
             uiOrder : undefined,
+            activeSort : '',
             data : []
         };
     }
@@ -20,26 +21,32 @@ class PointRanking extends Component {
             case 'points':
                 this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rank- b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
+                    this.setState({activeSort: 'points'});
                 break;
             case 'startNr':
                 this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rider.startNr - a.rider.startNr), sortOrder: 'ascending', uiOrder:'descending'});
+                    this.setState({activeSort: 'startNr'});
                 break;
             case 'name':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rider.name.replace(/ /g,'').toLowerCase().localeCompare(a.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'ascending', uiOrder:'descending'});
+                    this.setState({activeSort: 'name'});
                 break;
             case 'team':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.teamShortName.localeCompare(b.rider.teamShortName)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.teamShortName.localeCompare(b.rider.teamShortName)), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rider.teamShortName.localeCompare(a.rider.teamShortName)), sortOrder: 'ascending', uiOrder:'descending'});
+                    this.setState({activeSort: 'team'});
                 break;
             case 'country':
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.country.localeCompare(b.rider.country)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.country.localeCompare(b.rider.country)), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
+                    this.setState({activeSort: 'country'});
                 break;
             default: // Default sorted by rank
-                this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
+                    this.setState({activeSort: ''});
                 break;
         }
     };
@@ -52,6 +59,39 @@ class PointRanking extends Component {
             con.rank = i + 1;
             return array.push(con);
         });
+
+        switch(this.state.activeSort){
+            case 'points':
+                this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rank- b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : array.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
+                this.setState({activeSort: 'points'});
+                break;
+            case 'startNr':
+                this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : array.sort((a, b) => b.rider.startNr - a.rider.startNr), sortOrder: 'ascending', uiOrder:'descending'});
+                this.setState({activeSort: 'startNr'});
+                break;
+            case 'name':
+                this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rider.name.replace(/ /g,'').toLowerCase().localeCompare(b.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : array.sort((a, b) => b.rider.name.replace(/ /g,'').toLowerCase().localeCompare(a.rider.name.replace(/ /g,'').toLowerCase())), sortOrder: 'ascending', uiOrder:'descending'});
+                this.setState({activeSort: 'name'});
+                break;
+            case 'team':
+                this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rider.teamShortName.localeCompare(b.rider.teamShortName)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : array.sort((a, b) => b.rider.teamShortName.localeCompare(a.rider.teamShortName)), sortOrder: 'ascending', uiOrder:'descending'});
+                this.setState({activeSort: 'team'});
+                break;
+            case 'country':
+                this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rider.country.localeCompare(b.rider.country)), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : array.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
+                this.setState({activeSort: 'country'});
+                break;
+            default: // Default sorted by rank
+                this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
+                    this.setState({data : array.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
+                this.setState({activeSort: ''});
+                break;
+        }
         this.setState({data : array});
     }
 
