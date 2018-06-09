@@ -61,8 +61,6 @@ class VirtualRanking extends Component {
             con.rank = i + 1;
             return array.push(con);
         });
-        console.log(this.state.sortOrder);
-        console.log(this.state.activeSort);
 
         switch(this.state.activeSort){
             case 'startNr':
