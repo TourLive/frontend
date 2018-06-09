@@ -17,8 +17,11 @@ class Rankings extends Component {
         this.state = {
             updated: false,
             activeItem : 'virtual',
+            lastActualized : new Date().timeNow(),
             timer : null
         }
+
+        this.tick = this.tick.bind(this)
     }
 
     handleMenuItemClick = (e, {name}) => this.setState({activeItem: name});
@@ -44,6 +47,7 @@ class Rankings extends Component {
       if (stageID !== undefined) {
           store.dispatch(riderStageConnectionsActions.getRiderStageConnectionsFromAPI(stageID));
       }
+      this.setState({lastActualized : new Date().timeNow()});
     }
 
     render() {
@@ -60,7 +64,7 @@ class Rankings extends Component {
                 </Helmet>
                 <div>
                     <Header as="h1" color='red'>Virtuelle Klassemente</Header>
-                    <p className="App-Timestamp"><strong>Letzte Aktualisierung:</strong> {new Date().today()} {new Date().timeNow()}</p>
+                    <p className="App-Timestamp"><strong>Letzte Aktualisierung:</strong> {new Date().today()} {this.state.lastActualized}</p>
                 </div>
                 <Menu compact>
                   <Menu.Item as={Link} key={1} to="/rankings/virtual" name='virtual' active={activeItem === 'virtual'} onClick={this.handleMenuItemClick}>
