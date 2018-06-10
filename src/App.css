@@ -23,6 +23,11 @@ html,body {
   font-weight: bold;
 }
 
+.App-hsr {
+  right: 0.4rem;
+  height: 40px;
+}
+
 .App-footer {
   position:fixed;
   left:0;

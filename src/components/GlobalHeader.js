@@ -40,8 +40,9 @@ class GlobalHeader extends Component {
 
         return(
           <header className="App-header">
-            <Link to="/view/track"><img src="../logo.png" alt="Logo" className="App-Header-Image"/></Link>
-            <div className="App-title Inline">{actualRace.name} / {actualStage.stageName}</div>
+                <Link to="/view/track"><img src="../logo.png" alt="Logo" className="App-Header-Image"/></Link>
+                <div className="App-title Inline">{actualRace.name} / {actualStage.stageName}</div>
+                <a href="https://www.hsr.ch/de/" target="_blank"><img src="../logo_HSR.png" alt="HSR" className="App-hsr Inline"/></a>
           </header>
         );
       }

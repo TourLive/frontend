@@ -20,11 +20,23 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
             text += " (" + riders + " Fahrer)";
         } else if (raceGroup.raceGroupType === 'FELD') {
             text = raceGroup.raceGroupType;
-            text += " (" + riders + " Fahrer)  | + " + raceGroup.actualGapTime + " sec";
+            let time = raceGroup.actualGapTime;
+            var date = new Date(1000*time);
+            var mm = date.getUTCMinutes();
+            var ss = date.getSeconds();
+            if (mm < 10) {mm = "0"+mm;}
+            if (ss < 10) {ss = "0"+ss;}
+            text += " (" + riders + " Fahrer)  | + " + mm+":"+ss;
         } else
         {
             text = "GRUPPE " + raceGroup.position;
-            text += " (" + riders + " Fahrer)  | + " + raceGroup.actualGapTime + " sec";
+            let time = raceGroup.actualGapTime;
+            var date = new Date(1000*time);
+            var mm = date.getUTCMinutes();
+            var ss = date.getSeconds();
+            if (mm < 10) {mm = "0"+mm;}
+            if (ss < 10) {ss = "0"+ss;}
+            text += " (" + riders + " Fahrer)  | + " + mm+":"+ss;
         }
         return elements.push({distance : distance.toFixed(2), text : text, skip : false, type : "racegroup"})
     });
@@ -64,6 +76,13 @@ function receiveTimelineError(data) {
   }
 }
 
+function receiveRaceGroups(data) {
+    return {
+        type : types.SET_RACEGROUPS,
+        data : data
+    }
+}
+
 export function getTimelineOfStage(id) {
     return function (dispatch) {
         axios.all([getCurrentRaceGroups(id), getGPSDataFromCnlabAPI()])
@@ -74,6 +93,7 @@ export function getTimelineOfStage(id) {
                 if(judgments === undefined || raceGroups === undefined || gpsData === undefined || stage === undefined){
                   dispatch(receiveTimelineError("Error on loading data"));
                 } else {
+                  dispatch(receiveRaceGroups(raceGroups));
                   dispatch(receiveTimeline(judgments, raceGroups, stage, gpsData));
                 }
             }));
