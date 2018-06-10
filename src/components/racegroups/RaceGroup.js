@@ -10,14 +10,19 @@ class RaceGroup extends Component {
 
         this.close = this.close.bind(this);
     }
+
     close() {
         store.dispatch(raceGroupsActions.disableSingleRaceGroup());
     }
+
     render() {
         const {raceGroups} = this.props;
-
-        console.log(raceGroups);
-        const rG = raceGroups[0];
+        const {singleRaceGroup} = this.props;
+        const rGID = singleRaceGroup.selectedRaceGroup.id;
+        const res = raceGroups.filter(elem => {
+            return elem.id === rGID;
+        });
+        const rG = res[0];
         let name = "";
 
         if (rG.raceGroupType === "FELD") {
