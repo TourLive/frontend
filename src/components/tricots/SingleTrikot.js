@@ -10,7 +10,6 @@ class SingleTrikot extends Component {
     let rank;
     let flag;
     let rider;
-
     if (cons !== undefined) {
         const sortedConnections = cons.sort((a, b) => a.officialGap - b.officialGap);
         rider = riders.find((e) => {
