@@ -4,7 +4,8 @@ import RaceGroup from "../../components/racegroups/RaceGroup";
 function mapStateToProps(store) {
     return {
         riders : store.riders.riders,
-        singleRaceGroup : store.currentRaceGroup
+        singleRaceGroup : store.currentRaceGroup,
+        raceGroups : store.raceGroups.data
     }
 }
 

@@ -20,10 +20,6 @@ class TrackTimelineElement extends Component {
             paddingTop: `${calculationTop}rem`
         };
 
-        let ele = element.type === "racegroup" ? '' +
-            '': '';
-
-        console.log(element);
         return(
             <li style={divStyle}>
                 <div className="App-Timeline-Text">

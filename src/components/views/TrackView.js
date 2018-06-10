@@ -4,7 +4,6 @@ import SearchResult from "../search/SearchResult";
 import TimeLineEndBlock from "../common/TimeLineEndBlock";
 import RiderSearchContainer from '../../containers/search/RiderSearchContainer'
 import TrackTimeline from "../common/TrackTimeline";
-import RaceGroup from "../racegroups/RaceGroup";
 import RaceGroupContainer from "../../containers/racegroups/RaceGroupContainer";
 
 class TrackView extends Component {
