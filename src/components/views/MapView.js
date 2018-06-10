@@ -74,7 +74,9 @@ class MapView extends Component {
                  if(points.length > 0) {break};
             }
             let temp = points[parseInt(points.length / 2,0)];
-            return marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text, skip : elem.skip});
+            if (temp !== undefined) {
+                return marker.push({latitude: temp.latitude, longitude: temp.longitude, text : elem.text, skip : elem.skip});
+            }
         });
 
         return(
