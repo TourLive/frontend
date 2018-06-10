@@ -23,6 +23,7 @@ class SingleTrikotActual extends Component {
         if(cons.length > 0){
             sortedArray = cons.sort((a,b) => a.virtualGap - b.virtualGap);
             leader = sortedArray[0].rider;
+            console.log(leader);
             sortedArray.filter((a,b)  => a.virtualGap === b.virtualGap);
             if(sortedArray.length > 1 && trikot.type == 'leader'){
                 let checkIfStillLeaderFromStart = sortedArray.findIndex(con => con.rider.id === trikot.riderId);
@@ -31,8 +32,10 @@ class SingleTrikotActual extends Component {
                 }
             }
             rankOfLeader= 1;
-            sortedArray = cons.sort((a,b) => a.mountainBonusPoints - b.mountainBonusPoints);
+            sortedArray = cons.sort((a,b) => b.mountainBonusPoints - a.mountainBonusPoints);
             mountain = sortedArray[0].rider;
+            console.log(sortedArray);
+            console.log(mountain);
             sortedArray.filter((a,b)  => a.mountainBonusPoints === b.mountainBonusPoints);
             if(sortedArray.length > 1 && trikot.type === 'mountain'){
                 let checkIfStillLeaderFromStart = sortedArray.findIndex(con => con.rider.id === trikot.riderId);
@@ -41,7 +44,7 @@ class SingleTrikotActual extends Component {
                 }
             }
             rankOfMountain= sortedConnections.findIndex(con => con.rider.id === mountain.id) + 1;
-            sortedArray = cons.sort((a,b) => a.bonusPoints - b.bonusPoints);
+            sortedArray = cons.sort((a,b) => b.bonusPoints - a.bonusPoints);
             point = sortedArray[0].rider;
             sortedArray.filter((a,b)  => a.bonusPoints === b.bonusPoints);
             if(sortedArray.length > 1 && trikot.type === 'points'){
