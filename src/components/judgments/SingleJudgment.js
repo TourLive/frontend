@@ -30,7 +30,6 @@ class SingleJudgment extends Component {
                 RewardRank = 1;
                 jRC = judgmentRiderConnections.find((e) => {
                     let rank = i+1;
-                    console.log(rank);
                     return (e.judgment.id === judgment.id && e.rank === rank);
                 });
             }
