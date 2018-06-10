@@ -12,6 +12,7 @@ import searchReducer from "./searchReducer";
 import notificationsReducer from "./notificationsReducer";
 import timelineReducer from "./timelineReducer";
 import logReducerRaceGroupHistory from "./logReducerRaceGroupHistory";
+import currentRaceGroupReducer from "./currentRaceGroupReducer";
 
 const rootReducer = combineReducers({
     actualStage : activeStageReducer,
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
     searchState : searchReducer,
     notifications : notificationsReducer,
     timeline : timelineReducer,
-    logsRaceGroupHistory : logReducerRaceGroupHistory
+    logsRaceGroupHistory : logReducerRaceGroupHistory,
+    currentRaceGroup : currentRaceGroupReducer
 });
 
 export default rootReducer;
