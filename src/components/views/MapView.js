@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Helmet} from "react-helmet";
 import {Map, TileLayer, Marker, Popup, Polyline, Tooltip} from "react-leaflet";
 import Leaflet from "leaflet";
+import * as regex from "../../util/regex";
 
 class MapView extends Component {
     render() {
@@ -45,14 +46,7 @@ class MapView extends Component {
             iconSize:     [40, 40]
         });
 
-        const SPRINT_REGEX = /sprint/i;
-        const SPURT_REGEX = /spurt/i;
-        const BERG_REGEX = /berg/i;
-        const BERG_HC_REGEX = /berg.*hc/i;
-        const BERG_KAT1_REGEX = /berg.*kat.*1/i;
-        const BERG_KAT2_REGEX = /berg.*kat.*2/i;
-        const BERG_KAT3_REGEX = /berg.*kat.*3/i;
-        const PUNKTE_ZEIT_REGEX = /punkte|zeit/i;
+
 
         const zoomLevel = 13;
         const {gpsData} = this.props;
@@ -105,14 +99,14 @@ class MapView extends Component {
                     {marker.map((elem,i) => {
                         if(elem.skip === false){
                         let icon = null;
-                        let sprint = SPRINT_REGEX.exec(elem.text);
-                        let spurt = SPURT_REGEX.exec(elem.text);
-                        let berg = BERG_REGEX.exec(elem.text);
-                        let bergHC = BERG_HC_REGEX.exec(elem.text);
-                        let bergKat1 = BERG_KAT1_REGEX.exec(elem.text);
-                        let bergKat2 = BERG_KAT2_REGEX.exec(elem.text);
-                        let bergKat3 = BERG_KAT3_REGEX.exec(elem.text);
-                        let punkteZeit = PUNKTE_ZEIT_REGEX.exec(elem.text);
+                        let sprint = regex.SPRINT_REGEX.exec(elem.text);
+                        let spurt = regex.SPURT_REGEX.exec(elem.text);
+                        let berg = regex.BERG_REGEX.exec(elem.text);
+                        let bergHC = regex.BERG_HC_REGEX.exec(elem.text);
+                        let bergKat1 = regex.BERG_KAT1_REGEX.exec(elem.text);
+                        let bergKat2 = regex.BERG_KAT2_REGEX.exec(elem.text);
+                        let bergKat3 = regex.BERG_KAT3_REGEX.exec(elem.text);
+                        let punkteZeit = regex.PUNKTE_ZEIT_REGEX.exec(elem.text);
 
                         if(sprint !== null && sprint[0] !== null){ icon = iconSprint;}
                         if(spurt !== null && spurt[0] !== null) { icon = iconSprint; }

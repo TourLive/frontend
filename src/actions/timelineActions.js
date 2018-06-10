@@ -8,7 +8,7 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
     const speedLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.speed;
     const distanceLeadGroup = jsonData.cars.find(function (obj) { return obj.name === "raceStart"; }).data.distance.toFixed(1);
     let elements = [];
-    judgments.map(judgment => {return elements.push({distance : judgment.distance.toFixed(2), text : judgment.name, skip : judgment.skipForDisplay, type : "judgment"})});
+    judgments.map(judgment => {return elements.push({distance : judgment.distance.toFixed(2), text : judgment.name, skip : judgment.skipForDisplay, type : "judgment", id: 0})});
     raceGroups.map(raceGroup => {
         let riders = raceGroup.riders.length;
         let left = distanceLeadGroup;
@@ -38,7 +38,7 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
             if (ss < 10) {ss = "0"+ss;}
             text += " (" + riders + " Fahrer)  | + " + mm+":"+ss;
         }
-        return elements.push({distance : distance.toFixed(2), text : text, skip : false, type : "racegroup"})
+        return elements.push({distance : distance.toFixed(2), text : text, skip : false, type : "racegroup", id : raceGroup.id})
     });
     elements.sort((a,b) => b.distance - a.distance);
     let elems = [];
@@ -61,7 +61,7 @@ function receiveTimeline(judgments, raceGroups, stage, gpsData) {
             }
         }
         lastElement = elem;
-        return elems.push({distance : elem.distance, text : elem.text, gap: gap, skip: elem.skip, type: elem.type});
+        return elems.push({distance : elem.distance, text : elem.text, gap: gap, skip: elem.skip, type: elem.type, id : elem.id});
     });
     return {
         type : types.SET_TIMELINE_RESULT,
