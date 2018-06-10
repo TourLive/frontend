@@ -29,9 +29,9 @@ class SingleTrikot extends Component {
     }
 
     const attachedRider = rider === undefined ? (
-        <p>Fahrerdaten werden geladen</p>
+        <p>Keine Daten vorhanden</p>
     ) : (
-      <p><b>{rider.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{rider.name}</b>, {rider.teamName}, Rang: {rank}</p>
+      <p><b>{rider.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{rider.name}</b>, {rider.teamName}, virtueller Rang: {rank}</p>
     );
 
     return(

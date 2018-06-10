@@ -22,9 +22,9 @@ class SingleTrikotActual extends Component {
         if(cons.length > 0){
             leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
             rankOfLeader= sortedConnections.findIndex(con => con.rider.id === leader.id) + 1;
-            mountain = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            mountain = cons.sort((a,b) => a.mountainBonusPoints - b.mountainBonusPoints)[0].rider;
             rankOfMountain= sortedConnections.findIndex(con => con.rider.id === mountain.id) + 1;
-            point = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+            point = cons.sort((a,b) => a.bonusPoints - b.bonusPoints)[0].rider;
             rankOfPoint= sortedConnections.findIndex(con => con.rider.id === point.id) + 1;
             bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
             rankOfBestSwiss = sortedConnections.findIndex(con => con.rider.id === bestSwiss.id) + 1;
@@ -75,7 +75,7 @@ class SingleTrikotActual extends Component {
                   trikot.type === 'bestSwiss' && bestSwiss !== undefined ? (
                           <p><b>{bestSwiss.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{bestSwiss.name}</b>, {bestSwiss.teamName}, Rang: {rankOfBestSwiss}</p>
                   ) : (
-                        <p>Fahrerdaten werden geladen</p>
+                        <p>Keine Daten vorhanden</p>
                       )
           )
       );
