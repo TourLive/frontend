@@ -241,9 +241,59 @@ footer i.icon {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #6fba1c;
+  background-color: #6fba1c;
   margin-left: 0.21rem;
 }
+
+.berg::after {
+  background-image: url('components/views/mapIcons/berg.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.berg_hc::after {
+  background-image: url('components/views/mapIcons/berg_hc.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.berg_kat1::after {
+  background-image: url('components/views/mapIcons/berg_kat1.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.berg_kat2::after {
+  background-image: url('components/views/mapIcons/berg_kat2.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.berg_kat3::after {
+  background-image: url('components/views/mapIcons/berg_kat3.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.sprint::after {
+  background-image: url('components/views/mapIcons/sprint.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.ziel::after {
+  background-image: url('components/views/mapIcons/sprint.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
 
 .timeline ul li div {
   position: relative;
