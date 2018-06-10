@@ -18,13 +18,38 @@ class SingleTrikotActual extends Component {
         let rankOfPoint;
         let rankOfBestSwiss;
         let flag;
+        let sortedArray;
 
         if(cons.length > 0){
-            leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-            rankOfLeader= sortedConnections.findIndex(con => con.rider.id === leader.id) + 1;
-            mountain = cons.sort((a,b) => a.mountainBonusPoints - b.mountainBonusPoints)[0].rider;
+            sortedArray = cons.sort((a,b) => a.virtualGap - b.virtualGap);
+            leader = sortedArray[0].rider;
+            sortedArray.filter((a,b)  => a.virtualGap === b.virtualGap);
+            if(sortedArray.length > 1 && trikot.type == 'leader'){
+                let checkIfStillLeaderFromStart = sortedArray.findIndex(con => con.rider.id === trikot.riderId);
+                if(checkIfStillLeaderFromStart > 0){
+                    leader = sortedArray[checkIfStillLeaderFromStart].rider;
+                }
+            }
+            rankOfLeader= 1;
+            sortedArray = cons.sort((a,b) => a.mountainBonusPoints - b.mountainBonusPoints);
+            mountain = sortedArray[0].rider;
+            sortedArray.filter((a,b)  => a.mountainBonusPoints === b.mountainBonusPoints);
+            if(sortedArray.length > 1 && trikot.type === 'mountain'){
+                let checkIfStillLeaderFromStart = sortedArray.findIndex(con => con.rider.id === trikot.riderId);
+                if(checkIfStillLeaderFromStart > 0){
+                    mountain = sortedArray[checkIfStillLeaderFromStart].rider;
+                }
+            }
             rankOfMountain= sortedConnections.findIndex(con => con.rider.id === mountain.id) + 1;
-            point = cons.sort((a,b) => a.bonusPoints - b.bonusPoints)[0].rider;
+            sortedArray = cons.sort((a,b) => a.bonusPoints - b.bonusPoints);
+            point = sortedArray[0].rider;
+            sortedArray.filter((a,b)  => a.bonusPoints === b.bonusPoints);
+            if(sortedArray.length > 1 && trikot.type === 'points'){
+                let checkIfStillLeaderFromStart = sortedArray.findIndex(con => con.rider.id === trikot.riderId);
+                if(checkIfStillLeaderFromStart > 0){
+                    point = sortedArray[checkIfStillLeaderFromStart].rider;
+                }
+            }
             rankOfPoint= sortedConnections.findIndex(con => con.rider.id === point.id) + 1;
             bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
             rankOfBestSwiss = sortedConnections.findIndex(con => con.rider.id === bestSwiss.id) + 1;
@@ -63,7 +88,7 @@ class SingleTrikotActual extends Component {
           flag = undefined;
       }
 
-      const attachedRider = trikot.type === 'leader' && leader !== undefined? (
+      const attachedRider = trikot.type === 'leader' && leader !== undefined ? (
           <p><b>{leader.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{leader.name}</b>, {leader.teamName}, Rang: {rankOfLeader}</p>
       ) : (
           trikot.type === 'mountain' && mountain !== undefined ? (
