@@ -19,12 +19,12 @@ html,body {
 
 .App-title {
   margin-left: 0.4rem;
-  font-size: 1.3rem;
+  font-size: 1.0rem;
   font-weight: bold;
 }
 
 .App-hsr {
-  right: 0.4rem;
+  right: 0.8rem;
   height: 40px;
 }
 
