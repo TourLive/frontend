@@ -289,7 +289,7 @@ footer i.icon {
 }
 
 .ziel::after {
-  background-image: url('components/views/mapIcons/sprint.png') !important;
+  background-image: url('components/views/mapIcons/ziel.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: unset !important;
