@@ -207,6 +207,7 @@ footer i.icon {
 
 .ui.feed {
   margin: 0;
+  padding-top: 1rem;
 }
 
 .ui.feed > .event > .label {
