@@ -2,35 +2,46 @@ import React, { Component } from 'react';
 import {Header, Button, Flag} from "semantic-ui-react";
 import countries from "../../util/countries";
 import RoundedRecetangle from '../common/RoundedRecetangle';
+import * as judgmentActions from "../../actions/judgmentActions";
+import store from "../../store";
 
 class SingleJudgment extends Component {
+    constructor(props) {
+        super(props);
+
+        this.close = this.close.bind(this);
+    }
+
+    close() {
+        store.dispatch(judgmentActions.disableSingleJudgment());
+    }
   render() {
-    const judgment = this.props.data;
+    const {single} = this.props;
     const {riders} = this.props;
     const {judgmentRiderConnections} = this.props;
-    const description = `An Kilometer ${judgment.distance} auf der Strecke`;
+    const description = `An Kilometer ${single.distance} auf der Strecke`;
 
     return(
       <div className="App-Judgment-Single">
-        <Button onClick={this.props.close}>&lt; Zurück zu allen Wertungen</Button><br/>
-        <Header as="h1">Wertung | {judgment.name}</Header>
+        <Button onClick={this.close}>&lt; Zurück zu allen Wertungen</Button><br/>
+        <Header as="h1">Wertung | {single.name}</Header>
         <RoundedRecetangle content={description}/>
-        {judgment.reward.points.map((reward,i) => {
+        {single.reward.points.map((reward,i) => {
           let rider;
           let flag;
           let RewardRank = reward;
           let jRC = judgmentRiderConnections.find((e) => {
             let rank = i+1;
-            return (e.judgment.id === judgment.id && e.rank === rank);
+            return (e.single.id === single.id && e.rank === rank);
           });
           if (jRC === undefined) {
-            let moneyArray = judgment.reward.money;
+            let moneyArray = single.reward.money;
             let money = moneyArray[i];
             if (money !== undefined && money !== 0) {
                 RewardRank = 1;
                 jRC = judgmentRiderConnections.find((e) => {
                     let rank = i+1;
-                    return (e.judgment.id === judgment.id && e.rank === rank);
+                    return (e.single.id === single.id && e.rank === rank);
                 });
             }
           }

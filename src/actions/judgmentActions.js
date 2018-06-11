@@ -34,3 +34,29 @@ export function getJudgmentsOfStage(id) {
     });
   }
 }
+
+function hideSingleJudgment() {
+    return {
+        type : types.SET_HIDE_JUDGMENT
+    }
+}
+
+function displaySingleJudgment(judgment) {
+    console.log(judgment);
+    return {
+        type : types.SET_DISPLAY_JUDGMENT,
+        data : judgment
+    }
+}
+
+export function disableSingleJudgment() {
+    return function (dispatch) {
+        dispatch(hideSingleJudgment());
+    }
+}
+
+export function enableSingleJudgment(judgment) {
+    return function (dispatch) {
+        dispatch(displaySingleJudgment(judgment));
+    }
+}

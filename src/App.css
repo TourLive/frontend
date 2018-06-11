@@ -207,6 +207,7 @@ footer i.icon {
 
 .ui.feed {
   margin: 0;
+  padding-top: 1rem;
 }
 
 .ui.feed > .event > .label {
@@ -243,6 +244,10 @@ footer i.icon {
   border-radius: 50%;
   background-color: #be1623;
   margin-left: 0.21rem;
+}
+
+.judgments::after {
+  bottom: 25% !important;
 }
 
 .berg::after {
@@ -288,7 +293,7 @@ footer i.icon {
 }
 
 .ziel::after {
-  background-image: url('components/views/mapIcons/sprint.png') !important;
+  background-image: url('components/views/mapIcons/ziel.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: unset !important;
@@ -301,6 +306,10 @@ footer i.icon {
   padding-bottom: 0.5rem;
   width: 400px;
   left: 2.5rem;
+}
+
+.judgmentsDiv {
+  padding-top: 1rem;
 }
 
 .App-Last-Timeline-Element::after {
