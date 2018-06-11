@@ -33,11 +33,13 @@ class SingleTrikot extends Component {
       <p><b>{rider.startNr}</b> <Flag className="App-Flag" name={flag.iso.toLowerCase()}/> <b>{rider.name}</b>, {rider.teamName}, virtueller Rang: {rank}</p>
     );
 
+    const imageName = "../" + trikot.color + ".png";
+
     return(
       <List.Item>
         <Feed>
           <Feed.Event>
-            <Feed.Label image='/maillot.svg' />
+            <Feed.Label image={imageName} />
             <Feed.Content>
               <Feed.Date content={trikot.name} />
             </Feed.Content>

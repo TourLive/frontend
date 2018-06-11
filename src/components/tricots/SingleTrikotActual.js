@@ -122,11 +122,13 @@ class SingleTrikotActual extends Component {
           )
       );
 
+    const imageName = "../" + trikot.color + ".png";
+
     return(
         <List.Item>
           <Feed>
             <Feed.Event>
-              <Feed.Label image='/maillot.svg' />
+              <Feed.Label image={imageName} />
               <Feed.Content>
                 <Feed.Date content={trikot.name} />
               </Feed.Content>
