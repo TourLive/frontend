@@ -241,7 +241,7 @@ footer i.icon {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #6fba1c;
+  background-color: #be1623;
   margin-left: 0.21rem;
 }
 
@@ -249,49 +249,49 @@ footer i.icon {
   background-image: url('components/views/mapIcons/berg.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: unset !important;
 }
 
 .berg_hc::after {
   background-image: url('components/views/mapIcons/berg_hc.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: unset !important;
 }
 
 .berg_kat1::after {
   background-image: url('components/views/mapIcons/berg_kat1.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: unset !important;
 }
 
 .berg_kat2::after {
   background-image: url('components/views/mapIcons/berg_kat2.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: unset !important;
 }
 
 .berg_kat3::after {
   background-image: url('components/views/mapIcons/berg_kat3.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: unset !important;
 }
 
 .sprint::after {
   background-image: url('components/views/mapIcons/sprint.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: unset !important;
 }
 
 .ziel::after {
   background-image: url('components/views/mapIcons/sprint.png') !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: unset !important;
 }
 
 
