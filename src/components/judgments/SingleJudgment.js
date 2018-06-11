@@ -32,7 +32,7 @@ class SingleJudgment extends Component {
           let RewardRank = reward;
           let jRC = judgmentRiderConnections.find((e) => {
             let rank = i+1;
-            return (e.single.id === single.id && e.rank === rank);
+            return (e.judgment.id === single.id && e.rank === rank);
           });
           if (jRC === undefined) {
             let moneyArray = single.reward.money;
@@ -41,7 +41,7 @@ class SingleJudgment extends Component {
                 RewardRank = 1;
                 jRC = judgmentRiderConnections.find((e) => {
                     let rank = i+1;
-                    return (e.single.id === single.id && e.rank === rank);
+                    return (e.judgment.id === single.id && e.rank === rank);
                 });
             }
           }
