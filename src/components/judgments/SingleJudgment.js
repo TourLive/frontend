@@ -19,6 +19,8 @@ class SingleJudgment extends Component {
     const {single} = this.props;
     const {riders} = this.props;
     const {judgmentRiderConnections} = this.props;
+    console.log(judgmentRiderConnections);
+    console.log(single.id);
     const description = `An Kilometer ${single.distance} auf der Strecke`;
 
     return(
@@ -32,7 +34,7 @@ class SingleJudgment extends Component {
           let RewardRank = reward;
           let jRC = judgmentRiderConnections.find((e) => {
             let rank = i+1;
-            return (e.single.id === single.id && e.rank === rank);
+            return (e.judgment.id === single.id && e.rank === rank);
           });
           if (jRC === undefined) {
             let moneyArray = single.reward.money;
@@ -41,7 +43,7 @@ class SingleJudgment extends Component {
                 RewardRank = 1;
                 jRC = judgmentRiderConnections.find((e) => {
                     let rank = i+1;
-                    return (e.single.id === single.id && e.rank === rank);
+                    return (e.judgment.id === single.id && e.rank === rank);
                 });
             }
           }
