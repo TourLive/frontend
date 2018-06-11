@@ -246,6 +246,10 @@ footer i.icon {
   margin-left: 0.21rem;
 }
 
+.judgments::after {
+  bottom: 25% !important;
+}
+
 .berg::after {
   background-image: url('components/views/mapIcons/berg.png') !important;
   background-size: cover;
@@ -302,6 +306,10 @@ footer i.icon {
   padding-bottom: 0.5rem;
   width: 400px;
   left: 2.5rem;
+}
+
+.judgmentsDiv {
+  padding-top: 1rem;
 }
 
 .App-Last-Timeline-Element::after {
