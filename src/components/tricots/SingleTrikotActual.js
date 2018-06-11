@@ -26,10 +26,12 @@ class SingleTrikotActual extends Component {
             switch(trikot.type) {
                 case 'leader':
                     let temp = cons;
-                    sortedArray = temp.sort((a,b) => (a.virtualGap + a.officialGap) - (b.virtualGap + a.officialGap));
+                    sortedArray = temp.sort((a,b) => (a.virtualGap + a.officialGap) - (b.virtualGap + b.officialGap));
+                    console.log(sortedArray);
                     leader = sortedArray[0].rider;
                     tempRSC = sortedArray[0];
                     tempArray = sortedArray.filter((a)  => (tempRSC.virtualGap + tempRSC.officialGap) === (a.virtualGap + a.officialGap));
+                    console.log(tempArray);
                     if(tempArray.length > 1 && trikot.type == 'leader'){
                         let checkIfStillLeaderFromStart = tempArray.findIndex(con => con.rider.id === trikot.riderId);
                         if(checkIfStillLeaderFromStart > 0){

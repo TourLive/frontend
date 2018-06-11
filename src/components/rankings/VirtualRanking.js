@@ -9,7 +9,7 @@ class VirtualRanking extends Component {
         super(props);
 
         this.state = {
-            sortOrder : 'ascending',
+            sortOrder : '',
             uiOrder : undefined,
             activeSort : '',
             data : []
@@ -57,7 +57,7 @@ class VirtualRanking extends Component {
         this.setState({cons : cons});
 
         let array = [];
-        cons.sort((a,b) => a.virtualGap - b.virtualGap).map((con,i) => {
+        cons.sort((a,b) => (a.virtualGap + a.officialGap) - (b.virtualGap + b.officialGap)).map((con,i) => {
             con.rank = i + 1;
             return array.push(con);
         });
@@ -101,7 +101,7 @@ class VirtualRanking extends Component {
         this.setState({cons : cons});
         let array = [];
         this.handleSort(this.state.activeSort);
-        cons.sort((a,b) => a.virtualGap - b.virtualGap).map((con,i) => {
+        cons.sort((a,b) => (a.virtualGap + a.officialGap) - (b.virtualGap + b.officialGap)).map((con,i) => {
             con.rank = i + 1;
             return array.push(con);
         });
@@ -161,7 +161,7 @@ class VirtualRanking extends Component {
                             <Responsive as={Table.Row} key={keyTwo} {...Responsive.onlyComputer}>
                               <Table.Cell>{connection.rank}</Table.Cell>
                               <Table.Cell>{connection.rider.startNr}</Table.Cell>
-                              <Table.Cell>{dateUtil.mapValueToTimeString(connection.virtualGap)}</Table.Cell>
+                              <Table.Cell>{dateUtil.mapValueToTimeString(connection.virtualGap+connection.officialGap)}</Table.Cell>
                               <Table.Cell>{dateUtil.mapValueToTimeString(connection.officialTime)}</Table.Cell>
                               <Table.Cell>{connection.rider.name}</Table.Cell>
                               <Table.Cell>{connection.rider.teamShortName}</Table.Cell>
