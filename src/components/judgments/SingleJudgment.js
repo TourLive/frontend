@@ -19,8 +19,6 @@ class SingleJudgment extends Component {
     const {single} = this.props;
     const {riders} = this.props;
     const {judgmentRiderConnections} = this.props;
-    console.log(judgmentRiderConnections);
-    console.log(single.id);
     const description = `An Kilometer ${single.distance} auf der Strecke`;
 
     return(
