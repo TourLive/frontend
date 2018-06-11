@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import Parser from 'html-react-parser';
-import * as raceGroupsActions from "../../actions/raceGroupsActions";
-import store from "../../store";
-import * as regex from "../../util/regex";
+import * as raceGroupsActions from "../../../actions/raceGroupsActions";
+import store from "../../../store";
+import * as regex from "../../../util/regex";
 
 class TrackTimelineElement extends Component {
     constructor(props) {

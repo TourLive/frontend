@@ -30,7 +30,7 @@ class RaceGroup extends Component {
         } else if (rG.raceGroupType === "LEAD") {
             name = "Spitzengruppe";
         } else {
-            name = "GRUPPE " + rG.Position;
+            name = "GRUPPE " + rG.position;
         }
 
         let time = rG.actualGapTime;

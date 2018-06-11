@@ -17,6 +17,7 @@ class TrackTimeline extends Component {
     render() {
         const elements = this.props.elements;
         let bottomSize = 0;
+        console.log(elements);
         return(
             <section className="timeline">
                 <ul className="App-Timeline">

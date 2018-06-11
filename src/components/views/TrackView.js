@@ -3,7 +3,7 @@ import {Helmet} from "react-helmet";
 import SearchResult from "../search/SearchResult";
 import TimeLineEndBlock from "../common/TimeLineEndBlock";
 import RiderSearchContainer from '../../containers/search/RiderSearchContainer'
-import TrackTimeline from "../common/TrackTimeline";
+import TrackTimeline from "./tracktimeline/TrackTimeline";
 import RaceGroupContainer from "../../containers/racegroups/RaceGroupContainer";
 
 class TrackView extends Component {
@@ -11,7 +11,6 @@ class TrackView extends Component {
       const {search} = this.props;
       const {timeline} = this.props;
       const {singleRaceGroup} = this.props;
-        console.log(timeline);
       return(
             <div className="Fix-Header">
                 {search.displayResult === false && singleRaceGroup.display === false &&

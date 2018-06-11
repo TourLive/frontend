@@ -44,10 +44,12 @@ class MountainRanking extends Component {
                     this.setState({data : this.state.cons.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
                     this.setState({activeSort: 'country'});
                 break;
-            default: // Default sorted by rank
+            case 'rank':
                 this.state.sortOrder === 'ascending' ? this.setState({data : this.state.cons.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : this.state.cons.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
-                    this.setState({activeSort: ''});
+                    this.setState({activeSort: 'rank'});
+                break;
+            default:
                 break;
         }
         this.setState({cons : temp});
@@ -61,6 +63,9 @@ class MountainRanking extends Component {
             con.rank = i + 1;
             return array.push(con);
         });
+        if (this.state.activeSort !== '') {
+
+        }
 
         switch(this.state.activeSort){
             case 'points':
@@ -88,10 +93,12 @@ class MountainRanking extends Component {
                     this.setState({data : array.sort((a, b) => b.rider.country.localeCompare(a.rider.country)), sortOrder: 'ascending', uiOrder:'descending'});
                 this.setState({activeSort: 'country'});
                 break;
-            default: // Default sorted by rank
+            case 'rank':
                 this.state.sortOrder !== 'ascending' ? this.setState({data : array.sort((a, b) => a.rank - b.rank), sortOrder: 'descending', uiOrder :'ascending'}) :
                     this.setState({data : array.sort((a, b) => b.rank - a.rank), sortOrder: 'ascending', uiOrder:'descending'});
-                this.setState({activeSort: ''});
+                this.setState({activeSort: 'rank'});
+                break;
+            default:
                 break;
         }
         
@@ -134,7 +141,7 @@ class MountainRanking extends Component {
               <Table className="App-Table-Grid" basic='very' color="red" celled collapsing sortable>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort()}>{sortIcon} Rang</Table.HeaderCell>
+                    <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort('rank')}>{sortIcon} Rang</Table.HeaderCell>
                     <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort('startNr')}>{sortIcon} StartNr</Table.HeaderCell>
                     <Table.HeaderCell className="widthThird" sorted={this.state.uiOrder} onClick={() => this.handleSort('points')}>{sortIcon} Punkte</Table.HeaderCell>
                     <Table.HeaderCell className="widthThird floatLeft" sorted={this.state.uiOrder} onClick={() => this.handleSort('name')}>{sortIcon} Name</Table.HeaderCell>
