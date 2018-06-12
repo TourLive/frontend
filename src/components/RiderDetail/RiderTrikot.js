@@ -6,10 +6,10 @@ class RiderTrikots extends Component {
         const {maillots} = this.props;
         const {cons} = this.props;
         const rider = this.props.selectedRider;
-        const leader = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        const mountain = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        const point = cons.sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
-        const bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => a.virtualGap - b.virtualGap)[0].rider;
+        const leader = cons.sort((a,b) => (a.virtualGap + a.officialGap) - (b.virtualGap + b.officialGap))[0].rider;
+        const mountain = cons.sort((a,b) => b.mountainBonusPoints - a.mountainBonusPoints)[0].rider;
+        const point = cons.sort((a,b) => b.bonusPoints - a.bonusPoints)[0].rider;
+        const bestSwiss = cons.filter(con => con.rider.country === 'SUI').sort((a,b) => (a.virtualGap + a.officialGap) - (b.virtualGap + b.officialGap))[0].rider;
 
         const leaderMaillot = maillots.map(m =>
             leader.id === rider.id && m.type === 'leader' ?
