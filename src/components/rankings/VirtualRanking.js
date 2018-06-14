@@ -57,7 +57,6 @@ class VirtualRanking extends Component {
     componentWillReceiveProps(nextProps){
         var {cons} = nextProps;
         var inactiveCons = cons.filter(a => a.typeState !== "ACTIVE");
-        console.log(inactiveCons);
         cons = cons.filter(a => a.typeState === "ACTIVE");
         this.setState({cons : cons, inactive: inactiveCons});
 
@@ -180,7 +179,6 @@ class VirtualRanking extends Component {
                   </Table>
                 <br/><p className="App-title">Inaktive Fahrer</p>
                 {this.state.inactive.length > 0 && this.state.inactive.map((a,key) => {
-                    console.log("inactive");
                     var flag = countries.find((v) => { return v.ioc === a.rider.country});
                     return <p key={key}>{a.rider.startNr}, {a.rider.name}, {a.rider.teamShortName}, <Flag name={flag.iso.toLowerCase()}/>, Grund: {a.typeState}</p>})}
             </div>
