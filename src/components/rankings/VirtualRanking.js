@@ -12,12 +12,14 @@ class VirtualRanking extends Component {
             sortOrder : '',
             uiOrder : undefined,
             activeSort : '',
-            data : []
+            data : [],
+            inactive : []
         };
     }
 
     handleSort(type) {
-        const {cons} = this.props;
+        var {cons} = this.props;
+        cons = cons.filter(a => a.typeState === "ACTIVE");
         switch(type){
             case 'startNr':
                 this.state.sortOrder === 'ascending' ? this.setState({data : cons.sort((a, b) => a.rider.startNr - b.rider.startNr), sortOrder: 'descending', uiOrder :'ascending'}) :
@@ -53,8 +55,10 @@ class VirtualRanking extends Component {
     };
 
     componentWillReceiveProps(nextProps){
-        const {cons} = nextProps;
-        this.setState({cons : cons});
+        var {cons} = nextProps;
+        var inactiveCons = cons.filter(a => a.typeState !== "ACTIVE");
+        cons = cons.filter(a => a.typeState === "ACTIVE");
+        this.setState({cons : cons, inactive: inactiveCons});
 
         let array = [];
         cons.sort((a,b) => (a.virtualGap + a.officialGap) - (b.virtualGap + b.officialGap)).map((con,i) => {
@@ -97,7 +101,9 @@ class VirtualRanking extends Component {
     }
 
     componentDidMount(){
-        const {cons} = this.props;
+        var {cons} = this.props;
+        var inactiveCons = cons.filter(a => a.typeState !== "ACTIVE");
+        cons = cons.filter(a => a.typeState === "ACTIVE");
         this.setState({cons : cons});
         let array = [];
         this.handleSort(this.state.activeSort);
@@ -105,7 +111,7 @@ class VirtualRanking extends Component {
             con.rank = i + 1;
             return array.push(con);
         });
-        this.setState({data : array});
+        this.setState({data : array, inactive : inactiveCons});
     }
 
 
@@ -171,6 +177,10 @@ class VirtualRanking extends Component {
                       })}
                     </Table.Body>
                   </Table>
+                <br/><p className="App-title">Inaktive Fahrer</p>
+                {this.state.inactive.length > 0 && this.state.inactive.map((a,key) => {
+                    var flag = countries.find((v) => { return v.ioc === a.rider.country});
+                    return <p key={key}>{a.rider.startNr}, {a.rider.name}, {a.rider.teamShortName}, <Flag name={flag.iso.toLowerCase()}/>, Grund: {a.typeState}</p>})}
             </div>
         );
     }
